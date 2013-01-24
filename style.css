@@ -1,0 +1,124 @@
+/*
+Theme Name: Density Atlas
+Theme URI: http://montera34.com
+Author: montera34
+Author URI: http://montera34.com
+Description: Theme for the website Density Atlas
+Version: 0.1
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: two-columns, left-sidebar, flexible-width
+Text Domain: cehagress
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+
+/* jokers */
+.textfuera {
+	height: 0;
+	width: 0;
+	text-indent: -9999px;
+}
+.inline-menu li {
+	display: inline-block;
+	padding: 0 15px;
+}
+.muted {
+	display: none;
+}
+
+/* header */
+#pre {
+	background-color: #1a1a1a;
+	color: #fff;
+	position: relative;
+}
+#logo {
+	height: 90px;
+	margin: 0 0 20px 5px;
+	background-image: url('images/DA_logo.png');
+	background-repeat: no-repeat;
+}
+#pre-menu {
+	position: absolute;
+	right: 15px;
+	bottom: 9px;
+}
+#pre-menu li {
+	text-transform: uppercase;
+}
+/* header menu desplegable */
+#pre-menu li a {
+        display: block!important;
+        display: block;
+        position: relative;
+        text-decoration: none;
+        z-index: 999;
+	color: #fff;
+}
+#pre-menu li:hover,
+#pre-menu li a:hover,
+#pre-menu li:hover a {
+	text-decoration: none;
+	position: relative;
+	z-index: 999;
+}
+#pre-menu li ul {
+	display: none;
+	position: absolute;
+	z-index: 999;
+	width: 100px;
+	text-align: center;
+	font-weight: bold;
+	left: 0;
+	padding: 17px 0 5px;
+	margin: 0 !important;
+}
+#pre-menu li a:hover ul,
+#pre-menu li:hover ul {
+	display: block !important;
+}
+#pre-menu li a:hover ul li,
+#pre-menu li:hover ul li {
+	position: relative;
+	display: block;
+	margin: 0 !important;
+	padding: 0 !important;
+	z-index: 999;
+	background-color: #b3b3b3;
+}
+#pre-menu li a:hover ul li a,
+#pre-menu li:hover ul li a {
+	padding: 2px 0 8px 0 !important;
+}
+
+
+#search {
+	position: absolute;
+	right: 25px;
+	top: 25px;
+}
+#search label {
+	text-transform: uppercase;
+	text-align: right;
+	margin-right: 10px;
+}
+
+/* sidebar */
+#margen {
+}
+
+/* content */
+#content {
+}
+
+/* footer */
+#epi {
+	background-color: #f2f2f2;
+	color: #b3b3b3;
+	position: relative;
+	border-top: 2px solid #b3b3b3;
+	padding: 25px 0;
+	text-transform: uppercase;
+}
