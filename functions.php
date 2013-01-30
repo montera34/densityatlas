@@ -46,4 +46,33 @@ function create_post_type() {
 	));
 }
 
+// Custom Taxonomies
+add_action( 'init', 'build_taxonomies', 0 );
+
+function build_taxonomies() {
+register_taxonomy( 'scale', 'case', array( //each type of case study goes in each of the 4 scales: Block, Neigh, District, City
+	'hierarchical' => false,
+	'label' => 'Scales',
+	'name' => 'Scales',
+	'query_var' => true,
+	'rewrite' => array( 'slug' => 'scale', 'with_front' => false ),) );
+register_taxonomy( 'cities', 'case', array( //City taxonomy
+	'hierarchical' => true,
+	'label' => 'Cities',
+	'name' => 'Cities',
+	'query_var' => true,
+	'rewrite' => array( 'slug' => 'city', 'with_front' => false ),) );
+register_taxonomy( 'districts', 'case', array( //Distric taxonomy
+	'hierarchical' => true,
+	'label' => 'Districts',
+	'name' => 'Districts',
+	'query_var' => true,
+	'rewrite' => array( 'slug' => 'district', 'with_front' => false ),) );
+register_taxonomy( 'neighborhood', 'case', array( //Neighborhood taxonomy
+	'hierarchical' => true,
+	'label' => 'Neighborhoods',
+	'name' => 'Neighborhoods',
+	'query_var' => true,
+	'rewrite' => array( 'slug' => 'neighborhood', 'with_front' => false ),) );
+}
 ?>
