@@ -18,7 +18,7 @@ function create_post_type() {
 	// Case Studies custom post type
 	register_post_type( 'case', array(
 		'labels' => array(
-			'name' => __( 'Case Study' ),
+			'name' => __( 'Case Studies' ),
 			'singular_name' => __( 'Case Study' ),
 			'add_new_item' => __( 'Add Case Study' ),
 			'edit' => __( 'Edit' ),
@@ -44,6 +44,6 @@ function create_post_type() {
 		'_builtin' => false,
 		'_edit_link' => 'post.php?post=%d',
 	));
-
+}
 
 ?>
