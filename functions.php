@@ -75,4 +75,161 @@ register_taxonomy( 'neighborhood', 'case', array( //Neighborhood taxonomy
 	'query_var' => true,
 	'rewrite' => array( 'slug' => 'neighborhood', 'with_front' => false ),) );
 }
+
+//Add metaboxes to Case Study Custom post type
+function be_sample_metaboxes( $meta_boxes ) {//metaboxes common variables to all scales
+	$prefix = ''; // Prefix for all fields
+	$meta_boxes[] = array(
+		'id' => 'common',
+		'title' => 'Common variables to all the scales',
+		'pages' => array('case'), // post type
+		'context' => 'normal',
+		'priority' => 'high',
+		'show_names' => true, // Show field names on the left
+		'fields' => array(
+			array(
+				'name' => 'POP/Ha',
+				'desc' => 'field description (optional)',
+				'id' => $prefix . 'pop-ha',
+				'type' => 'text_small'
+			),
+			array(
+				'name' => 'Population',
+				'desc' => 'field description (optional)',
+				'id' => $prefix . 'population',
+				'type' => 'text_small'
+			),
+			array(
+				'name' => 'References',
+				'desc' => 'field description (optional)',
+				'id' => $prefix . 'references',
+				'type' => 'wysiwyg',
+					'options' => array(
+						    'wpautop' => true, // use wpautop?
+						    'textarea_rows' => get_option('default_post_edit_rows', 2), // rows="..."
+						    'teeny' => false, // output the minimal editor config used in Press This
+						    'tinymce' => true, // load TinyMCE, can be used to pass settings directly to TinyMCE using an array()
+						),
+			),
+		),
+	);
+
+	return $meta_boxes;
+}
+add_filter( 'cmb_meta_boxes', 'be_sample_metaboxes' );
+
+function block_nh_sample_metaboxes( $meta_boxes ) { //metaboxes for Block and Neighborood Scales
+	$prefix = ''; // Prefix for all fields
+	$meta_boxes[] = array(
+		'id' => 'block-nh',
+		'title' => 'Block and Neighborood Scales',
+		'pages' => array('case'), // post type
+		'context' => 'normal',
+		'priority' => 'high',
+		'show_names' => true, // Show field names on the left
+		'fields' => array(
+			array(
+				'name' => 'FAR',
+				'desc' => 'field description (optional)',
+				'id' => $prefix . 'far',
+				'type' => 'text_small'
+			),
+			array(
+				'name' => 'DUs/Ha',
+				'desc' => 'field description (optional)',
+				'id' => $prefix . 'dus-ha',
+				'type' => 'text_small'
+			),
+			array(
+				'name' => 'm2/Ha',
+				'desc' => 'field description (optional)',
+				'id' => $prefix . 'm2-ha',
+				'type' => 'text_small'
+			),
+			array(
+				'name' => 'Gross Building Area',
+				'desc' => 'm2',
+				'id' => $prefix . 'gross-building-area',
+				'type' => 'text_small'
+			),
+			array(
+				'name' => 'Site Area',
+				'desc' => 'm2',
+				'id' => $prefix . 'site-area',
+				'type' => 'text_small'
+			),
+			array(
+				'name' => 'Range of Heights',
+				'desc' => 'select',
+				'id' => $prefix . 'range-of-heights',
+				'type' => 'select',
+					'options' => array(
+						array('name' => 'Option One', 'value' => 'standard'), //ToDo fill with real values
+						array('name' => 'Option Two', 'value' => 'custom'),
+						array('name' => 'Option Three', 'value' => 'none')				
+					)
+			),
+			array(
+				'name' => 'Dwelling Units',
+				'desc' => 'field description (optional)',
+				'id' => $prefix . 'dwelling-units',
+				'type' => 'text_small'
+			),
+			array(
+				'name' => 'Parking Spaces',
+				'desc' => 'field description (optional)',
+				'id' => $prefix . 'parking-spaces',
+				'type' => 'text_small'
+			),
+			array(
+				'name' => 'Location',
+				'desc' => 'Lat/Long. Which units?',
+				'id' => $prefix . 'location',
+				'type' => 'text_small'
+			),
+			array(
+				'name' => 'Income',		//Is it a commons variable for all the case studies
+				'desc' => '',
+				'id' => $prefix . 'income',
+				'type' => 'select',
+					'options' => array(
+						array('name' => 'Option One', 'value' => 'standard'), //ToDo fill with real values
+						array('name' => 'Option Two', 'value' => 'custom'),
+						array('name' => 'Option Three', 'value' => 'none')					
+					) 
+			),
+			array(
+				'name' => 'Demographic group',
+				'desc' => 'Select',
+				'id' => $prefix . 'demographic-group',
+				'type' => 'select',
+					'options' => array(
+						array('name' => 'Senior', 'value' => 'senior'), 
+						array('name' => 'Families', 'value' => 'families'),
+						array('name' => 'Single', 'value' => 'single'),
+						array('name' => 'Couples', 'value' => 'couples'),	
+						array('name' => 'Mixes', 'value' => 'mixes')					
+					) 
+			),
+
+
+		),
+	);
+
+	return $meta_boxes;
+}
+add_filter( 'cmb_meta_boxes', 'block_nh_sample_metaboxes' );
+
+
+
+// Initialize the metabox class
+add_action( 'init', 'be_initialize_cmb_meta_boxes', 9999 );
+function be_initialize_cmb_meta_boxes() {
+	if ( !class_exists( 'cmb_Meta_Box' ) ) {
+		require_once( 'lib/metabox/init.php' );
+	}
+}
+
+// Adding featured image to the custom post types
+add_theme_support( 'post-thumbnails', array( 'case') ); 
 ?>
