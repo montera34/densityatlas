@@ -51,18 +51,18 @@ add_action( 'init', 'build_taxonomies', 0 );
 
 function build_taxonomies() {
 register_taxonomy( 'scale', 'case', array( //each type of case study goes in each of the 4 scales: Block, Neigh, District, City
-	'hierarchical' => false,
+	'hierarchical' => true,
 	'label' => 'Scales',
 	'name' => 'Scales',
 	'query_var' => true,
 	'rewrite' => array( 'slug' => 'scale', 'with_front' => false ),) );
-register_taxonomy( 'cities', 'case', array( //City taxonomy
+register_taxonomy( 'city', 'case', array( //City taxonomy
 	'hierarchical' => true,
 	'label' => 'Cities',
 	'name' => 'Cities',
 	'query_var' => true,
 	'rewrite' => array( 'slug' => 'city', 'with_front' => false ),) );
-register_taxonomy( 'districts', 'case', array( //Distric taxonomy
+register_taxonomy( 'district', 'case', array( //Distric taxonomy
 	'hierarchical' => true,
 	'label' => 'Districts',
 	'name' => 'Districts',
