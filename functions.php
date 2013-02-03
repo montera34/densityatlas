@@ -111,6 +111,12 @@ function be_sample_metaboxes( $meta_boxes ) {//metaboxes common variables to all
 						    'tinymce' => true, // load TinyMCE, can be used to pass settings directly to TinyMCE using an array()
 						),
 			),
+			array(
+				'name' => 'Year of case study',
+				'desc' => 'Year when the case study was made',
+				'id' => $prefix . 'year',
+				'type' => 'text_small'
+			),
 		),
 	);
 
