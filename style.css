@@ -112,6 +112,23 @@ Use it to make something cool, have fun, and share what you've learned with othe
 /* content */
 #content {
 }
+/* Case Studies */
+.box-basic {
+	height:200px;
+	background-repeat:no-repeat;
+	text-transform:uppercase;
+	color:#FFF;
+}
+.box-content{
+	padding:15px 0 0 15px;	
+}
+.box-basic a {
+	color:#FFF;
+}
+.box-bottom {
+	background-color:#F44;
+	text-align:center;
+}
 
 /* footer */
 #epi {
