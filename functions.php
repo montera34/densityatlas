@@ -238,4 +238,24 @@ function be_initialize_cmb_meta_boxes() {
 
 // Adding featured image to the custom post types
 add_theme_support( 'post-thumbnails', array( 'case') ); 
+
+
+
+// Adds terms from a custom taxonomy to post_class
+
+add_filter( 'post_class', 'theme_t_wp_taxonomy_post_class', 10, 3 );
+ 
+function theme_t_wp_taxonomy_post_class( $classes, $class, $ID ) {
+    $taxonomy = 'scale';
+    $terms = get_the_terms( (int) $ID, $taxonomy );
+    if( !empty( $terms ) ) {
+        foreach( (array) $terms as $order => $term ) {
+            if( !in_array( $term->slug, $classes ) ) {
+                $classes[] = $term->slug;
+            }
+        }
+    }
+    return $classes;
+} 
+
 ?>
