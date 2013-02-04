@@ -2,7 +2,7 @@
 get_header();
 ?>
 
-<div id="content" class="span9">
+<div id="content" class="span12">
 	<?php 
 	if ( have_posts() ) :
 		while ( have_posts() ) : the_post();
@@ -12,7 +12,7 @@ get_header();
 	endif;
 	rewind_posts(); ?>
 
-	<div class="container-fluid">
+	<div class="container-fluid main-content">
 		<div class="row-fluid">
 			<?php 
 			$args = array(
