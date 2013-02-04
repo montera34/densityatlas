@@ -29,6 +29,6 @@ get_header();
 			endif; ?>
 		</div>
 	</div>
-</div><!-- #content -->
+</div>
 
 <?php get_footer(); ?>

@@ -114,21 +114,45 @@ Use it to make something cool, have fun, and share what you've learned with othe
 }
 /* Case Studies */
 .box-basic {
-	height:200px;
+	height:180px;
 	background-repeat:no-repeat;
 	text-transform:uppercase;
 	color:#FFF;
+	position: relative;
 }
 .box-content{
-	padding:15px 0 0 15px;	
+	padding:15px 15px 0 15px;	
 }
 .box-basic a {
 	color:#FFF;
 }
-.box-bottom {
-	background-color:#F44;
-	text-align:center;
+.box-basic h4 {
+	line-height: 22px;
+
 }
+.box-data {
+	position: absolute;
+	bottom: 20px;
+	width:80%;	
+}
+.box-bottom {
+	position: absolute;
+	bottom: 0px;	
+	text-align:center;
+	height:20px;
+	width: 100%;
+}
+ /*assigning color to the bottom of boxes according to taxonomy scale*/
+.block .box-bottom {
+	background-color:#d9386a;
+}
+.neighborhood .box-bottom {
+	background-color:#f05a28;
+}
+.district .box-bottom {
+	background-color:#fec72f;
+}
+
 
 /* footer */
 #epi {
