@@ -2,7 +2,7 @@
 	
 	<?php if (is_page(array(4,'case-studies'))) { //conditional if is Case Studies page ?>
 	<div class="row">
-		<h2 class="span2"><?php the_title();?><br>of density</h2>
+		<h2 class="span3"><?php the_title();?><br>of density</h2>
 		<h4 class="span2 offset2">Sort by</h4>
 		<h4 class="span4">Filter by Scale</h4>
 		<h4 class="span2 offset2"><a href="" class="btn btn-small">FAR</a> <a href="" class="btn btn-small">People / Ha</a></h4>

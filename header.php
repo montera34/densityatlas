@@ -55,26 +55,29 @@ if ( is_singular() ) wp_enqueue_script( 'comment-reply' );
 	<div id="pre" class="row navbar navbar-inverse navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
-				<div id="logo" class="span4">
-					<h1 class="textfuera"><?php echo $genvars['blogname']; ?></h1>
-					<h2 class="textfuera"><?php echo $genvars['blogdesc']; ?></h2>
-				</div><!-- #logo -->
-				<div class="nav-collapse collapse">
-					<div id="search" class="navbar-form pull-right">
+				<div class="row">
+					<div id="logo" class="span4">
+						<h1 class="textfuera"><?php echo $genvars['blogname']; ?></h1>
+						<h2 class="textfuera"><?php echo $genvars['blogdesc']; ?></h2>
+					</div><!-- #logo -->
+					<div id="search" class="span3 offset5 pull-right">
 						<?php get_search_form(); ?>
 					</div>
-					<div class="navbar-form pull-right">
-						<?php // main navigation menu for home page
-						$menu_slug = "header-menu";
-						$args = array(
-							'theme_location' => $menu_slug,
-							'container' => 'false',
-							'menu_id' => 'pre-menu',
-							'menu_class' => 'nav inline-menu',
-						);
-						wp_nav_menu( $args );
-					?>
-					</div><!-- .span8 -->
+				
+					<div class="row">
+						<div class="navbar-form pull-right">
+							<?php // main navigation menu for home page
+							$menu_slug = "header-menu";
+							$args = array(
+								'theme_location' => $menu_slug,
+								'container' => 'false',
+								'menu_id' => 'pre-menu',
+								'menu_class' => 'nav inline-menu',
+							);
+							wp_nav_menu( $args );
+						?>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

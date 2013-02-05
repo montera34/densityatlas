@@ -44,8 +44,8 @@ body{
 	background-repeat: no-repeat;
 }
 #pre-menu {
-	/*position: absolute;*/
-	bottom: -70px;
+	/*position: relative;
+	bottom: 0px;*/
 }
 #pre-menu li {
 	text-transform: uppercase;
@@ -97,9 +97,9 @@ body{
 
 
 #search {
-	position: absolute;
+	/*position: absolute;
 	right: 25px;
-	top: 25px;
+	top: 25px;*/
 }
 #search label {
 	text-transform: uppercase;
