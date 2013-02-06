@@ -21,9 +21,11 @@
 					);
 					$terms = get_terms( $tax['slug'], $args );
 					$term_list_out = "";
+					$select_count = 1;
 					foreach ( $terms as $term ) {
-						
-						if ( has_term($term->term_id, $tax['slug']) ) {
+						$term_link = get_term_link( $term );
+						if ( has_term($term->term_id, $tax['slug']) && $select_count == 1 ) {
+							$select_count++;
 							$term_select_out = "<a class='btn btn-small dropdown-toggle' data-toggle='dropdown' href='#'>" .$term->name. "</a>";
 						} else {
 							$term_list_out .= "<li><a href='" .$term_link. "'>" .$term->name. "</a></li>";
