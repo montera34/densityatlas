@@ -1,16 +1,33 @@
-<div class="span12">
-	<h2><?php the_title();?></h2> 
+<div id="case-tit" class="row">
+	<div class="container">
+		<div class="row">
+			<div class="span6">
+				<h2><?php the_title();?></h2>
+			</div>
+			<div class="span6">
 	<?php 
  	echo 'Year: ' .get_post_meta( $post->ID, 'year', true );
 	echo get_the_term_list( $post->ID, 'city', 'City: ', ', ', '' );
 	echo get_the_term_list( $post->ID, 'district', 'District: ', ', ', '' );
 	echo get_the_term_list( $post->ID, 'neighborhood', 'NH: ', ', ', '' ); ?>
-</div>
-<div class="span12">
+			</div>
+		</div>
+	</div>
+</div><!-- #case-tit -->
+<div id="case-img" class="row">
+	<div class="container">
+		<div class="row">
+			<div class="span12">
 	<?php the_post_thumbnail('medium'); the_post_thumbnail('medium');?>	
+			</div>
+		</div>
+	</div>
 </div>
-<div class="span12">	
-	<div class="nav-header">Key Density Metrics</div> 
+<div id="case-metrics" class="row">	
+	<div class="container">
+		<div class="row">
+			<div class="span12">
+				<div class="nav-header">Key Density Metrics</div> 
 	<?php 
 	//for Block and Neighborood Scales
 	echo 'FAR ' .get_post_meta( $post->ID, 'far', true ); 
@@ -18,7 +35,10 @@
 	//common to all scales
 	echo 'POP/Ha ' .get_post_meta( $post->ID, 'pop-ha', true );
 	?>
-</div>
+			</div>
+		</div>
+	</div>
+</div><!-- #case-metrics -->
 <div class="container-fluid">
 	<div class="row-fluid">
 		<div class="span3">

@@ -30,7 +30,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 /* header */
 body{
-	background-color:#fcfcfc;
+	background-color:#f2f2f2;
 }
 #pre {
 	background-color: #1a1a1a;
@@ -167,6 +167,23 @@ article.page h2{
 	background-color:#fec72f;
 }
 
+/* single case study */
+#case-tit {
+	background-color: #333;
+	color: white;
+	text-transform: uppercase;
+}
+#case-tit h2 {
+}
+#case-img {
+	padding: 20px 0;
+}
+#case-metrics {
+	padding: 20px 0;
+	background-color: white;
+	border-top: 1px solid #bbb;
+	border-bottom: 1px solid #bbb;
+}
 
 /* footer */
 #epi {
