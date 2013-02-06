@@ -27,6 +27,9 @@ Use it to make something cool, have fun, and share what you've learned with othe
 .muted {
 	display: none;
 }
+.textr {
+	text-align: right !important;
+}
 
 /* header */
 body{
@@ -183,6 +186,12 @@ article.page h2{
 	background-color: white;
 	border-top: 1px solid #bbb;
 	border-bottom: 1px solid #bbb;
+}
+#case-data {
+	padding-top: 30px;
+}
+#case-sidebar th {
+	text-transform: uppercase;
 }
 
 /* footer */

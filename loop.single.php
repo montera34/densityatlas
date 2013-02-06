@@ -5,11 +5,47 @@
 				<h2><?php the_title();?></h2>
 			</div>
 			<div class="span6">
+				<ul class="nav nav-pills">
+				<?php $taxs = array(
+					array('slug' => 'scale','name' => 'Scale'),
+					array('slug' => 'city','name' => 'City'),
+					array('slug' => 'district','name' => 'District'),
+					array('slug' => 'neighborhood','name' => 'Neighborhood'),
+				);
+				foreach ( $taxs as $tax ) {
+					$tax_name = $tax['name'];
+					$args = array(
+						'hide_empty' => false,
+						'orderby' => 'name',
+						'order' => 'ASC'
+					);
+					$terms = get_terms( $tax['slug'], $args );
+					$term_list_out = "";
+					foreach ( $terms as $term ) {
+						
+						if ( has_term($term->term_id, $tax['slug']) ) {
+							$term_select_out = "<a class='btn btn-small dropdown-toggle' data-toggle='dropdown' href='#'>" .$term->name. "</a>";
+						} else {
+							$term_list_out .= "<li><a href='" .$term_link. "'>" .$term->name. "</a></li>";
+						}
+					}
+				?>
+					<li class="dropdown">
+						<?php echo $tax_name; ?><br />
+						<?php echo $term_select_out; ?>
+						<ul class="dropdown-menu">
+							<?php echo $term_list_out; ?>
+						</ul>
+					</li>
+				<?php } // end loop taxonomies
+				?>
+				</ul><!-- .nav-pills -->
+
 	<?php 
- 	echo 'Year: ' .get_post_meta( $post->ID, 'year', true );
-	echo get_the_term_list( $post->ID, 'city', 'City: ', ', ', '' );
-	echo get_the_term_list( $post->ID, 'district', 'District: ', ', ', '' );
-	echo get_the_term_list( $post->ID, 'neighborhood', 'NH: ', ', ', '' ); ?>
+// 	echo 'Year: ' .get_post_meta( $post->ID, 'year', true );
+//	echo get_the_term_list( $post->ID, 'city', 'City: ', ', ', '' );
+//	echo get_the_term_list( $post->ID, 'district', 'District: ', ', ', '' );
+//	echo get_the_term_list( $post->ID, 'neighborhood', 'NH: ', ', ', '' ); ?>
 			</div>
 		</div>
 	</div>
@@ -31,20 +67,25 @@
 		<div class="row">
 			<div class="span12">
 				<div class="nav-header">Key Density Metrics</div> 
+			</div>
+		</div>
+		<div class="row">
+			<div class="span12">
+				<img src="<?php echo $genvars['blogtheme']. "/images/case-study-metrics.jpg"; ?>" alt="Density metrics" />
 	<?php 
 	//for Block and Neighborood Scales
-	echo 'FAR ' .get_post_meta( $post->ID, 'far', true ); 
-	echo '<br>';
+	//echo 'FAR ' .get_post_meta( $post->ID, 'far', true ); 
+	//echo '<br>';
 	//common to all scales
-	echo 'POP/Ha ' .get_post_meta( $post->ID, 'pop-ha', true );
+	//echo 'POP/Ha ' .get_post_meta( $post->ID, 'pop-ha', true );
 	?>
 			</div>
 		</div>
 	</div>
 </div><!-- #case-metrics -->
-<div class="container-fluid">
+<div id="case-data" class="container-fluid">
 	<div class="row-fluid">
-		<div class="span3">
+		<div id="case-sidebar" class="span3">
 			<table class="table table-condensed">
 				<thead>
 					<tr><th>Other Density Measures</th></tr>
@@ -52,11 +93,11 @@
 				<tbody>
 					<tr>
 						<td><?php echo 'DUs/Ha' ?></td>
-						<td><?php echo get_post_meta( $post->ID, 'dus-ha', true ); ?></td>
+						<td class="textr"><?php echo get_post_meta( $post->ID, 'dus-ha', true ); ?></td>
 					</tr>
 					<tr>
 						<td><?php echo 'm2/Ha' ?></td>
-						<td><?php echo get_post_meta( $post->ID, 'm2-ha', true ); ?></td>
+						<td class="textr"><?php echo get_post_meta( $post->ID, 'm2-ha', true ); ?></td>
 					</tr>
 				</tbody>
 			</table>
@@ -67,23 +108,23 @@
 				<tbody>
 					<tr>
 						<td><?php echo 'Gross Building Area' ?></td>
-						<td><?php echo get_post_meta( $post->ID, 'gross-building-area', true ); ?></td>
+						<td class="textr"><?php echo get_post_meta( $post->ID, 'gross-building-area', true ); ?></td>
 					</tr>
 					<tr>
 						<td><?php echo 'Site Area' ?></td>
-						<td><?php echo get_post_meta( $post->ID, 'site-area', true ); ?></td>
+						<td class="textr"><?php echo get_post_meta( $post->ID, 'site-area', true ); ?></td>
 					</tr>
 					<tr>
 						<td><?php echo 'Range of Heights' ?></td>
-						<td><?php echo get_post_meta( $post->ID, 'range-of-heights', true ); ?></td>
+						<td class="textr"><?php echo get_post_meta( $post->ID, 'range-of-heights', true ); ?></td>
 					</tr>
 					<tr>
 						<td><?php echo 'Dwelling Units' ?></td>
-						<td><?php echo get_post_meta( $post->ID, 'dwelling-units', true ); ?></td>
+						<td class="textr"><?php echo get_post_meta( $post->ID, 'dwelling-units', true ); ?></td>
 					</tr>
 					<tr>
 						<td><?php echo 'Parking Spaces' ?></td>
-						<td><?php echo get_post_meta( $post->ID, 'parking-spaces', true ); ?></td>
+						<td class="textr"><?php echo get_post_meta( $post->ID, 'parking-spaces', true ); ?></td>
 					</tr>
 				</tbody>
 			</table>
@@ -94,15 +135,15 @@
 				<tbody>
 					<tr>
 						<td><?php echo 'Population' ?></td>
-						<td><?php echo get_post_meta( $post->ID, 'population', true ); ?></td>
+						<td class="textr"><?php echo get_post_meta( $post->ID, 'population', true ); ?></td>
 					</tr>
 					<tr>
 						<td><?php echo 'Income' ?></td>
-						<td><?php echo get_post_meta( $post->ID, 'income', true ); ?></td>
+						<td class="textr"><?php echo get_post_meta( $post->ID, 'income', true ); ?></td>
 					</tr>
 					<tr>
 						<td><?php echo 'Demographic group' ?></td>
-						<td><?php echo get_post_meta( $post->ID, 'demographic-group', true ); ?></td>
+						<td class="textr"><?php echo get_post_meta( $post->ID, 'demographic-group', true ); ?></td>
 					</tr>
 				</tbody>
 			</table>
@@ -118,7 +159,7 @@
 			</table>
 		<?php //echo 'Location ' .get_post_meta( $post->ID, 'location', true ); ?>
 		</div>
-		<div class="span9">
+		<div class="span8 offset1">
 			<h2><?php the_title();?></h2>
 			<h3><?php echo get_the_term_list( $post->ID, 'scale', '<br>Scale: ', ', ', '' );?></h3>
 			<?php echo '<br>Content<br>';?>
