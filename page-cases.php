@@ -13,7 +13,6 @@ get_header();
 	rewind_posts(); ?>
 
 	<div class="container-fluid main-content">
-		<div class="row-fluid">
 			<?php 
 			$args = array(
 			    'posts_per_page' => -1,
@@ -21,14 +20,18 @@ get_header();
 
 			$related_query = new WP_Query( $args );
 			if ( $related_query->have_posts() ) :
+				$count = 0;
 				while ( $related_query->have_posts() ) : $related_query->the_post();
+					$count++;
+					if ( $count == 1 ) { echo "<div class='row-fluid'>"; }
 					include("loop.boxes.php");
+					if ( $count == 4 ) { echo "</div><!-- .row-fluid -->"; $count = 0; }
 				endwhile;
 			else :
 			// if no related posts, code in here
-			endif; ?>
-		</div>
-	</div>
-</div>
+			endif;
+			if ( $count != 0 ) { echo "</div><!-- .row-fluid -->"; } ?>
+	</div><!-- .main-content -->
+</div><!-- #content -->
 
 <?php get_footer(); ?>
