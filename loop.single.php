@@ -91,8 +91,9 @@
 		</div>
 	</div>
 </div><!-- #case-metrics -->
-<div id="case-data" class="container-fluid">
-	<div class="row-fluid">
+<div id="case-data" class="row">
+	<div class="container">
+	<div class="row">
 		<div id="case-sidebar" class="span3">
 			<table class="table table-condensed">
 				<thead>
@@ -157,6 +158,16 @@
 			</table>
 			<table class="table table-condensed">
 				<thead>
+					<tr><th>Author</th></tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><?php the_author(); ?></td>
+					</tr>
+				</tbody>
+			</table>
+			<table class="table table-condensed">
+				<thead>
 					<tr><th>References</th></tr>
 				</thead>
 				<tbody>
@@ -174,7 +185,8 @@
 			<?php the_content(); ?>
 		</div>
 	</div>
-</div>
+	</div>
+</div><!-- #case-data -->
 
 
 

@@ -60,11 +60,11 @@ if ( is_singular() ) wp_enqueue_script( 'comment-reply' );
 						<h1 class="textfuera"><?php echo $genvars['blogname']; ?></h1>
 						<h2 class="textfuera"><?php echo $genvars['blogdesc']; ?></h2>
 					</div><!-- #logo -->
-					<div id="search" class="span3 offset5 pull-right">
+					<div id="search" class="span8">
 						<?php get_search_form(); ?>
 					</div>
 				
-					<div class="row">
+					<div class="span8">
 						<div class="navbar-form pull-right">
 							<?php // main navigation menu for home page
 							$menu_slug = "header-menu";
@@ -72,7 +72,7 @@ if ( is_singular() ) wp_enqueue_script( 'comment-reply' );
 								'theme_location' => $menu_slug,
 								'container' => 'false',
 								'menu_id' => 'pre-menu',
-								'menu_class' => 'nav inline-menu',
+								'menu_class' => 'navbar inline-menu',
 							);
 							wp_nav_menu( $args );
 						?>
