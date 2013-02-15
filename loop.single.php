@@ -8,6 +8,7 @@
 				<ul class="nav nav-pills">
 				<?php $taxs = array(
 					array('slug' => 'scale','name' => 'Scale'),
+					array('slug' => 'country','name' => 'Country'),
 					array('slug' => 'city','name' => 'City'),
 					array('slug' => 'district','name' => 'District'),
 					array('slug' => 'neighborhood','name' => 'Neighborhood'),
@@ -34,7 +35,12 @@
 				?>
 					<li class="dropdown">
 						<?php echo $tax_name; ?><br />
-						<?php echo $term_select_out; ?>
+						<?php if ( $term_select_out != '' ) {
+							echo $term_select_out;
+							unset($term_select_out);
+						} else {
+							echo "<a class='btn btn-small dropdown-toggle' data-toggle='dropdown' href='#'>Not aplicable</a>";
+						} ?>
 						<ul class="dropdown-menu">
 							<?php echo $term_list_out; ?>
 						</ul>

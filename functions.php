@@ -56,6 +56,12 @@ register_taxonomy( 'scale', 'case', array( //each type of case study goes in eac
 	'name' => 'Scales',
 	'query_var' => true,
 	'rewrite' => array( 'slug' => 'scale', 'with_front' => false ),) );
+register_taxonomy( 'country', 'case', array( //Country taxonomy
+	'hierarchical' => true,
+	'label' => 'Countries',
+	'name' => 'Countries',
+	'query_var' => true,
+	'rewrite' => array( 'slug' => 'country', 'with_front' => false ),) );
 register_taxonomy( 'city', 'case', array( //City taxonomy
 	'hierarchical' => true,
 	'label' => 'Cities',
