@@ -83,9 +83,9 @@ if ( is_singular() ) wp_enqueue_script( 'comment-reply' );
 		</div>
 	</div><!-- #pre -->
 
-	<?php if ( is_single() ) { ?>
+	<?php //if ( is_single() ) { ?>
 	<div id="hoja">
-	<?php } else { ?>
-	<div id="hoja" class="container">
-	<?php } ?>
+	<?php //} else { ?>
+	<!--<div id="hoja" class="container">-->
+	<?php //} ?>
 	<?php //get_sidebar(); ?>

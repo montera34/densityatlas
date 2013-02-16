@@ -10,5 +10,6 @@ get_header();
 		endwhile;
 	else :
 	endif;?>
+</div><!-- #content -->
 
 <?php get_footer(); ?>

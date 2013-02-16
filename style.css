@@ -110,7 +110,7 @@ body{
 	margin-right: 10px;
 }
 
-article.page h2{
+article.page h2 {
 	color:#D9386A;
 	text-transform: uppercase;
 }
@@ -129,6 +129,19 @@ article.page h2{
 	padding: 25px 0;
 }
 /* Case Studies */
+#gallery-tit {
+	padding: 20px 0;
+	border-bottom: 1px solid #ccc;
+	background-color: white;
+}
+#gallery-tit h2 {
+	color:#D9386A;
+	text-transform: uppercase;
+}
+#gallery-items {
+	margin-top: 40px;
+}
+
 .box-basic {
 	height:180px;
 	background-repeat:no-repeat;
