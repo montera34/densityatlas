@@ -14,8 +14,8 @@ foreach ( $post_classes as $class  ) {
 $classes_out .= "'";
 $post_cities = get_the_term_list( $post->ID, 'city', '', ', ', '' );
 $post_scales = get_the_term_list( $post->ID, 'scale', '', ', ', '' );
-$post_far = get_post_meta( $post->ID, 'far', true );
-$post_pop = get_post_meta( $post->ID, 'pop-ha', true );
+$post_far = get_post_meta( $post->ID, '_da_far', true );
+$post_pop = get_post_meta( $post->ID, '_da_pop-ha', true );
 
 $tab_tmp .= "
 	<div " .$classes_out. " style='background-image:url(\"" .$src[0]. "\")'>
