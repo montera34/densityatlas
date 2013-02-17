@@ -28,6 +28,9 @@ foreach ( $scale_slugs as $scale_slug ) {
 		$args = array(
 			'posts_per_page' => -1,
 			'post_type' => 'case',
+			'meta_key' => '_da_far',
+			'orderby' => 'meta_value_num',
+			'order' => 'DESC',
 		);
 	} else {
 		$args = array(
@@ -42,6 +45,7 @@ foreach ( $scale_slugs as $scale_slug ) {
 			)
 		);
 	}
+	
 	$related_query = new WP_Query( $args );
 	if ( $related_query->have_posts() ) :
 		$count = 0;
