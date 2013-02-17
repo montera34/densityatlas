@@ -42,7 +42,10 @@ foreach ( $scale_slugs as $scale_slug ) {
 				'field' => 'slug',
 				'terms' => $scale_slug
 				)
-			)
+			),
+			'meta_key' => '_da_far',
+			'orderby' => 'meta_value_num',
+			'order' => 'DESC',
 		);
 	}
 	
