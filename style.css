@@ -213,6 +213,36 @@ article.page h2 {
 #case-sidebar th {
 	text-transform: uppercase;
 }
+/* case metrics */
+#case-far {
+	margin-bottom: 20px;
+
+}
+.case-metric-line {
+	float: left;
+	width: 700px;
+}
+.case-metric-segment {
+	float: left;
+	width: 76px;
+	height: 10px;
+	border-left: 1px solid #ddd;
+}
+.case-metric-unit {
+	float: left;
+	width: 76px;
+	border-left: 1px solid transparent;
+}
+.case-metric-bg {
+	background-color: #ddd;
+	height: 10px;
+	width: 700px;
+}
+.case-metric-far,
+.case-metric-pop {
+	height: 10px;
+	background-color: #D9386A;
+}
 
 /* footer */
 #epi {

@@ -7,6 +7,12 @@ if ( $countries != '' ) {
 	}
 }
 $case_year = get_post_meta( $post->ID, '_da_year', true );
+$case_far = get_post_meta( $post->ID, '_da_far', true );
+$far_max = 8;
+$far_per = $case_far * 700 / $far_max;
+$case_pop = get_post_meta( $post->ID, '_da_pop-ha', true );
+$pop_max = 4000;
+$pop_per = $case_pop * 700 / $pop_max;
 ?>
 <div id="case-tit" class="row">
 	<div class="container">
@@ -85,9 +91,67 @@ $case_year = get_post_meta( $post->ID, '_da_year', true );
 				<div class="nav-header">Key Density Metrics</div> 
 			</div>
 		</div>
-		<div class="row">
-			<div class="span12">
-				<img src="<?php echo $genvars['blogtheme']. "/images/case-study-metrics.jpg"; ?>" alt="Density metrics" />
+		<div id="case-far" class="row">
+			<div class="span2">FAR</div>
+			<div class="span1"><?php echo $case_far; ?></div>
+			<div class="span9">
+				<div class="case-metric-line">
+					<div class="case-metric-unit">0</div>
+					<div class="case-metric-unit">South End Boston</div>
+					<div class="case-metric-unit">2</div>
+					<div class="case-metric-unit">South End Boston</div>
+					<div class="case-metric-unit">4</div>
+					<div class="case-metric-unit">South End Boston</div>
+					<div class="case-metric-unit">6</div>
+					<div class="case-metric-unit">South End Boston</div>
+					<div class="case-metric-unit">8</div>
+				</div><!-- .case-metric-line -->
+				<div class="case-metric-line">
+					<div class="case-metric-segment"></div>
+					<div class="case-metric-segment"></div>
+					<div class="case-metric-segment"></div>
+					<div class="case-metric-segment"></div>
+					<div class="case-metric-segment"></div>
+					<div class="case-metric-segment"></div>
+					<div class="case-metric-segment"></div>
+					<div class="case-metric-segment" style="border-right: 1px solid #ddd;"></div>
+				</div><!-- .case-metric-line -->
+				<div class="case-metric-line case-metric-bg">
+					<div class="case-metric-far" style="width: <?php echo $far_per ?>px;"></div>
+				</div><!-- .case-metric-line -->
+			</div>
+		</div><!-- #case-far -->
+		<div id="case-pop" class="row">
+			<div class="span2">POP/Ha</div>
+			<div class="span1"><?php echo $case_pop; ?></div>
+			<div class="span9">
+				<div class="case-metric-line">
+					<div class="case-metric-unit">0</div>
+					<div class="case-metric-unit">South End Boston</div>
+					<div class="case-metric-unit">1,000</div>
+					<div class="case-metric-unit">South End Boston</div>
+					<div class="case-metric-unit">2,000</div>
+					<div class="case-metric-unit">South End Boston</div>
+					<div class="case-metric-unit">3,000</div>
+					<div class="case-metric-unit">South End Boston</div>
+					<div class="case-metric-unit">4,000</div>
+				</div><!-- .case-metric-line -->
+				<div class="case-metric-line">
+					<div class="case-metric-segment"></div>
+					<div class="case-metric-segment"></div>
+					<div class="case-metric-segment"></div>
+					<div class="case-metric-segment"></div>
+					<div class="case-metric-segment"></div>
+					<div class="case-metric-segment"></div>
+					<div class="case-metric-segment"></div>
+					<div class="case-metric-segment" style="border-right: 1px solid #ddd;"></div>
+				</div><!-- .case-metric-line -->
+				<div class="case-metric-line case-metric-bg">
+					<div class="case-metric-far" style="width: <?php echo $pop_per ?>px;"></div>
+				</div><!-- .case-metric-line -->
+			</div>
+		</div><!-- #case-far -->
+	
 	<?php 
 	//for Block and Neighborood Scales
 	//echo 'FAR ' .get_post_meta( $post->ID, 'far', true ); 
@@ -95,9 +159,7 @@ $case_year = get_post_meta( $post->ID, '_da_year', true );
 	//common to all scales
 	//echo 'POP/Ha ' .get_post_meta( $post->ID, 'pop-ha', true );
 	?>
-			</div>
-		</div>
-	</div>
+	</div><!-- .container -->
 </div><!-- #case-metrics -->
 <div id="case-data" class="row">
 	<div class="container">
