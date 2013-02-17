@@ -7,48 +7,55 @@ get_header();
 // one loop per scale to make live filters
 $scale_buttons = array(); // filter buttons container
 $scale_tabs = array(); // tabs content container
-$scale_slugs = array("block","neighborhood","district","city");
-$scale_names = array("Block","Neighborhood","District","City");
+$scale_slugs = array("all","block","neighborhood","district","city");
+$scale_names = array("Reset","Block","Neighborhood","District","City");
 $scale_count = 0;
 
 foreach ( $scale_slugs as $scale_slug ) {
 
-$tab_tmp = ""; // temporal container for tab content before add to array
-// scale tab button
-if ( $scale_count == 0 ) {
-// this is the active button
-	array_push( $scale_buttons,"<li class='active'><a href='#" .$scale_slug. "' class='btn btn-small btn-blockk' data-toggle='tab'>" .$scale_names[$scale_count]. "</a></li>" ); // adding this scale button to the buttons container
-} else {
-	array_push( $scale_buttons,"<li><a href='#" .$scale_slug. "' class='btn btn-small btn-blockk' data-toggle='tab'>" .$scale_names[$scale_count]. "</a></li>" ); // adding this scale button to the buttons container
-}
-// scale tab contents
-$args = array(
-	'posts_per_page' => -1,
-	'post_type' => 'case',
-	'tax_query' => array(
-		array(
-			'taxonomy' => 'scale',
-			'field' => 'slug',
-			'terms' => $scale_slug
-		)
-	)
-);
-$related_query = new WP_Query( $args );
-if ( $related_query->have_posts() ) :
-$count = 0;
-	while ( $related_query->have_posts() ) : $related_query->the_post();
-		$count++;
-		if ( $count == 1 ) { $tab_tmp .= "<div class='row'>"; }
-		include("loop.boxes.php");
-		if ( $count == 4 ) { $tab_tmp .= "</div><!-- .row -->"; $count = 0; }
-	endwhile;
-else :
-// if no related posts, code in here
-endif;
-if ( $count != 0 ) { $tab_tmp .= "</div><!-- .row -->"; }
-array_push( $scale_tabs, $tab_tmp ); // adding this scale button to the buttons container
-wp_reset_query();
-$scale_count++;
+	$tab_tmp = ""; // temporal cointainer for tab content before add to array
+	// scale tab button
+	if ( $scale_count == 0 ) {
+	// this is the active button
+		array_push( $scale_buttons,"<li class='active'><a href='#" .$scale_slug. "' class='btn btn-small btn-blockk' data-toggle='tab'>" .$scale_names[$scale_count]. "</a></li>" ); // adding this scale button to the buttons container
+	} else {
+		array_push( $scale_buttons,"<li><a href='#" .$scale_slug. "' class='btn btn-small btn-blockk' data-toggle='tab'>" .$scale_names[$scale_count]. "</a></li>" ); // adding this scale button to the buttons container
+	}
+	// scale tab contents
+	if ( $scale_slug == 'all' ) {
+		$args = array(
+			'posts_per_page' => -1,
+			'post_type' => 'case',
+		);
+	} else {
+		$args = array(
+			'posts_per_page' => -1,
+			'post_type' => 'case',
+			'tax_query' => array(
+				array(
+				'taxonomy' => 'scale',
+				'field' => 'slug',
+				'terms' => $scale_slug
+				)
+			)
+		);
+	}
+	$related_query = new WP_Query( $args );
+	if ( $related_query->have_posts() ) :
+		$count = 0;
+		while ( $related_query->have_posts() ) : $related_query->the_post();
+			$count++;
+			if ( $count == 1 ) { $tab_tmp .= "<div class='row'>"; }
+			include("loop.boxes.php");
+			if ( $count == 4 ) { $tab_tmp .= "</div><!-- .row -->"; $count = 0; }
+		endwhile;
+	else :
+	// if no related posts, code in here
+	endif;
+	if ( $count != 0 ) { $tab_tmp .= "</div><!-- .row -->"; }
+	array_push( $scale_tabs, $tab_tmp ); // adding this scale button to the buttons container
+	wp_reset_query();
+	$scale_count++;
 
 } // end scales loop?>
 
