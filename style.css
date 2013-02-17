@@ -153,12 +153,15 @@ article.page h2 {
 .box-content{
 	padding:15px 15px 0 15px;	
 }
+.box-content a h4{
+	position: absolute;
+	top: 20px;
+}
 .box-basic a {
 	color:#FFF;
 }
 .box-basic h4 {
 	line-height: 22px;
-
 }
 .box-data {
 	position: absolute;
@@ -173,13 +176,17 @@ article.page h2 {
 	width: 100%;
 }
  /*assigning color to the bottom of boxes according to taxonomy scale*/
-.block, .block .box-bottom {
+.block, .neighborhood, .district {
+	background-color:#000000;
+}
+
+.block .box-bottom {
 	background-color:#f05a28;
 }
-.neighborhood, .neighborhood .box-bottom {
+.neighborhood .box-bottom {
 	background-color:#D9386A;
 }
-.district, .district .box-bottom {
+.district .box-bottom {
 	background-color:#fec72f;
 }
 
