@@ -102,11 +102,11 @@
 				<tbody>
 					<tr>
 						<td><?php echo 'DUs/Ha' ?></td>
-						<td class="textr"><?php echo get_post_meta( $post->ID, 'dus-ha', true ); ?></td>
+						<td class="textr"><?php echo get_post_meta( $post->ID, '_da_dus-ha', true ); ?></td>
 					</tr>
 					<tr>
 						<td><?php echo 'm2/Ha' ?></td>
-						<td class="textr"><?php echo get_post_meta( $post->ID, 'm2-ha', true ); ?></td>
+						<td class="textr"><?php echo get_post_meta( $post->ID, '_da_m2-ha', true ); ?></td>
 					</tr>
 				</tbody>
 			</table>
@@ -117,23 +117,23 @@
 				<tbody>
 					<tr>
 						<td><?php echo 'Gross Building Area' ?></td>
-						<td class="textr"><?php echo get_post_meta( $post->ID, 'gross-building-area', true ); ?></td>
+						<td class="textr"><?php echo get_post_meta( $post->ID, '_da_gross-building-area', true ); ?></td>
 					</tr>
 					<tr>
 						<td><?php echo 'Site Area' ?></td>
-						<td class="textr"><?php echo get_post_meta( $post->ID, 'site-area', true ); ?></td>
+						<td class="textr"><?php echo get_post_meta( $post->ID, '_da_site-area', true ); ?></td>
 					</tr>
 					<tr>
 						<td><?php echo 'Range of Heights' ?></td>
-						<td class="textr"><?php echo get_post_meta( $post->ID, 'range-of-heights', true ); ?></td>
+						<td class="textr"><?php echo get_post_meta( $post->ID, '_da_range-of-heights', true ); ?></td>
 					</tr>
 					<tr>
 						<td><?php echo 'Dwelling Units' ?></td>
-						<td class="textr"><?php echo get_post_meta( $post->ID, 'dwelling-units', true ); ?></td>
+						<td class="textr"><?php echo get_post_meta( $post->ID, '_da_dwelling-units', true ); ?></td>
 					</tr>
 					<tr>
 						<td><?php echo 'Parking Spaces' ?></td>
-						<td class="textr"><?php echo get_post_meta( $post->ID, 'parking-spaces', true ); ?></td>
+						<td class="textr"><?php echo get_post_meta( $post->ID, '_da_parking-spaces', true ); ?></td>
 					</tr>
 				</tbody>
 			</table>
@@ -144,15 +144,15 @@
 				<tbody>
 					<tr>
 						<td><?php echo 'Population' ?></td>
-						<td class="textr"><?php echo get_post_meta( $post->ID, 'population', true ); ?></td>
+						<td class="textr"><?php echo get_post_meta( $post->ID, '_da_population', true ); ?></td>
 					</tr>
 					<tr>
 						<td><?php echo 'Income' ?></td>
-						<td class="textr"><?php echo get_post_meta( $post->ID, 'income', true ); ?></td>
+						<td class="textr"><?php echo get_post_meta( $post->ID, '_da_income', true ); ?></td>
 					</tr>
 					<tr>
 						<td><?php echo 'Demographic group' ?></td>
-						<td class="textr"><?php echo get_post_meta( $post->ID, 'demographic-group', true ); ?></td>
+						<td class="textr"><?php echo get_post_meta( $post->ID, '_da_demographic-group', true ); ?></td>
 					</tr>
 				</tbody>
 			</table>
@@ -172,7 +172,7 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td><?php echo get_post_meta( $post->ID, 'references', true ); ?></td>
+						<td><?php echo get_post_meta( $post->ID, '_da_references', true ); ?></td>
 					</tr>
 				</tbody>
 			</table>

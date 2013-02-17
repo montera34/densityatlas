@@ -84,7 +84,7 @@ register_taxonomy( 'neighborhood', 'case', array( //Neighborhood taxonomy
 
 //Add metaboxes to Case Study Custom post type
 function be_sample_metaboxes( $meta_boxes ) {//metaboxes common variables to all scales
-	$prefix = ''; // Prefix for all fields
+	$prefix = '_da_'; // Prefix for all fields
 	$meta_boxes[] = array(
 		'id' => 'common',
 		'title' => 'Common variables to all the scales',
@@ -125,13 +125,6 @@ function be_sample_metaboxes( $meta_boxes ) {//metaboxes common variables to all
 			),
 		),
 	);
-
-	return $meta_boxes;
-}
-add_filter( 'cmb_meta_boxes', 'be_sample_metaboxes' );
-
-function block_nh_sample_metaboxes( $meta_boxes ) { //metaboxes for Block and Neighborood Scales
-	$prefix = ''; // Prefix for all fields
 	$meta_boxes[] = array(
 		'id' => 'block-nh',
 		'title' => 'Block and Neighborood Scales',
@@ -227,13 +220,9 @@ function block_nh_sample_metaboxes( $meta_boxes ) { //metaboxes for Block and Ne
 
 		),
 	);
-
 	return $meta_boxes;
 }
-add_filter( 'cmb_meta_boxes', 'block_nh_sample_metaboxes' );
-
-
-
+add_filter( 'cmb_meta_boxes', 'be_sample_metaboxes' );
 // Initialize the metabox class
 add_action( 'init', 'be_initialize_cmb_meta_boxes', 9999 );
 function be_initialize_cmb_meta_boxes() {
