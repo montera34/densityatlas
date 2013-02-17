@@ -62,10 +62,10 @@
 	<div class="container">
 		<div class="row">
 			<div class="span6">
-	<?php the_post_thumbnail('medium'); ?>	
+	<iframe class="span5" height="300" scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?viz=MAP&amp;q=select+col4+from+1uJv8cueGs0ibGwGmCcUjDha6-hRuFgDLu00PhNo&amp;h=false&amp;lat=35.70219412474616&amp;lng=139.70619167330935&amp;z=16&amp;t=3&amp;l=col4"></iframe>
 			</div>
 			<div class="span6">
-	<?php the_post_thumbnail('medium'); ?>	
+	<?php the_post_thumbnail(array(450,400)); ?>	
 			</div>
 		</div>
 	</div>
