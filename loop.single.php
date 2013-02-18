@@ -21,6 +21,8 @@ else { $pop_per = $case_pop * $max_width / $pop_max; }
 <div id="case-tit" class="row">
 	<div class="container">
 		<div class="row">
+			<?php if ( get_post_type( $post->ID ) == 'case' ) {
+			// if case study post type ?>
 			<div class="span6">
 				<h2><?php echo $case_tit. ", " .$case_country. "&nbsp;&nbsp;" .$case_year; ?></h2>
 			</div>
@@ -68,23 +70,60 @@ else { $pop_per = $case_pop * $max_width / $pop_max; }
 				<?php } // end loop taxonomies
 				?>
 				</ul><!-- .nav-pills -->
-
-	<?php 
-// 	echo 'Year: ' .get_post_meta( $post->ID, 'year', true );
-//	echo get_the_term_list( $post->ID, 'city', 'City: ', ', ', '' );
-//	echo get_the_term_list( $post->ID, 'district', 'District: ', ', ', '' );
-//	echo get_the_term_list( $post->ID, 'neighborhood', 'NH: ', ', ', '' ); ?>
 			</div>
+			<?php } // if case study post type
+			else { ?>
+			<div class="span6">
+				<h2><?php echo $case_tit; ?></h2>
+			</div>
+			<?php } ?>
 		</div>
 	</div>
 </div><!-- #case-tit -->
 <div id="case-img" class="row">
 	<div class="container">
 		<div class="row">
+			<?php if ( get_post_type( $post->ID ) == 'case' ) {
+			// if case study post type ?>
 			<iframe class="span6" height="300" scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?viz=MAP&amp;q=select+col4+from+1uJv8cueGs0ibGwGmCcUjDha6-hRuFgDLu00PhNo&amp;h=false&amp;lat=35.70219412474616&amp;lng=139.70619167330935&amp;z=16&amp;t=3&amp;l=col4"></iframe>
 			<div class="span6">
 				<?php the_post_thumbnail(array(450,400)); ?>	
 			</div>
+			<?php } // end if case study post type
+			else {
+			// carousel
+			$img_amount = -1;
+			$img_post_parent = get_the_ID();
+//			$mini_size = array(100,100);
+			$medium_size = "medium";
+//			$large_size = "large";
+			include "loop.attachment.php";
+			if ( isset($img_medium) ) {		
+			?>
+			<div id="case-carousel" class="carousel slide">
+				<div class="carousel-inner">
+				<?php $count = 0;
+				foreach ( $img_medium as $img ) {
+					$count++;
+					if ( $count == 1 ) {
+				?>
+						<div class="active item">
+					<?php } else { ?>
+						<div class="item">
+					<?php } ?>
+							<?php echo $img ?>
+						</div><!-- end .item -->
+				<?php } ?>
+				</div><!-- .carousel-inner -->
+		<?php }
+		if ( count($img_medium) > 1 ) {
+		?>
+				<a class="carousel-control left" href="#case-carousel" data-slide="prev">&lsaquo;</a>
+				<a class="carousel-control right" href="#case-carousel" data-slide="next">&rsaquo;</a>
+		</div><!-- end #myCarousel -->
+		<?php } ?>
+			</div><!-- #case-carousel -->
+			<?php } ?>
 		</div>
 	</div>
 </div>
