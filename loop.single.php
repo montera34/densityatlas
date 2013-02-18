@@ -8,11 +8,14 @@ if ( $countries != '' ) {
 }
 $case_year = get_post_meta( $post->ID, '_da_year', true );
 $case_far = get_post_meta( $post->ID, '_da_far', true );
-$far_max = 8;
-$far_per = $case_far * 700 / $far_max;
+$far_max = 9;
+$case_segment = (700 / $far_max) -1;
+if ( $case_far > 8 ) { $far_per == 700; }
+else { $far_per = $case_far * 700 / $far_max; }
 $case_pop = get_post_meta( $post->ID, '_da_pop-ha', true );
-$pop_max = 4000;
-$pop_per = $case_pop * 700 / $pop_max;
+$pop_max = 4500;
+if ( $case_pop > 4000 ) { $pop_per == 700; }
+else { $pop_per = $case_pop * 700 / $pop_max; }
 ?>
 <div id="case-tit" class="row">
 	<div class="container">
@@ -96,6 +99,7 @@ $pop_per = $case_pop * 700 / $pop_max;
 			<div class="span1"><?php echo $case_far; ?></div>
 			<div class="span9">
 				<div class="case-metric-line">
+					<style>.case-metric-unit, .case-metric-segment { width: <?php echo $case_segment ?>px;}</style>
 					<div class="case-metric-unit">0</div>
 					<div class="case-metric-unit">South End Boston</div>
 					<div class="case-metric-unit">2</div>
@@ -114,7 +118,10 @@ $pop_per = $case_pop * 700 / $pop_max;
 					<div class="case-metric-segment"></div>
 					<div class="case-metric-segment"></div>
 					<div class="case-metric-segment"></div>
-					<div class="case-metric-segment" style="border-right: 1px solid #ddd;"></div>
+					<div class="case-metric-segment"></div>
+					<div class="case-metric-segment">
+						<?php if ( $case_far > 8 ) { echo "<i style='position: absolute; right: 0; bottom: 1px;' class='icon-plus'></i>"; }?>
+					</div>
 				</div><!-- .case-metric-line -->
 				<div class="case-metric-line case-metric-bg">
 					<div class="case-metric-far" style="width: <?php echo $far_per ?>px;"></div>
@@ -144,7 +151,10 @@ $pop_per = $case_pop * 700 / $pop_max;
 					<div class="case-metric-segment"></div>
 					<div class="case-metric-segment"></div>
 					<div class="case-metric-segment"></div>
-					<div class="case-metric-segment" style="border-right: 1px solid #ddd;"></div>
+					<div class="case-metric-segment"></div>
+					<div class="case-metric-segment">
+						<?php if ( $case_pop > 4000 ) { echo "<i style='position: absolute; right: 0; bottom: 1px;' class='icon-plus'></i>"; }?>
+					</div>
 				</div><!-- .case-metric-line -->
 				<div class="case-metric-line case-metric-bg">
 					<div class="case-metric-far" style="width: <?php echo $pop_per ?>px;"></div>

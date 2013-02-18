@@ -224,13 +224,12 @@ article.page h2 {
 }
 .case-metric-segment {
 	float: left;
-	width: 76px;
 	height: 10px;
 	border-left: 1px solid #ddd;
+	position: relative;
 }
 .case-metric-unit {
 	float: left;
-	width: 76px;
 	border-left: 1px solid transparent;
 }
 .case-metric-bg {
