@@ -129,6 +129,8 @@ else { $pop_per = $case_pop * $max_width / $pop_max; }
 </div>
 <div id="case-metrics" class="row">	
 	<div class="container">
+		<?php if ( get_post_type( $post->ID ) == 'case' ) {
+		// if case study post type ?>
 		<div class="row">
 			<div class="span12">
 				<div class="nav-header">Key Density Metrics</div> 
@@ -204,20 +206,27 @@ else { $pop_per = $case_pop * $max_width / $pop_max; }
 				</div><!-- .case-metric-line -->
 			</div>
 		</div><!-- #case-far -->
-	
-	<?php 
-	//for Block and Neighborood Scales
-	//echo 'FAR ' .get_post_meta( $post->ID, 'far', true ); 
-	//echo '<br>';
-	//common to all scales
-	//echo 'POP/Ha ' .get_post_meta( $post->ID, 'pop-ha', true );
-	?>
+	<?php } // end if case study post type
+	else { ?>
+		<div class="row">
+			<div class="span12">
+				<div class="nav-header">Sentence title</div> 
+			</div>
+		</div>
+		<div class="row">
+			<div class="span12">
+				<div>Featured sentence...</div>
+			</div>
+		</div>
+	<?php } ?>
 	</div><!-- .container -->
 </div><!-- #case-metrics -->
 <div id="case-data" class="row">
 	<div class="container">
 	<div class="row">
 		<div id="case-sidebar" class="span3">
+		<?php if ( get_post_type( $post->ID ) == 'case' ) {
+		// if case study post type ?>
 			<table class="table table-condensed">
 				<thead>
 					<tr><th>Other Density Measures</th></tr>
@@ -319,12 +328,16 @@ else { $pop_per = $case_pop * $max_width / $pop_max; }
 					</tr>
 				</tbody>
 			</table>
-		<?php //echo 'Location ' .get_post_meta( $post->ID, 'location', true ); ?>
-		</div>
+		<?php //echo 'Location ' .get_post_meta( $post->ID, 'location', true );
+		} // end if case study post type
+		else { ?>
+			Relevant case studies
+		<?php } ?>
+		</div><!-- #case-sidebar -->
 		<div class="span8 offset1">
 			<h2><?php the_title();?></h2>
-			<h3><?php echo get_the_term_list( $post->ID, 'scale', '<br>Scale: ', ', ', '' );?></h3>
-			<?php echo '<br>Content<br>';?>
+			<h3><?php echo get_the_term_list( $post->ID, 'scale', '<br />Scale: ', ', ', '' );?></h3>
+			<?php echo '<br />Content<br />';?>
 			<?php the_content(); ?>
 		</div>
 	</div>
