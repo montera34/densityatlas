@@ -8,14 +8,15 @@ if ( $countries != '' ) {
 }
 $case_year = get_post_meta( $post->ID, '_da_year', true );
 $case_far = get_post_meta( $post->ID, '_da_far', true );
-$far_max = 9;
-$case_segment = (700 / $far_max) -1;
-if ( $case_far > 8 ) { $far_per == 700; }
-else { $far_per = $case_far * 700 / $far_max; }
 $case_pop = get_post_meta( $post->ID, '_da_pop-ha', true );
+$max_width = 700;
+$far_max = 9;
+$case_segment = ($max_width / $far_max) -1;
+if ( $case_far > 8 ) { $far_per == $max_width; }
+else { $far_per = $case_far * $max_width / $far_max; }
 $pop_max = 4500;
-if ( $case_pop > 4000 ) { $pop_per == 700; }
-else { $pop_per = $case_pop * 700 / $pop_max; }
+if ( $case_pop > 4000 ) { $pop_per == $max_width; }
+else { $pop_per = $case_pop * $max_width / $pop_max; }
 ?>
 <div id="case-tit" class="row">
 	<div class="container">
@@ -94,12 +95,14 @@ else { $pop_per = $case_pop * 700 / $pop_max; }
 				<div class="nav-header">Key Density Metrics</div> 
 			</div>
 		</div>
+		<style>.case-metric-unit, .case-metric-segment { width: <?php echo $case_segment ?>px;}</style>
+		<?php if ( has_term("block","scale") || has_term("neighborhood","scale") ) {
+		// if is a block or a neighborhood ?>
 		<div id="case-far" class="row">
 			<div class="span2">FAR</div>
 			<div class="span1"><?php echo $case_far; ?></div>
 			<div class="span9">
 				<div class="case-metric-line">
-					<style>.case-metric-unit, .case-metric-segment { width: <?php echo $case_segment ?>px;}</style>
 					<div class="case-metric-unit">0</div>
 					<div class="case-metric-unit">South End Boston</div>
 					<div class="case-metric-unit">2</div>
@@ -128,6 +131,7 @@ else { $pop_per = $case_pop * 700 / $pop_max; }
 				</div><!-- .case-metric-line -->
 			</div>
 		</div><!-- #case-far -->
+		<?php } // if is a block or a neighborhood ?>
 		<div id="case-pop" class="row">
 			<div class="span2">POP/Ha</div>
 			<div class="span1"><?php echo $case_pop; ?></div>
@@ -190,6 +194,8 @@ else { $pop_per = $case_pop * 700 / $pop_max; }
 					</tr>
 				</tbody>
 			</table>
+			<?php if ( has_term("block","scale") || has_term("neighborhood","scale") ) {
+			// if is a block or a neighborhood ?>
 			<table class="table table-condensed">
 				<thead>
 					<tr><th>Project data</th></tr>
@@ -236,6 +242,24 @@ else { $pop_per = $case_pop * 700 / $pop_max; }
 					</tr>
 				</tbody>
 			</table>
+			<?php } // end if block or neighborhood
+			elseif ( has_term("district","scale") ) {
+			// if district ?>
+			<table class="table table-condensed">
+				<thead>
+					<tr><th>District data</th></tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><?php echo 'Area' ?></td>
+						<td class="textr"><?php echo "data"; ?></td>
+					</tr>
+					<tr>
+						<td><?php echo 'Population' ?></td>
+						<td class="textr"><?php echo get_post_meta( $post->ID, '_da_population', true ); ?></td>
+				</tbody>
+			</table>
+			<?php } // end if district ?>
 			<table class="table table-condensed">
 				<thead>
 					<tr><th>Author</th></tr>
