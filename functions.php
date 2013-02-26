@@ -216,9 +216,47 @@ function be_sample_metaboxes( $meta_boxes ) {//metaboxes common variables to all
 						array('name' => 'Mixes', 'value' => 'mixes')					
 					) 
 			),
-
-
 		),
+	);
+	$meta_boxes[] = array(
+		'id' => 'story',
+		'title' => 'Related case studies',
+		'pages' => array('post'), // post type
+		'context' => 'side',
+		'priority' => 'high',
+		'show_names' => false, // Show field names on the left
+		'fields' => array(
+			array(
+				'name' => 'Related case study 1',
+				'desc' => 'the slug of the case study',
+				'id' => $prefix . 'story_rel1',
+				'type' => 'text_small'
+			),
+			array(
+				'name' => 'Related case study 2',
+				'desc' => 'the slug of the case study',
+				'id' => $prefix . 'story_rel2',
+				'type' => 'text_small'
+			),
+			array(
+				'name' => 'Related case study 3',
+				'desc' => 'the slug of the case study',
+				'id' => $prefix . 'story_rel3',
+				'type' => 'text_small'
+			),
+			array(
+				'name' => 'Related case study 4',
+				'desc' => 'the slug of the case study',
+				'id' => $prefix . 'story_rel4',
+				'type' => 'text_small'
+			),
+			array(
+				'name' => 'Related case study 5',
+				'desc' => 'the slug of the case study',
+				'id' => $prefix . 'story_rel5',
+				'type' => 'text_small'
+			),
+		)
 	);
 	return $meta_boxes;
 }

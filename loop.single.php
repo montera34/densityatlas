@@ -330,8 +330,39 @@ else { $pop_per = $case_pop * $max_width / $pop_max; }
 			</table>
 		<?php //echo 'Location ' .get_post_meta( $post->ID, 'location', true );
 		} // end if case study post type
-		else { ?>
-			Relevant case studies
+		else {
+		// stories
+			// related case studies loop
+			$count_rel = 1;
+			$rel_ids = array();
+			while ( $count_rel < 6 ) {
+				$rel_slug = get_post_meta( $post->ID, '_da_story_rel'.$count_rel, true );
+				if ( $rel_slug != '' ) {
+					$rel_id = $wpdb->get_var("SELECT ID FROM $wpdb->posts WHERE post_name = '$rel_slug'");
+					if ( $rel_id ) { array_push($rel_ids,$rel_id); }
+				}
+				$count_rel++;
+				unset($rel_slug);
+			}
+			$args = array(
+				'posts_per_page' => -1,
+				'post_type' => 'case',
+				'post__in' => $rel_ids
+			);
+			$related_query = new WP_Query( $args );
+			if ( $related_query->have_posts() ) :
+				$tab_tmp = "";				
+				echo "Relevant case studies";
+				while ( $related_query->have_posts() ) : $related_query->the_post();
+					include "loop.boxes.php";
+				endwhile;
+				echo $tab_tmp;
+			else :
+			// if no related posts, code in here
+			endif;
+		?>
+			
+
 		<?php } ?>
 		</div><!-- #case-sidebar -->
 		<div class="span8 offset1">
