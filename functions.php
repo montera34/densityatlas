@@ -258,6 +258,50 @@ function be_sample_metaboxes( $meta_boxes ) {//metaboxes common variables to all
 			),
 		)
 	);
+	$meta_boxes[] = array(
+		'id' => 'sentence',
+		'title' => 'Featured content',
+		'pages' => array('post'), // post type
+		'context' => 'normal',
+		'priority' => 'high',
+		'show_names' => false, // Show field names on the left
+		'fields' => array(
+			array(
+				'name' => 'Sentence title',
+				'desc' => 'title',
+				'id' => $prefix . 'sentence_tit',
+				'type' => 'text_medium'
+			),
+			array(
+				'name' => 'Sentence',
+				'desc' => 'sentence',
+				'id' => $prefix . 'sentence',
+				'type' => 'text_medium'
+			),
+		)
+	);
+	$meta_boxes[] = array(
+		'id' => 'story-ref',
+		'title' => 'References',
+		'pages' => array('post'), // post type
+		'context' => 'normal',
+		'priority' => 'high',
+		'show_names' => false, // Show field names on the left
+		'fields' => array(
+			array(
+				'name' => 'References',
+				'desc' => 'field description (optional)',
+				'id' => $prefix . 'story_references',
+				'type' => 'wysiwyg',
+					'options' => array(
+						    'wpautop' => true, // use wpautop?
+						    'textarea_rows' => get_option('default_post_edit_rows', 2), // rows="..."
+						    'teeny' => false, // output the minimal editor config used in Press This
+						    'tinymce' => true, // load TinyMCE, can be used to pass settings directly to TinyMCE using an array()
+						),
+			),
+		),
+	);
 	return $meta_boxes;
 }
 add_filter( 'cmb_meta_boxes', 'be_sample_metaboxes' );

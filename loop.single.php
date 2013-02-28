@@ -1,22 +1,35 @@
 <?php
+// common vars
 $case_tit = get_the_title();
-$countries = get_the_terms( $post->ID, "country" );
-if ( $countries != '' ) {
-	foreach ( $countries as $country ) {
-		$case_country = $country->name;
+
+if ( get_post_type( $post->ID ) == 'case' ) {
+// case study vars
+	$countries = get_the_terms( $post->ID, "country" );
+	if ( $countries != '' ) {
+		foreach ( $countries as $country ) {
+			$case_country = $country->name;
+		}
 	}
+	$case_year = get_post_meta( $post->ID, '_da_year', true );
+	$case_far = get_post_meta( $post->ID, '_da_far', true );
+	$case_pop = get_post_meta( $post->ID, '_da_pop-ha', true );
+	$max_width = 700;
+	$far_max = 9;
+	$case_segment = ($max_width / $far_max) -1;
+	if ( $case_far > 8 ) { $far_per == $max_width; }
+	else { $far_per = $case_far * $max_width / $far_max; }
+	$pop_max = 4500;
+	if ( $case_pop > 4000 ) { $pop_per == $max_width; }
+	else { $pop_per = $case_pop * $max_width / $pop_max; }
 }
-$case_year = get_post_meta( $post->ID, '_da_year', true );
-$case_far = get_post_meta( $post->ID, '_da_far', true );
-$case_pop = get_post_meta( $post->ID, '_da_pop-ha', true );
-$max_width = 700;
-$far_max = 9;
-$case_segment = ($max_width / $far_max) -1;
-if ( $case_far > 8 ) { $far_per == $max_width; }
-else { $far_per = $case_far * $max_width / $far_max; }
-$pop_max = 4500;
-if ( $case_pop > 4000 ) { $pop_per == $max_width; }
-else { $pop_per = $case_pop * $max_width / $pop_max; }
+
+if ( get_post_type( $post->ID ) == 'post' ) {
+// story vars
+	$sentence_tit = get_post_meta( $post->ID, '_da_sentence_tit', true );
+	$sentence = get_post_meta( $post->ID, '_da_sentence', true );
+}
+
+// output
 ?>
 <div id="case-tit" class="row">
 	<div class="container">
@@ -72,11 +85,12 @@ else { $pop_per = $case_pop * $max_width / $pop_max; }
 				</ul><!-- .nav-pills -->
 			</div>
 			<?php } // if case study post type
-			else { ?>
+			else {
+			// if story ( if post ) ?>
 			<div class="span6">
 				<h2><?php echo $case_tit; ?></h2>
 			</div>
-			<?php } ?>
+			<?php } // if story ( if post ) ?>
 		</div>
 	</div>
 </div><!-- #case-tit -->
@@ -91,42 +105,39 @@ else { $pop_per = $case_pop * $max_width / $pop_max; }
 			</div>
 			<?php } // end if case study post type
 			else {
-			// carousel
-			$img_amount = -1;
-			$img_post_parent = get_the_ID();
-//			$mini_size = array(100,100);
-			$medium_size = "medium";
-//			$large_size = "large";
-			include "loop.attachment.php";
-			if ( isset($img_medium) ) {		
-			?>
+			// if story ( if post ) 
+				// carousel
+				$img_amount = -1;
+				$img_post_parent = get_the_ID();
+	//			$mini_size = array(100,100);
+				$medium_size = "medium";
+	//			$large_size = "large";
+				include "loop.attachment.php";
+				if ( isset($img_medium) ) { ?>
 			<div id="case-carousel" class="carousel slide">
 				<div class="carousel-inner">
-				<?php $count = 0;
-				foreach ( $img_medium as $img ) {
-					$count++;
-					if ( $count == 1 ) {
-				?>
+					<?php $count = 0;
+					foreach ( $img_medium as $img ) {
+						$count++;
+						if ( $count == 1 ) { ?>
 						<div class="active item">
-					<?php } else { ?>
+						<?php } else { ?>
 						<div class="item">
-					<?php } ?>
+						<?php } ?>
 							<?php echo $img ?>
 						</div><!-- end .item -->
-				<?php } ?>
+				<?php } // end foreach ?>
+				<?php } // end if img is set
+				if ( count($img_medium) > 1 ) { ?>
+					<a class="carousel-control left" href="#case-carousel" data-slide="prev">&lsaquo;</a>
+					<a class="carousel-control right" href="#case-carousel" data-slide="next">&rsaquo;</a>
+				<?php } // end if more than 1 img ?>
 				</div><!-- .carousel-inner -->
-		<?php }
-		if ( count($img_medium) > 1 ) {
-		?>
-				<a class="carousel-control left" href="#case-carousel" data-slide="prev">&lsaquo;</a>
-				<a class="carousel-control right" href="#case-carousel" data-slide="next">&rsaquo;</a>
-		</div><!-- end #myCarousel -->
-		<?php } ?>
 			</div><!-- #case-carousel -->
 			<?php } ?>
-		</div>
-	</div>
-</div>
+		</div><!-- .row -->
+	</div><!-- .container -->
+</div><!-- #case-img -->
 <div id="case-metrics" class="row">	
 	<div class="container">
 		<?php if ( get_post_type( $post->ID ) == 'case' ) {
@@ -207,18 +218,22 @@ else { $pop_per = $case_pop * $max_width / $pop_max; }
 			</div>
 		</div><!-- #case-far -->
 	<?php } // end if case study post type
-	else { ?>
+	else { // if story ( post type )
+		if ( $sentence_tit != '' ) { // if sentence tit ?>
 		<div class="row">
 			<div class="span12">
-				<div class="nav-header">Sentence title</div> 
+				<div class="nav-header"><?php echo $sentence_tit ?></div> 
 			</div>
 		</div>
+		<?php } // if sentence tit
+		if ( $sentence != '' ) { // if sentence ?>
 		<div class="row">
 			<div class="span12">
-				<div>Featured sentence...</div>
+				<p><?php echo $sentence ?></p>
 			</div>
 		</div>
-	<?php } ?>
+		<?php } // if sentence
+	} // if story ?>
 	</div><!-- .container -->
 </div><!-- #case-metrics -->
 <div id="case-data" class="row">
@@ -330,8 +345,7 @@ else { $pop_per = $case_pop * $max_width / $pop_max; }
 			</table>
 		<?php //echo 'Location ' .get_post_meta( $post->ID, 'location', true );
 		} // end if case study post type
-		else {
-		// stories
+		else { // if story ( post type )
 			// related case studies loop
 			$count_rel = 1;
 			$rel_ids = array();
@@ -359,31 +373,28 @@ else { $pop_per = $case_pop * $max_width / $pop_max; }
 				echo $tab_tmp;
 			else :
 			// if no related posts, code in here
-			endif;
-		?>
-			
+			endif; ?>
+			<table class="table table-condensed">
+				<thead>
+					<tr><th>References</th></tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><?php echo get_post_meta( $post->ID, '_da_story_references', true ); ?></td>
+					</tr>
+				</tbody>
+			</table>
+		
 
-		<?php } ?>
+		<?php } // if story ?>
 		</div><!-- #case-sidebar -->
 		<div class="span8 offset1">
-			<h2><?php the_title();?></h2>
-			<h3><?php echo get_the_term_list( $post->ID, 'scale', '<br />Scale: ', ', ', '' );?></h3>
-			<?php echo '<br />Content<br />';?>
-			<?php the_content(); ?>
+			<h2><?php echo $case_tit ?></h2>
+			<?php if ( get_post_type( $post->ID ) == 'case' ) {
+				echo "<h3>" .get_the_term_list( $post->ID, 'scale', 'Scale: ', ', ', '' ). "</h3>";
+			}
+			the_content(); ?>
 		</div>
-	</div>
-	</div>
+	</div><!-- .row -->
+	</div><!-- .container -->
 </div><!-- #case-data -->
-
-
-
-
-
-
-
-
-
-
-
-
-           
