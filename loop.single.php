@@ -366,9 +366,11 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 			$related_query = new WP_Query( $args );
 			if ( $related_query->have_posts() ) :
 				$tab_tmp = "";				
-				echo "Relevant case studies";
+				echo "<div class='nav-header'>Relevant case studies</div>";
 				while ( $related_query->have_posts() ) : $related_query->the_post();
+					$tab_tmp .= "<div class='row'>";
 					include "loop.boxes.php";
+					$tab_tmp .= "</div>";
 				endwhile;
 				echo $tab_tmp;
 			else :
