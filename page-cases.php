@@ -66,8 +66,11 @@ foreach ( $scale_slugs as $scale_slug ) {
 	wp_reset_query();
 	$scale_count++;
 
-} // end scales loop?>
+} // end scales loop
 
+// output
+include "map.php";
+?>
 
 <div id="gallery-tit" class="row">
 	<div class="container">

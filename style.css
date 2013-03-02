@@ -303,3 +303,11 @@ article.page h2 {
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.00);
   -webkit-font-smoothing: antialiased;
 }
+
+/* map */
+#mapdiv {
+	height: 500px;
+}
+#mapdiv img {
+	max-width: none;
+}
