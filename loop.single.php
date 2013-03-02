@@ -390,7 +390,7 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 
 		<?php } // if story ?>
 		</div><!-- #case-sidebar -->
-		<div class="span8 offset1">
+		<div class="span6 offset1">
 			<h2><?php echo $case_tit ?></h2>
 			<?php if ( get_post_type( $post->ID ) == 'case' ) {
 				echo "<h3>" .get_the_term_list( $post->ID, 'scale', 'Scale: ', ', ', '' ). "</h3>";
