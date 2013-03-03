@@ -188,7 +188,7 @@ function be_sample_metaboxes( $meta_boxes ) {//metaboxes common variables to all
 			),
 			array(
 				'name' => 'Location',
-				'desc' => 'Lat/Long. Which units?',
+				'desc' => 'Lat,Long. Exact location of the place. Separated by commas.<br> Example Paris: 48.8588,2.347',
 				'id' => $prefix . 'location',
 				'type' => 'text_small'
 			),
