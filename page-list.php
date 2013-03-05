@@ -67,16 +67,16 @@ foreach ( $scale_slugs as $scale_slug ) {
 		";
 		while ( $related_query->have_posts() ) : $related_query->the_post();
 			$countries = get_the_terms($post->ID,"country");
-			foreach ( $countries as $term ) {
-				$country = $term->name;
+			if ( $countries ) {
+				foreach ( $countries as $term ) { $country = $term->name;}
 			}
 			$cities = get_the_terms($post->ID,"city");
-			foreach ( $cities as $term ) {
-				$city = $term->name;
+			if ( $cities ) {
+				foreach ( $cities as $term ) { $city = $term->name; }
 			}
 			$scales = get_the_terms($post->ID,"scale");
-			foreach ( $scales as $term ) {
-				$scale = $term->name;
+			if ( $cities ) {
+				foreach ( $scales as $term ) { $scale = $term->name; }
 			}
 			$location = "<a href='" .get_permalink(). "'>" .get_the_title(). "</a>";
 			$far = get_post_meta( $post->ID, '_da_far', true );
