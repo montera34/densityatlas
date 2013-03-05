@@ -125,13 +125,13 @@ foreach ( $scale_slugs as $scale_slug ) {
 	</div>
 </div><!-- #gallery-tit -->
 	<?php 
-	if ( have_posts() ) :
-		while ( have_posts() ) : the_post();
-			include("loop.page.php");
-		endwhile;
-	else :
-	endif;
-	rewind_posts(); ?>
+//	if ( have_posts() ) :
+//		while ( have_posts() ) : the_post();
+//			include("loop.page.php");
+//		endwhile;
+//	else :
+//	endif;
+//	rewind_posts(); ?>
 
 <div id="gallery-items" class="row">
 	<div class="container tab-content">

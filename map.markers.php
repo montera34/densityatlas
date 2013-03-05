@@ -16,16 +16,28 @@ $dim = "13,24";
 $off = "-6,-13";
 
 // direct db query
-$recordset = mysql_query("SELECT * FROM wp_postmeta WHERE meta_key='_da_location'", $link);
-while ( $row = mysql_fetch_array($recordset) ) {
-	$marker_id = $row['post_id'];
-	$point = $row['meta_value'];
-	$recordset2 = mysql_query("SELECT * FROM wp_posts WHERE ID='".$marker_id."' LIMIT 1", $link);
+$recordset0 =  mysql_query("SELECT * FROM wp_terms WHERE slug='city' LIMIT 1", $link);
+while ( $row0 = mysql_fetch_array($recordset0) ) {
+	$term_id = $row0['term_id'];
+}
+$recordset1 = mysql_query("SELECT * FROM wp_term_relationships WHERE term_taxonomy_id='".$term_id."'", $link);
+while ( $row1 = mysql_fetch_array($recordset1) ) {
+//	$marker_id = $row1['post_id'];
+	$marker_id = $row1['object_id'];
+
+	$recordset2 = mysql_query("SELECT * FROM wp_postmeta WHERE meta_key='_da_location' AND post_id='" .$marker_id. "'", $link);
 	while ( $row2 = mysql_fetch_array($recordset2) ) {
-		$tit = $row2['post_title'];
-		$perma = "?case=" .$row2['post_name'];
-		$desc = "<a href='" .$perma. "'>See this case study</a>";
-		print("$point" . "\t" . "$tit" ."\t". "$desc" ."\t". "$path" ."\t". "$dim" ."\t". "$off" . "\n");
+		$point = $row2['meta_value'];
+		
+		$recordset3 = mysql_query("SELECT * FROM wp_posts WHERE ID='".$marker_id."' LIMIT 1", $link);
+		while ( $row3 = mysql_fetch_array($recordset3) ) {
+			$tit = $row3['post_title'];
+			$perma = "?case=" .$row3['post_name'];
+			$desc = "<a href='" .$perma. "'>See this case study</a>";
+			print("$point" . "\t" . "$tit" ."\t". "$desc" ."\t". "$path" ."\t". "$dim" ."\t". "$off" . "\n");
+		}
+
 	}
+
 }
 ?>
