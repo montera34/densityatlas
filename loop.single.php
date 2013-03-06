@@ -241,7 +241,44 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 	<div class="row">
 		<div id="case-sidebar" class="span3">
 		<?php if ( get_post_type( $post->ID ) == 'case' ) {
-		// if case study post type ?>
+		// if case study post type
+			if ( has_term("city","scale") ) {
+			// if is a city
+				// all case studies under this city
+				// get the city term
+				$tax = "city";
+				$cities = get_the_terms($post->ID,$tax);
+				//print_r($cities);
+				foreach ( $cities as $term ) {
+					$city = $term->slug;
+				}
+				$args = array(
+					'posts_per_page' => -1,
+					'post_type' => 'case',
+					'tax_query' => array(
+						array(
+						'taxonomy' => $tax,
+						'field' => 'slug',
+						'terms' => $city
+						)
+					)
+					'orderby' => 'title',
+					'order' => 'ASC',
+				);
+				$related_query = new WP_Query( $args );
+				if ( $related_query->have_posts() ) :
+					while ( $related_query->have_posts() ) : $related_query->the_post();
+						//$case_id = get_the_ID();
+						if ( has_term("district","scale") ) {}
+						if ( has_term("neighborhood","scale") ) {}
+						if ( has_term("block","scale") ) {}
+					endwhile;
+				else :
+				// if no related posts, code in here
+				endif;
+				wp_reset_query();
+			} else {
+			// if is not a city ?>
 			<table class="table table-condensed">
 				<thead>
 					<tr><th>Other Density Measures</th></tr>
@@ -344,6 +381,7 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 				</tbody>
 			</table>
 		<?php //echo 'Location ' .get_post_meta( $post->ID, 'location', true );
+			} // end if not city scale
 		} // end if case study post type
 		else { // if story ( post type )
 			// related case studies loop
