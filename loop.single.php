@@ -261,7 +261,7 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 						'field' => 'slug',
 						'terms' => $city
 						)
-					)
+					),
 					'orderby' => 'title',
 					'order' => 'ASC',
 				);
