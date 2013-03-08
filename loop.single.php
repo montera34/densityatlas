@@ -267,16 +267,44 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 				);
 				$related_query = new WP_Query( $args );
 				if ( $related_query->have_posts() ) :
+					$cases_block = array();
+					$cases_neigh = array();
+					$cases_distr = array();
 					while ( $related_query->have_posts() ) : $related_query->the_post();
 						//$case_id = get_the_ID();
-						if ( has_term("district","scale") ) {}
-						if ( has_term("neighborhood","scale") ) {}
-						if ( has_term("block","scale") ) {}
+						$tab_tmp = "";
+						$tab_tmp .= "<div class='row'>";
+						include "loop.boxes.php";
+						$tab_tmp .= "</div>";
+						if ( has_term("block","scale") ) {
+							array_push($cases_block,$tab_tmp);
+						}
+						if ( has_term("neighborhood","scale") ) {
+							array_push($cases_neigh,$tab_tmp);
+						}
+						if ( has_term("district","scale") ) {
+							array_push($cases_distr,$tab_tmp);
+							
+						}
 					endwhile;
 				else :
 				// if no related posts, code in here
 				endif;
 				wp_reset_query();
+				// output
+				if ($cases_block != '' ) {
+					echo "<div class='row'><div class='nav-header'>Blocks</div></div>";
+					foreach ( $cases_block as $case ) { echo $case; }
+				}
+				if ($cases_neigh != '' ) {
+					echo "<div class='row'><div class='nav-header'>Neighborhoods</div></div>";
+					foreach ( $cases_neigh as $case ) { echo $case; }
+				}
+				if ($cases_distr != '' ) {
+					echo "<div class='row'><div class='nav-header'>Districts</div></div>";
+					foreach ( $cases_distr as $case ) { echo $case; }
+				}
+
 			} else {
 			// if is not a city ?>
 			<table class="table table-condensed">
