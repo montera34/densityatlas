@@ -428,6 +428,7 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 
 		<?php } // if story ?>
 		</div><!-- #case-sidebar -->
+		<?php wp_reset_query(); ?>
 		<div class="span6 offset1">
 			<h2><?php echo $case_tit ?></h2>
 			<?php if ( get_post_type( $post->ID ) == 'case' ) {
