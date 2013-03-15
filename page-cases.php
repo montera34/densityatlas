@@ -31,6 +31,13 @@ foreach ( $scale_slugs as $scale_slug ) {
 			'meta_key' => '_da_far',
 			'orderby' => 'meta_value_num',
 			'order' => 'DESC',
+			'tax_query' => array(
+      				array(
+      				'taxonomy'  => 'scale',
+       				'field'     => 'slug',
+       				'terms'     => 'city', 	    
+				'operator'  => 'NOT IN')
+    			   		)
 		);
 	} else {
 		$args = array(
