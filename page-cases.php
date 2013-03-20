@@ -3,6 +3,25 @@ get_header();
 ?>
 
 <?php
+// order GET var and buttons output building
+$base_url = get_permalink();
+preg_match('/\?/',$base_url,$matches);
+if ( $matches[0] == "?" ) { $param_url = "&order="; }
+else { $param_url = "?order="; }
+$order = sanitize_text_field( $_GET['order'] );
+$order_buttons = array(); // order buttons container
+if ( $order != 'ha' ) { // if FAR order
+	$order = "_da_far";
+	array_push( $order_buttons,"<li class='active'><a href='" .$base_url . $param_url. "far' class='btn btn-small'>FAR</a></li>" );
+	array_push( $order_buttons,"<li><a href='" .$base_url . $param_url. "ha' class='btn btn-small'>People/ha</a></li>" );
+}
+else { // if POP/ha order
+	$order = "_da_pop-ha";
+	array_push( $order_buttons,"<li><a href='" .$base_url . $param_url. "far' class='btn btn-small'>FAR</a></li>" );
+	array_push( $order_buttons,"<li class='active'><a href='" .$base_url . $param_url. "ha' class='btn btn-small'>People/ha</a></li>" );
+}
+
+
 // LOOPS
 // one loop per scale to make live filters
 $scale_buttons = array(); // filter buttons container
@@ -28,7 +47,7 @@ foreach ( $scale_slugs as $scale_slug ) {
 		$args = array(
 			'posts_per_page' => -1,
 			'post_type' => 'case',
-			'meta_key' => '_da_far',
+			'meta_key' => $order,
 			'orderby' => 'meta_value_num',
 			'order' => 'DESC',
 			'tax_query' => array(
@@ -50,7 +69,7 @@ foreach ( $scale_slugs as $scale_slug ) {
 				'terms' => $scale_slug
 				)
 			),
-			'meta_key' => '_da_far',
+			'meta_key' => $order,
 			'orderby' => 'meta_value_num',
 			'order' => 'DESC',
 		);
@@ -85,7 +104,9 @@ include "map.php";
 			<div class="span3"><h2><?php the_title();?></h2></div>
 			<div class="span3">
 				<h4>Sort by</h4>
-				<h4><a href="" class="btn btn-small">FAR</a> <a href="" class="btn btn-small">People / Ha</a></h4>
+				<ul id="orders" class="inline">
+					<?php foreach ( $order_buttons as $button ) { echo $button; } ?>
+				</ul>
 			</div>
 			<div class="span6">
 				<h4>Filter by</h4>

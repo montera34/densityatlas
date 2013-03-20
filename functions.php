@@ -343,13 +343,21 @@ function update_empty_far_custom_field( $post_id ) {
 
 		$post_meta_key = "_da_far";
 		$post_meta_value = "0";
-//		if ( empty( get_post_meta( $post_id, $post_meta_key, true ) ) ) {
 			add_post_meta($post_id, $post_meta_key, $post_meta_value,true);
-//			update_post_meta($post_id, "_da_far", "10");
-//		}
 	}
 }
-//add_action( 'save_post', 'update_empty_far_custom_field' );
 add_action( 'wp_insert_post', 'update_empty_far_custom_field' );
 
+// add "0" value to POP/ha custom field if is empty, in case study post type
+function update_empty_popha_custom_field( $post_id ) {
+
+	//verify post is not a revision
+	if ( !wp_is_post_revision( $post_id ) ) {
+
+		$post_meta_key = "_da_pop-ha";
+		$post_meta_value = "0";
+			add_post_meta($post_id, $post_meta_key, $post_meta_value,true);
+	}
+}
+add_action( 'wp_insert_post', 'update_empty_popha_custom_field' );
 ?>
