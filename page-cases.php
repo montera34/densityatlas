@@ -3,11 +3,16 @@ get_header();
 ?>
 
 <?php
-// visualization GET var
+// visualization and order GET vars
 $vis = sanitize_text_field( $_GET['vis'] );
-// order GET var and buttons output building
 $base_url = get_permalink();
-preg_match('/\?/',$base_url,$matches);
+preg_match('/\?/',$base_url,$matches); // check if pretty permalinks enabled
+if ( $matches[0] == "?" && $vis == "map" ) { // if no pretty permalinks and map vis
+	$base_url = get_permalink()."&vis=".$vis;
+} elseif ( $matches[0] != "?" && $vis == "map" ) { // if pretty permalinks and map vis
+	$base_url = get_permalink()."?vis=".$vis;
+}
+preg_match('/\?/',$base_url,$matches); // recheck after add vis var
 if ( $matches[0] == "?" ) { $param_url = "&order="; }
 else { $param_url = "?order="; }
 $order = sanitize_text_field( $_GET['order'] );
