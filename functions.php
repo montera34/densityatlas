@@ -336,28 +336,48 @@ function theme_t_wp_taxonomy_post_class( $classes, $class, $ID ) {
 } 
 
 // add "0" value to FAR custom field if is empty, in case study post type
-function update_empty_far_custom_field( $post_id ) {
-
-	//verify post is not a revision
-	if ( !wp_is_post_revision( $post_id ) ) {
-
-		$post_meta_key = "_da_far";
-		$post_meta_value = "0";
+$cfields = array("far","pop-ha","dus-ha");
+function update_empty_cfields( $post_id ) {
+	global $cfields;
+	foreach ( $cfields as $cfield ) {
+		//verify post is not a revision
+		if ( !wp_is_post_revision( $post_id ) ) {
+			$post_meta_key = "_da_" .$cfield;
+			$post_meta_value = "0";
 			add_post_meta($post_id, $post_meta_key, $post_meta_value,true);
+		}
 	}
 }
-add_action( 'wp_insert_post', 'update_empty_far_custom_field' );
+add_action( 'wp_insert_post', 'update_empty_cfields' );
 
-// add "0" value to POP/ha custom field if is empty, in case study post type
-function update_empty_popha_custom_field( $post_id ) {
-
-	//verify post is not a revision
-	if ( !wp_is_post_revision( $post_id ) ) {
-
-		$post_meta_key = "_da_pop-ha";
-		$post_meta_value = "0";
-			add_post_meta($post_id, $post_meta_key, $post_meta_value,true);
+// add tax term as value to _da_tax_$taxo custom field if is empty, in case study post type
+$taxos = array("country","city","scale");
+function update_empty_taxs_custom_field( $post_id ) {
+	global $taxos;
+	foreach ( $taxos as $taxo) {
+		//verify post is not a revision
+		if ( !wp_is_post_revision( $post_id ) ) {
+			$post_meta_key = "_da_tax_" .$taxo;
+			$terms = get_the_terms( $post_id, $taxo );
+			$post_meta_value = $terms[0]->name;
+			$prev_meta_key = get_post_meta( $post_id, $post_meta_key, true);
+			if ( $prev_meta_key == '' ) { update_post_meta($post_id, $post_meta_key, $post_meta_value, $prev_meta_key ); }
+			else { add_post_meta($post_id, $post_meta_key, $post_meta_value,true); }
+		}
 	}
 }
-add_action( 'wp_insert_post', 'update_empty_popha_custom_field' );
+add_action( 'wp_insert_post', 'update_empty_taxs_custom_field' );
+
+// add post title as value to _da_tit custom field, in case study post type
+function update_tit_custom_field( $post_id ) {
+	//verify post is not a revision
+	if ( !wp_is_post_revision( $post_id ) ) {
+		$post_meta_key = "_da_tit";
+		$post_meta_value = get_the_title($post_id);
+		$prev_meta_key = get_post_meta( $post_id, $post_meta_key, true );
+		if ( $prev_meta_key != '' && $prev_meta_key != $post_meta_value ) { update_post_meta($post_id, $post_meta_key, $post_meta_value, $prev_meta_key ); }
+		else { add_post_meta($post_id, $post_meta_key, $post_meta_value,true); }
+	}
+}
+add_action( 'wp_insert_post', 'update_tit_custom_field' );
 ?>

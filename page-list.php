@@ -3,6 +3,58 @@ get_header();
 ?>
 
 <?php
+$base_url = get_permalink();
+preg_match('/\?/',$base_url,$matches); // check if pretty permalinks enabled
+if ( $matches[0] == "?" ) { $param_url = "&order="; }
+else { $param_url = "?order="; }
+$order = sanitize_text_field( $_GET['order'] );
+if ( $order == '' ) { $order = "tax_country"; }
+$orders = array(
+	array(
+		'value_url' => 'tax_country',
+		'tit' => 'Country'
+	),
+	array(
+		'value_url' => 'tax_city',
+		'tit' => 'City'
+	),
+	array(
+		'value_url' => 'tit',
+		'tit' => 'Location'
+	),
+	array(
+		'value_url' => 'tax_scale',
+		'tit' => 'Scale'
+	),
+	array(
+		'value_url' => 'far',
+		'tit' => 'FAR'
+	),
+	array(
+		'value_url' => 'du-ha',
+		'tit' => 'DU/Area'
+	),
+	array(
+		'value_url' => 'pop-ha',
+		'tit' => 'POP/Area'
+	),
+);
+$order_buttons = array(); // order buttons container
+foreach ( $orders as $criteria ) {
+	array_push( $order_buttons,"<th><a href='" .$base_url . $param_url. $criteria['value_url']. "'>" .$criteria['tit']. "</a></th>" );
+}
+
+//if ( $order != 'ha' ) { // if FAR order
+//	$order = "_da_far";
+//	array_push( $order_buttons,"<li class='active'><a href='" .$base_url . $param_url. "far' class='btn btn-small'>FAR</a></li>" );
+//	array_push( $order_buttons,"<li><a href='" .$base_url . $param_url. "ha' class='btn btn-small'>People/ha</a></li>" );
+//}
+//else { // if POP/ha order
+//	$order = "_da_pop-ha";
+//	array_push( $order_buttons,"<li><a href='" .$base_url . $param_url. "far' class='btn btn-small'>FAR</a></li>" );
+//	array_push( $order_buttons,"<li class='active'><a href='" .$base_url . $param_url. "ha' class='btn btn-small'>People/ha</a></li>" );
+//}
+
 // LOOPS
 // one loop per scale to make live filters
 $scale_buttons = array(); // filter buttons container
@@ -28,7 +80,7 @@ foreach ( $scale_slugs as $scale_slug ) {
 		$args = array(
 			'posts_per_page' => -1,
 			'post_type' => 'case',
-			'meta_key' => '_da_far',
+			'meta_key' => '_da_'.$order,
 			'orderby' => 'meta_value_num',
 			'order' => 'DESC',
 		);
@@ -43,7 +95,7 @@ foreach ( $scale_slugs as $scale_slug ) {
 				'terms' => $scale_slug
 				)
 			),
-			'meta_key' => '_da_far',
+			'meta_key' => '_da_'.$order,
 			'orderby' => 'meta_value_num',
 			'order' => 'DESC',
 		);
@@ -54,13 +106,9 @@ foreach ( $scale_slugs as $scale_slug ) {
 		$tab_tmp = "<table class='table table-condensed'>
 			<thead>
 				<tr>
-					<th>Country</th>
-					<th>City</th>
-					<th>Location</th>
-					<th>Scale</th>
-					<th>FAR</th>
-					<th>DU/Area</th>
-					<th>POP/Area</th>
+		";
+		foreach ( $order_buttons as $button ) { $tab_tmp .= $button; }
+		$tab_tmp .= "
 				</tr>
 			</thead>
 			<tbody>
@@ -111,11 +159,7 @@ foreach ( $scale_slugs as $scale_slug ) {
 	<div class="container">
 		<div class="row">
 			<div class="span3"><h2><?php the_title();?></h2></div>
-			<div class="span3">
-				<h4>Sort by</h4>
-				<h4><a href="" class="btn btn-small">FAR</a> <a href="" class="btn btn-small">People / Ha</a></h4>
-			</div>
-			<div class="span6">
+			<div class="span6 offset3">
 				<h4>Filter by</h4>
 				<ul id="filters" class="inline">
 					<?php foreach ( $scale_buttons as $button ) { echo $button; } ?>
