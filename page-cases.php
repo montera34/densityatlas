@@ -3,6 +3,8 @@ get_header();
 ?>
 
 <?php
+// visualization GET var
+$vis = sanitize_text_field( $_GET['vis'] );
 // order GET var and buttons output building
 $base_url = get_permalink();
 preg_match('/\?/',$base_url,$matches);
@@ -95,7 +97,10 @@ foreach ( $scale_slugs as $scale_slug ) {
 } // end scales loop
 
 // output
-include "map.php";
+if ( $vis == "map" ) {
+// if map visualization
+	include "map.php";
+}
 ?>
 
 <div id="gallery-tit" class="row">
