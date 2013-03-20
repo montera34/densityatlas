@@ -66,7 +66,7 @@ if ( is_singular() ) wp_enqueue_script( 'comment-reply' );
 				
 					<div class="span8">
 						<div class="navbar-form pull-right">
-							<?php // main navigation menu for home page
+							<?php // main navigation aenu for home page
 							$menu_slug = "header-menu";
 							$args = array(
 								'theme_location' => $menu_slug,

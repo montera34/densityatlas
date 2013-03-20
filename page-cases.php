@@ -37,7 +37,7 @@ foreach ( $scale_slugs as $scale_slug ) {
        				'field'     => 'slug',
        				'terms'     => 'city', 	    
 				'operator'  => 'NOT IN')
-    			   		)
+			)
 		);
 	} else {
 		$args = array(
