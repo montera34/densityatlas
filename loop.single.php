@@ -96,7 +96,7 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 </div><!-- #case-tit -->
 <div id="case-img" class="row">
 	<div class="container">
-		<div class="row">
+		<div class="row" style="overflow: hidden;">
 			<?php if ( get_post_type( $post->ID ) == 'case' ) {
 			// if case study post type
 				$location = get_post_meta( $post->ID, '_da_location', true );
@@ -122,23 +122,25 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 	//			$large_size = "large";
 				include "loop.attachment.php";
 				if ( isset($img_medium) ) { ?>
-			<div id="case-carousel" class="carousel slide span12">
-				<div class="carousel-inner">
+			<div class="span12" style="text-align: center;">
+			<div id="case-carousel">
 					<?php $count = 0;
 					foreach ( $img_medium as $img ) {
 						$count++;
-						if ( $count == 1 ) { echo '<div class="active item">'; }
-						echo "<div class='span3'>".$img."</div>";
-						if ( $count % 3 == 0 ) { echo '</div><!-- .item--><div class="item">'; }
+						//if ( $count == 1 ) { echo '<div class="active item">'; }
+						echo "<div>".$img."</div>";
+						//if ( $count % 3 == 0 ) { echo '</div><!-- .item--><div class="item">'; }
 					} // end foreach
-					if ( $count % 3 != 0 ) { echo '</div><!-- .item-->'; }
+					//if ( $count % 3 != 0 ) { echo '</div><!-- .item-->'; }
 				} // end if img is set
-				if ( count($img_medium) > 1 ) { ?>
+				//if ( count($img_medium) > 1 ) {
+				if ( 0 > 1 ) { ?>
 					<a class="carousel-control left" href="#case-carousel" data-slide="prev">&lsaquo;</a>
 					<a class="carousel-control right" href="#case-carousel" data-slide="next">&rsaquo;</a>
 				<?php } // end if more than 1 img ?>
-				</div><!-- .carousel-inner -->
 			</div><!-- #case-carousel -->
+				<a href="#" id="ui-carousel-next">next</a>
+				<a href="#" id="ui-carousel-prev">prev</a>
 			<?php } ?>
 		</div><!-- .row -->
 	</div><!-- .container -->

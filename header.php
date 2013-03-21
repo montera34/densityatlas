@@ -37,6 +37,8 @@ require_once( get_stylesheet_directory(). '/general-vars.php' );
 <link href="<?php bloginfo('stylesheet_url'); ?>" rel="stylesheet" />
 <!-- Google Fonts -->
 <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+<!-- rcarousel -->
+<link href="<?php echo $genvars['blogtheme']; ?>/rcarousel/widget/css/rcarousel.css" rel="stylesheet" />
 
 <link rel="alternate" type="application/rss+xml" title="<?php echo $genvars['blogname']; ?> RSS Feed suscription" href="<?php bloginfo('rss2_url'); ?>" />
 <link rel="alternate" type="application/atom+xml" title="<?php echo $genvars['blogname']; ?> Atom Feed suscription" href="<?php bloginfo('atom_url'); ?>" /> 

@@ -45,7 +45,8 @@ if ( $attachments ) {
 								$img_height = round($img_height);
 							}
 						}
-						array_push($img_medium, "<a href='{$img_attachment_link}'><img src='{$img_medium_vars[0]}' width='{$img_width}' height='{$img_height}'/></a><span class='img-cap'>" .$img_caption. "</span>");
+						//array_push($img_medium, "<a href='{$img_attachment_link}'><img src='{$img_medium_vars[0]}' width='{$img_width}' height='{$img_height}'/></a><span class='img-cap'>" .$img_caption. "</span>");
+						array_push($img_medium, "<img src='{$img_medium_vars[0]}' width='{$img_width}' height='{$img_height}'/>");
 					} else { unset($img_medium); }
 
 					if ( $large_size != '' ) {
