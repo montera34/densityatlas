@@ -122,20 +122,17 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 	//			$large_size = "large";
 				include "loop.attachment.php";
 				if ( isset($img_medium) ) { ?>
-			<div id="case-carousel" class="carousel slide">
+			<div id="case-carousel" class="carousel slide span12">
 				<div class="carousel-inner">
 					<?php $count = 0;
 					foreach ( $img_medium as $img ) {
 						$count++;
-						if ( $count == 1 ) { ?>
-						<div class="active item">
-						<?php } else { ?>
-						<div class="item">
-						<?php } ?>
-							<?php echo $img ?>
-						</div><!-- end .item -->
-				<?php } // end foreach ?>
-				<?php } // end if img is set
+						if ( $count == 1 ) { echo '<div class="active item">'; }
+						echo "<div class='span3'>".$img."</div>";
+						if ( $count % 3 == 0 ) { echo '</div><!-- .item--><div class="item">'; }
+					} // end foreach
+					if ( $count % 3 != 0 ) { echo '</div><!-- .item-->'; }
+				} // end if img is set
 				if ( count($img_medium) > 1 ) { ?>
 					<a class="carousel-control left" href="#case-carousel" data-slide="prev">&lsaquo;</a>
 					<a class="carousel-control right" href="#case-carousel" data-slide="next">&rsaquo;</a>
