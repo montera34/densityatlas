@@ -302,6 +302,28 @@ function be_sample_metaboxes( $meta_boxes ) {//metaboxes common variables to all
 			),
 		),
 	);
+	$meta_boxes[] = array(
+		'id' => 'story-featured',
+		'title' => 'Feature this story in home page',
+		'pages' => array('post'), // post type
+		'context' => 'side',
+		'priority' => 'low',
+		'show_names' => false, // Show field names on the left
+		'fields' => array(
+			array(
+				'name' => 'Story featured',
+				'desc' => 'check to feature this story',
+				'id' => $prefix . 'story_featured',
+				'type' => 'checkbox',
+			),
+			array(
+				'name' => 'Order',
+				'desc' => 'set priority of this story: 1 is highest.',
+				'id' => $prefix . 'story_order',
+				'type' => 'text_small',
+			),
+		),
+	);
 	return $meta_boxes;
 }
 add_filter( 'cmb_meta_boxes', 'be_sample_metaboxes' );
@@ -314,7 +336,7 @@ function be_initialize_cmb_meta_boxes() {
 }
 
 // Adding featured image to the custom post types
-add_theme_support( 'post-thumbnails', array( 'case') ); 
+add_theme_support( 'post-thumbnails', array( 'case','post') ); 
 
 
 
