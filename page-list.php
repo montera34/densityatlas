@@ -8,52 +8,49 @@ preg_match('/\?/',$base_url,$matches); // check if pretty permalinks enabled
 if ( $matches[0] == "?" ) { $param_url = "&order="; }
 else { $param_url = "?order="; }
 $order = sanitize_text_field( $_GET['order'] );
-if ( $order == '' ) { $order = "tax_country"; }
+$orderby = sanitize_text_field( $_GET['type'] );
+if ( $order == '' ) { $order = "tax_country"; $orderby = "meta_value"; }
 $orders = array(
 	array(
 		'value_url' => 'tax_country',
+		'type' => 'meta_value',
 		'tit' => 'Country'
 	),
 	array(
 		'value_url' => 'tax_city',
+		'type' => 'meta_value',
 		'tit' => 'City'
 	),
 	array(
 		'value_url' => 'tit',
+		'type' => 'meta_value',
 		'tit' => 'Location'
 	),
 	array(
 		'value_url' => 'tax_scale',
+		'type' => 'meta_value',
 		'tit' => 'Scale'
 	),
 	array(
 		'value_url' => 'far',
+		'type' => 'meta_value_num',
 		'tit' => 'FAR'
 	),
 	array(
 		'value_url' => 'du-ha',
+		'type' => 'meta_value_num',
 		'tit' => 'DU/Area'
 	),
 	array(
 		'value_url' => 'pop-ha',
+		'type' => 'meta_value_num',
 		'tit' => 'POP/Area'
 	),
 );
 $order_buttons = array(); // order buttons container
 foreach ( $orders as $criteria ) {
-	array_push( $order_buttons,"<th><a href='" .$base_url . $param_url. $criteria['value_url']. "'>" .$criteria['tit']. "</a></th>" );
+	array_push( $order_buttons,"<th><a href='" .$base_url . $param_url . $criteria['value_url']. "&type=" .$criteria['type']. "'>" .$criteria['tit']. "</a></th>" );
 }
-
-//if ( $order != 'ha' ) { // if FAR order
-//	$order = "_da_far";
-//	array_push( $order_buttons,"<li class='active'><a href='" .$base_url . $param_url. "far' class='btn btn-small'>FAR</a></li>" );
-//	array_push( $order_buttons,"<li><a href='" .$base_url . $param_url. "ha' class='btn btn-small'>People/ha</a></li>" );
-//}
-//else { // if POP/ha order
-//	$order = "_da_pop-ha";
-//	array_push( $order_buttons,"<li><a href='" .$base_url . $param_url. "far' class='btn btn-small'>FAR</a></li>" );
-//	array_push( $order_buttons,"<li class='active'><a href='" .$base_url . $param_url. "ha' class='btn btn-small'>People/ha</a></li>" );
-//}
 
 // LOOPS
 // one loop per scale to make live filters
@@ -64,7 +61,6 @@ $scale_names = array("Reset","Block","Neighborhood","District");
 $scale_count = 0;
 
 foreach ( $scale_slugs as $scale_slug ) {
-
 	$tab_tmp = ""; // temporal cointainer for tab content before add to array
 	if ( $scale_slug == 'block' ) { $scale_class = $scale_slug. "k"; }
 	else { $scale_class = $scale_slug; }
@@ -81,7 +77,7 @@ foreach ( $scale_slugs as $scale_slug ) {
 			'posts_per_page' => -1,
 			'post_type' => 'case',
 			'meta_key' => '_da_'.$order,
-			'orderby' => 'meta_value_num',
+			'orderby' => $orderby,
 			'order' => 'DESC',
 		);
 	} else {
@@ -96,7 +92,7 @@ foreach ( $scale_slugs as $scale_slug ) {
 				)
 			),
 			'meta_key' => '_da_'.$order,
-			'orderby' => 'meta_value_num',
+			'orderby' => $orderby,
 			'order' => 'DESC',
 		);
 	}
