@@ -122,7 +122,7 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 	//			$large_size = "large";
 				include "loop.attachment.php";
 				if ( isset($img_medium) ) { ?>
-			<div class="span12" style="text-align: center;">
+			<div class="span12" style="text-align: center; position: relative;">
 			<div id="case-carousel">
 					<?php $count = 0;
 					foreach ( $img_medium as $img ) {
@@ -139,8 +139,8 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 					<a class="carousel-control right" href="#case-carousel" data-slide="next">&rsaquo;</a>
 				<?php } // end if more than 1 img ?>
 			</div><!-- #case-carousel -->
-				<a href="#" id="ui-carousel-next">next</a>
-				<a href="#" id="ui-carousel-prev">prev</a>
+				<a class="carousel-control left" href="#" id="ui-carousel-next">&lsaquo;</a>
+				<a class="carousel-control right" href="#" id="ui-carousel-prev">&rsaquo;</a>
 			<?php } ?>
 		</div><!-- .row -->
 	</div><!-- .container -->
