@@ -19,11 +19,12 @@ $related_query = new WP_Query( $args );
 if ( $related_query->have_posts() ) :
 	while ( $related_query->have_posts() ) : $related_query->the_post();
 		if ( has_post_thumbnail() ) {
-			$featured_img = get_the_post_thumbnail($post->ID,'medium');
+			$featured_img = get_the_post_thumbnail($post->ID,'thumbnail');
 			$featured_tit = get_the_title();
 			$loop_out[] = "
-				<div class='span3'>
-					".$featured_img."<br />" .$featured_tit. "
+				<div class='home-item span3'>
+					" .$featured_img. "
+					<p>".$featured_tit."</p>
 				</div>
 			";
 		} else {}
@@ -37,7 +38,9 @@ wp_reset_query();
 <div id="case-tit" class="row">
 	<div class="container">
 		<div class="row">
-			<?php foreach ( $loop_out as $loop ) { echo $loop; } ?>
+				<div id="home-gallery">
+					<?php foreach ( $loop_out as $loop ) { echo $loop; } ?>
+				</div>
 		</div>
 	</div>
 </div><!-- #gallery-tit -->
@@ -45,7 +48,7 @@ wp_reset_query();
 <div id="content" class="row">
 	<div class="container">
 		<div class="row">
-			Aqui el contenido
+			<div class="span4">Aqui el contenido</div>
 		</div>
 	</div>
 </div><!-- #content -->
@@ -53,7 +56,7 @@ wp_reset_query();
 <div id="case-metrics" class="row">
 	<div class="container">
 		<div class="row">
-			Aqui el contenido destacado
+			<div class="span4">Aqui el contenido destacado</div>
 		</div>
 	</div>
 </div><!-- #content -->

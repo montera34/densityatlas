@@ -311,3 +311,10 @@ article.page h2 {
 #mapdiv img {
 	max-width: none;
 }
+
+/* home */
+.home-item {
+	margin-bottom: 20px;
+	background-color: gray;
+	float: left;
+}
