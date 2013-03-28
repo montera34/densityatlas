@@ -209,6 +209,7 @@ article.page h2 {
 }
 #case-data {
 	padding-top: 30px;
+	padding-bottom: 30px;
 }
 #case-sidebar th {
 	text-transform: uppercase;
@@ -314,7 +315,7 @@ article.page h2 {
 
 /* home */
 #home-gallery {
-	margin-top: 20px;
+	margin-top: 40px;
 }
 .home-item {
 	margin-bottom: 20px;
@@ -322,6 +323,12 @@ article.page h2 {
 }
 .home-box {
 	position: relative;
+}
+.home-box a {
+	color: white;
+}
+.home-box:hover {
+	opacity: 0.8;
 }
 .home-tit {
 	position: absolute;

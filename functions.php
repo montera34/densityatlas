@@ -270,13 +270,13 @@ function be_sample_metaboxes( $meta_boxes ) {//metaboxes common variables to all
 				'name' => 'Sentence title',
 				'desc' => 'title',
 				'id' => $prefix . 'sentence_tit',
-				'type' => 'text_medium'
+				'type' => 'text'
 			),
 			array(
 				'name' => 'Sentence',
 				'desc' => 'sentence',
 				'id' => $prefix . 'sentence',
-				'type' => 'text_medium'
+				'type' => 'textarea'
 			),
 		)
 	);
@@ -334,6 +334,29 @@ function be_sample_metaboxes( $meta_boxes ) {//metaboxes common variables to all
 					array('name' => '6', 'value' => 'span6'),	
 					array('name' => '12', 'value' => 'span12')
 				) 
+			),
+		),
+	);
+	$meta_boxes[] = array(
+		'id' => 'home',
+		'title' => 'Featured content for home page',
+		'pages' => array('page'), // post type
+		'show_on' => array( 'key' => 'page-template', 'value' => 'page-home.php' ),
+		'context' => 'normal',
+		'priority' => 'high',
+		'show_names' => true, // Show field names on the left
+		'fields' => array(
+			array(
+				'name' => 'Featured sentence 1',
+				'desc' => '',
+				'id' => $prefix . 'home_featured_1',
+				'type' => 'textarea',
+			),
+			array(
+				'name' => 'Featured sentence 2',
+				'desc' => '',
+				'id' => $prefix . 'home_featured_2',
+				'type' => 'textarea',
 			),
 		),
 	);
