@@ -322,6 +322,19 @@ function be_sample_metaboxes( $meta_boxes ) {//metaboxes common variables to all
 				'id' => $prefix . 'story_order',
 				'type' => 'text_small',
 			),
+			array(
+				'name' => 'Width',
+				'desc' => 'width of this story, in columns.',
+				'id' => $prefix . 'story_cols',
+				'type' => 'radio_inline',
+				'options' => array(
+					array('name' => '1', 'value' => 'span1'), 
+					array('name' => '2', 'value' => 'span2'),
+					array('name' => '3', 'value' => 'span3'),
+					array('name' => '6', 'value' => 'span6'),	
+					array('name' => '12', 'value' => 'span12')
+				) 
+			),
 		),
 	);
 	return $meta_boxes;

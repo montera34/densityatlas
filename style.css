@@ -313,8 +313,21 @@ article.page h2 {
 }
 
 /* home */
+#home-gallery {
+	margin-top: 20px;
+}
 .home-item {
 	margin-bottom: 20px;
-	background-color: gray;
 	float: left;
+}
+.home-box {
+	position: relative;
+}
+.home-tit {
+	position: absolute;
+	bottom: 0;
+	padding: 5px;
+	margin: 0;
+	font-size: 14px;
+	line-height: 20px;
 }
