@@ -7,5 +7,6 @@
 		} else {
 			$( "#case-carousel" ).rcarousel( {visible: 1, step: 1, width: 300, height: 300, margin: 10, orientation: "vertical"} );
 		}
+		
 	});
 

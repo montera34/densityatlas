@@ -133,14 +133,10 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 					} // end foreach
 					//if ( $count % 3 != 0 ) { echo '</div><!-- .item-->'; }
 				} // end if img is set
-				//if ( count($img_medium) > 1 ) {
-				if ( 0 > 1 ) { ?>
-					<a class="carousel-control left" href="#case-carousel" data-slide="prev">&lsaquo;</a>
-					<a class="carousel-control right" href="#case-carousel" data-slide="next">&rsaquo;</a>
-				<?php } // end if more than 1 img ?>
+				?>
 			</div><!-- #case-carousel -->
-				<a class="carousel-control left" href="#" id="ui-carousel-next">&lsaquo;</a>
-				<a class="carousel-control right" href="#" id="ui-carousel-prev">&rsaquo;</a>
+			<a class="carousel-control right" href="#" id="ui-carousel-next">&rsaquo;</a>
+			<a class="carousel-control left" href="#" id="ui-carousel-prev">&lsaquo;</a>
 			<?php } ?>
 		</div><!-- .row -->
 	</div><!-- .container -->
