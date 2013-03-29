@@ -230,12 +230,7 @@ function be_sample_metaboxes( $meta_boxes ) {//metaboxes common variables to all
 				'name' => 'Range of Heights',
 				'desc' => 'select',
 				'id' => $prefix . 'range-of-heights',
-				'type' => 'select',
-					'options' => array(
-						array('name' => 'Option One', 'value' => 'standard'), //ToDo fill with real values
-						array('name' => 'Option Two', 'value' => 'custom'),
-						array('name' => 'Option Three', 'value' => 'none')				
-					)
+				'type' => 'text_small'				
 			),
 			array(
 				'name' => 'Dwelling Units',
@@ -261,9 +256,10 @@ function be_sample_metaboxes( $meta_boxes ) {//metaboxes common variables to all
 				'id' => $prefix . 'income',
 				'type' => 'select',
 					'options' => array(
-						array('name' => 'Option One', 'value' => 'standard'), //ToDo fill with real values
-						array('name' => 'Option Two', 'value' => 'custom'),
-						array('name' => 'Option Three', 'value' => 'none')					
+						array('name' => 'Low', 'value' => 'low'),
+						array('name' => 'Middle', 'value' => 'middle'),
+						array('name' => 'High', 'value' => 'hight'),
+						array('name' => 'Mixed', 'value' => 'mixed')						
 					) 
 			),
 			array(
@@ -276,10 +272,10 @@ function be_sample_metaboxes( $meta_boxes ) {//metaboxes common variables to all
 						array('name' => 'Families', 'value' => 'families'),
 						array('name' => 'Single', 'value' => 'single'),
 						array('name' => 'Couples', 'value' => 'couples'),	
-						array('name' => 'Mixes', 'value' => 'mixes')					
+						array('name' => 'Mixed', 'value' => 'mixed')					
 					) 
-			),
-		),
+			) 
+		) 
 	);
 	$meta_boxes[] = array(
 		'id' => 'story',
@@ -318,7 +314,7 @@ function be_sample_metaboxes( $meta_boxes ) {//metaboxes common variables to all
 				'desc' => 'the slug of the case study',
 				'id' => $prefix . 'story_rel5',
 				'type' => 'text_small'
-			),
+			)
 		)
 	);
 	$meta_boxes[] = array(
