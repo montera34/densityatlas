@@ -110,7 +110,7 @@ body{
 	margin-right: 10px;
 }
 
-article.page h2 {
+article.page h2, #case-data h1, #case-data h3 a {
 	color:#D9386A;
 	text-transform: uppercase;
 }
@@ -242,6 +242,18 @@ article.page h2 {
 .case-metric-pop {
 	height: 10px;
 	background-color: #D9386A;
+}
+.case-metric-far:hover,
+.case-metric-pop:hover {
+	background-color: #aaa;
+}
+
+#case-metrics h3 {
+	color:#D9386A;
+}
+#case-metrics h4 {
+	color:#000000;
+	text-transform: uppercase;
 }
 
 /* footer */

@@ -37,7 +37,7 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 			<?php if ( get_post_type( $post->ID ) == 'case' ) {
 			// if case study post type ?>
 			<div class="span6">
-				<h2><?php echo $case_tit. ", " .$case_country. "&nbsp;&nbsp;" .$case_year; ?></h2>
+				<h2><?php echo $case_tit ?>&nbsp;&nbsp;<small><? echo $case_country ?> &nbsp;&nbsp;<? echo $case_year; ?></small></h2>
 			</div>
 			<div class="span6">
 				<ul class="nav nav-pills">
@@ -147,15 +147,15 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 		// if case study post type ?>
 		<div class="row">
 			<div class="span12">
-				<div class="nav-header">Key Density Metrics</div> 
+				<h4>Key Density Metrics</h4> 
 			</div>
 		</div>
 		<style>.case-metric-unit, .case-metric-segment { width: <?php echo $case_segment ?>px;}</style>
 		<?php if ( has_term("block","scale") || has_term("neighborhood","scale") ) {
 		// if is a block or a neighborhood ?>
 		<div id="case-far" class="row">
-			<div class="span2">FAR</div>
-			<div class="span1"><?php echo $case_far; ?></div>
+			<div class="span2"><h3>FAR</h3></div>
+			<div class="span1"><h3><?php echo $case_far; ?></h3></div>
 			<div class="span9">
 				<div class="case-metric-line">
 					<div class="case-metric-unit">0</div>
@@ -182,14 +182,14 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 					</div>
 				</div><!-- .case-metric-line -->
 				<div class="case-metric-line case-metric-bg">
-					<div class="case-metric-far" style="width: <?php echo $far_per ?>px;"></div>
+					<div class="case-metric-far" style="width: <?php echo $far_per ?>px;" title="<?php echo $case_far ?>"></div>
 				</div><!-- .case-metric-line -->
 			</div>
 		</div><!-- #case-far -->
 		<?php } // if is a block or a neighborhood ?>
 		<div id="case-pop" class="row">
-			<div class="span2">POP/Ha</div>
-			<div class="span1"><?php echo $case_pop; ?></div>
+			<div class="span2"><h3>POP/Ha</h3></div>
+			<div class="span1"><h3><?php echo $case_pop; ?></h3></div>
 			<div class="span9">
 				<div class="case-metric-line">
 					<div class="case-metric-unit">0</div>
@@ -216,7 +216,7 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 					</div>
 				</div><!-- .case-metric-line -->
 				<div class="case-metric-line case-metric-bg">
-					<div class="case-metric-far" style="width: <?php echo $pop_per ?>px;"></div>
+					<div class="case-metric-far" style="width: <?php echo $pop_per ?>px;" title="<?php echo $case_pop ?>"> ></div>
 				</div><!-- .case-metric-line -->
 			</div>
 		</div><!-- #case-far -->
@@ -232,7 +232,7 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 		if ( $sentence != '' ) { // if sentence ?>
 		<div class="row">
 			<div class="span12">
-				<p><?php echo $sentence ?></p>
+				<h3><?php echo $sentence ?></h3>
 			</div>
 		</div>
 		<?php } // if sentence
@@ -461,9 +461,9 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 		</div><!-- #case-sidebar -->
 		<?php wp_reset_query(); ?>
 		<div class="span6 offset1">
-			<h2><?php echo $case_tit ?></h2>
+			<h1><?php echo $case_tit ?></h1>
 			<?php if ( get_post_type( $post->ID ) == 'case' ) {
-				echo "<h3>" .get_the_term_list( $post->ID, 'scale', 'Scale: ', ', ', '' ). "</h3>";
+				echo "<h3>" .get_the_term_list( $post->ID, 'scale', '', ', ', '' ). "</h3>";
 			}
 			the_content(); ?>
 		</div>
