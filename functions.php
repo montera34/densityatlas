@@ -230,7 +230,7 @@ function be_sample_metaboxes( $meta_boxes ) {//metaboxes common variables to all
 				'name' => 'Range of Heights',
 				'desc' => 'select',
 				'id' => $prefix . 'range-of-heights',
-				'type' => 'text_small'				 
+				'type' => 'text_small'				
 			),
 			array(
 				'name' => 'Dwelling Units',
@@ -258,7 +258,11 @@ function be_sample_metaboxes( $meta_boxes ) {//metaboxes common variables to all
 					'options' => array(
 						array('name' => 'Low', 'value' => 'low'),
 						array('name' => 'Middle', 'value' => 'middle'),
+<<<<<<< HEAD
 						array('name' => 'High', 'value' => 'hight'),
+=======
+						array('name' => 'High', 'value' => 'hight')
+>>>>>>> origin/master
 						array('name' => 'Mixed', 'value' => 'mixed')						
 					) 
 			),
