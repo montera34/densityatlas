@@ -230,7 +230,7 @@ function be_sample_metaboxes( $meta_boxes ) {//metaboxes common variables to all
 				'name' => 'Range of Heights',
 				'desc' => 'select',
 				'id' => $prefix . 'range-of-heights',
-				'type' => 'text_small'				
+				'type' => 'text_small'				 
 			),
 			array(
 				'name' => 'Dwelling Units',
