@@ -216,7 +216,7 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 						<?php if ( $case_pop > 4000 ) { echo "<i style='position: absolute; right: 0; bottom: 1px;' class='icon-plus'></i>"; }?>
 					</div>
 				</div><!-- .case-metric-line -->
-				<div class="case-metric-line case-metric-bg">
+				<div class="case-metric-line case-metric-bg   case-metric-line-density">
 					<div class="case-metric-far" style="width: <?php echo $pop_per ?>px;float:left;" title="<?php echo $case_pop ?>"></div>
 				</div><!-- .case-metric-line -->
 			</div>

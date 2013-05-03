@@ -225,6 +225,13 @@ article.page h2, #case-data h1, #case-data h3 a {
 	float: left;
 	width: 300px;
 }
+
+.case-metric-line-density {
+	background-image: url('img/randomDot.png') !important;
+	background-repeat:no-repeat;
+	border:1px solid #eee;
+} 
+
 .case-metric-segment {
 	float: left;
 	height: 10px;
@@ -237,7 +244,7 @@ article.page h2, #case-data h1, #case-data h3 a {
 }
 .case-metric-bg {
 	background-color: #ddd;
-	height: 10px;
+	height: 15px;
 	width: 300px;
 }
 .case-metric-far,
