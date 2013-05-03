@@ -160,13 +160,13 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 			<div class="span4">
 				<div class="case-metric-line">
 					<div class="case-metric-unit">0</div>
-					<div class="case-metric-unit"> -</div>
+					<div class="case-metric-unit"><img src="<?php echo $genvars['blogtheme']; ?>/img/far1.png"></div>
 					<div class="case-metric-unit">2</div>
-					<div class="case-metric-unit"> -</div>
+					<div class="case-metric-unit"><img src="<?php echo $genvars['blogtheme']; ?>/img/far3.png"></div>
 					<div class="case-metric-unit">4</div>
-					<div class="case-metric-unit"> -</div>
+					<div class="case-metric-unit"><img src="<?php echo $genvars['blogtheme']; ?>/img/far5.png"></div>
 					<div class="case-metric-unit">6</div>
-					<div class="case-metric-unit"> -</div>
+					<div class="case-metric-unit"><img src="<?php echo $genvars['blogtheme']; ?>/img/far7.png"></div>
 					<div class="case-metric-unit">8</div>
 				</div><!-- .case-metric-line -->
 				<div class="case-metric-line">
