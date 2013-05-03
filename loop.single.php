@@ -13,7 +13,7 @@ if ( get_post_type( $post->ID ) == 'case' ) {
 	$case_year = get_post_meta( $post->ID, '_da_year', true );
 	$case_far = get_post_meta( $post->ID, '_da_far', true );
 	$case_pop = get_post_meta( $post->ID, '_da_pop-ha', true );
-	$max_width = 700;
+	$max_width = 300;
 	$far_max = 9;
 	$case_segment = ($max_width / $far_max) -1;
 	if ( $case_far > 8 ) { $far_per == $max_width; }
@@ -153,19 +153,20 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 		<style>.case-metric-unit, .case-metric-segment { width: <?php echo $case_segment ?>px;}</style>
 		<?php if ( has_term("block","scale") || has_term("neighborhood","scale") ) {
 		// if is a block or a neighborhood ?>
-		<div id="case-far" class="row">
-			<div class="span2"><h3>FAR</h3></div>
+		<div class="row">
+		<div id="case-far">
+			<div class="span1"><h3>FAR</h3></div>
 			<div class="span1"><h3><?php echo $case_far; ?></h3></div>
-			<div class="span9">
+			<div class="span4">
 				<div class="case-metric-line">
 					<div class="case-metric-unit">0</div>
-					<div class="case-metric-unit">South End Boston</div>
+					<div class="case-metric-unit"> -</div>
 					<div class="case-metric-unit">2</div>
-					<div class="case-metric-unit">South End Boston</div>
+					<div class="case-metric-unit"> -</div>
 					<div class="case-metric-unit">4</div>
-					<div class="case-metric-unit">South End Boston</div>
+					<div class="case-metric-unit"> -</div>
 					<div class="case-metric-unit">6</div>
-					<div class="case-metric-unit">South End Boston</div>
+					<div class="case-metric-unit"> -</div>
 					<div class="case-metric-unit">8</div>
 				</div><!-- .case-metric-line -->
 				<div class="case-metric-line">
@@ -187,19 +188,19 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 			</div>
 		</div><!-- #case-far -->
 		<?php } // if is a block or a neighborhood ?>
-		<div id="case-pop" class="row">
-			<div class="span2"><h3>POP/Ha</h3></div>
+		<div id="case-pop" >
+			<div class="span1"><h3>POP/Ha</h3></div>
 			<div class="span1"><h3><?php echo $case_pop; ?></h3></div>
-			<div class="span9">
+			<div class="span4">
 				<div class="case-metric-line">
 					<div class="case-metric-unit">0</div>
-					<div class="case-metric-unit">South End Boston</div>
+					<div class="case-metric-unit"> -</div>
 					<div class="case-metric-unit">1,000</div>
-					<div class="case-metric-unit">South End Boston</div>
+					<div class="case-metric-unit">-</div>
 					<div class="case-metric-unit">2,000</div>
-					<div class="case-metric-unit">South End Boston</div>
+					<div class="case-metric-unit">-</div>
 					<div class="case-metric-unit">3,000</div>
-					<div class="case-metric-unit">South End Boston</div>
+					<div class="case-metric-unit">-</div>
 					<div class="case-metric-unit">4,000</div>
 				</div><!-- .case-metric-line -->
 				<div class="case-metric-line">
@@ -216,10 +217,11 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 					</div>
 				</div><!-- .case-metric-line -->
 				<div class="case-metric-line case-metric-bg">
-					<div class="case-metric-far" style="width: <?php echo $pop_per ?>px;" title="<?php echo $case_pop ?>"> ></div>
+					<div class="case-metric-far" style="width: <?php echo $pop_per ?>px;float:left;" title="<?php echo $case_pop ?>"></div>
 				</div><!-- .case-metric-line -->
 			</div>
 		</div><!-- #case-far -->
+		</div>
 	<?php } // end if case study post type
 	else { // if story ( post type )
 		if ( $sentence_tit != '' ) { // if sentence tit ?>

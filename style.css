@@ -224,7 +224,7 @@ article.page h2, #case-data h1, #case-data h3 a {
 }
 .case-metric-line {
 	float: left;
-	width: 700px;
+	width: 300px;
 }
 .case-metric-segment {
 	float: left;
@@ -239,12 +239,14 @@ article.page h2, #case-data h1, #case-data h3 a {
 .case-metric-bg {
 	background-color: #ddd;
 	height: 10px;
-	width: 700px;
+	width: 300px;
 }
 .case-metric-far,
 .case-metric-pop {
-	height: 10px;
-	background-color: #D9386A;
+	height: 30px;
+	background-color: transparent;
+	border-right: 8px solid #D9386A;
+	margin-top: -10px;
 }
 .case-metric-far:hover,
 .case-metric-pop:hover {
