@@ -160,14 +160,14 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 			<div class="span4">
 				<div class="case-metric-line">
 					<div class="case-metric-unit">0</div>
-					<div class="case-metric-unit"><img src="<?php echo $genvars['blogtheme']; ?>/img/far1.png"></div>
-					<div class="case-metric-unit">2</div>
-					<div class="case-metric-unit"><img src="<?php echo $genvars['blogtheme']; ?>/img/far3.png"></div>
-					<div class="case-metric-unit">4</div>
-					<div class="case-metric-unit"><img src="<?php echo $genvars['blogtheme']; ?>/img/far5.png"></div>
-					<div class="case-metric-unit">6</div>
-					<div class="case-metric-unit"><img src="<?php echo $genvars['blogtheme']; ?>/img/far7.png"></div>
-					<div class="case-metric-unit">8</div>
+					<div class="case-metric-unit">1<img src="<?php echo $genvars['blogtheme']; ?>/img/far1.png"></div>
+					<div class="case-metric-unit">2<img src="<?php echo $genvars['blogtheme']; ?>/img/far2.png"></div>
+					<div class="case-metric-unit">3<img src="<?php echo $genvars['blogtheme']; ?>/img/far3.png"></div>
+					<div class="case-metric-unit">4<img src="<?php echo $genvars['blogtheme']; ?>/img/far4.png"></div>
+					<div class="case-metric-unit">5<img src="<?php echo $genvars['blogtheme']; ?>/img/far5.png"></div>
+					<div class="case-metric-unit">6<img src="<?php echo $genvars['blogtheme']; ?>/img/far6.png"></div>
+					<div class="case-metric-unit">7<img src="<?php echo $genvars['blogtheme']; ?>/img/far7.png"></div>
+					<div class="case-metric-unit">8<img src="<?php echo $genvars['blogtheme']; ?>/img/far8.png"></div>
 				</div><!-- .case-metric-line -->
 				<div class="case-metric-line">
 					<div class="case-metric-segment"></div>
