@@ -1,4 +1,5 @@
-jQuery(document).ready(function(){
+//jQuery(document).ready(function(){
+jQuery(window).load(function(){
 	jQuery('#home-gallery').masonry({
 	itemSelector: '.home-item',
 //	columnWidth: 240,
