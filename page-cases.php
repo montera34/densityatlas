@@ -45,9 +45,9 @@ foreach ( $scale_slugs as $scale_slug ) {
 	// scale tab button
 	if ( $scale_count == 0 ) {
 	// this is the active button
-		array_push( $scale_buttons,"<li class='active'><a href='#" .$scale_slug. "' class='" .$scale_slug. " btn btn-small btn-" .$scale_class. "' data-toggle='tab'>" .$scale_names[$scale_count]. "</a></li>" ); // adding this scale button to the buttons container
+		array_push( $scale_buttons,"<li class='active'><a href='#" .$scale_slug. "' class='" .$scale_slug. "btn-" .$scale_class. "' data-toggle='tab'>" .$scale_names[$scale_count]. "</a></li>" ); // adding this scale button to the buttons container
 	} else {
-		array_push( $scale_buttons,"<li><a href='#" .$scale_slug. "' class='" .$scale_slug. " btn btn-small btn-" .$scale_class. "' data-toggle='tab'>" .$scale_names[$scale_count]. "</a></li>" ); // adding this scale button to the buttons container
+		array_push( $scale_buttons,"<li><a href='#" .$scale_slug. "' class='" .$scale_slug. " btn-" .$scale_class. "' data-toggle='tab'>" .$scale_names[$scale_count]. "</a></li>" ); // adding this scale button to the buttons container
 	}
 	// scale tab contents
 	if ( $scale_slug == 'all' ) {
@@ -119,7 +119,7 @@ if ( $vis == "map" ) {
 				</ul>
 			</div>
 			<div class="span6">
-				<h4>Filter by</h4>
+				<h4>FILTER BY SCALE</h4>
 				<ul id="filters" class="inline">
 					<?php foreach ( $scale_buttons as $button ) { echo $button; } ?>
 				</ul>

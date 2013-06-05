@@ -128,6 +128,10 @@ article.page h2, #case-data h1, #case-data h3 a {
 	border-top: 2px solid #b3b3b3;
 	padding: 25px 0;
 }
+.text-content p{
+	font-size:14px;
+	line-height:18px;
+}
 /* Case Studies */
 #gallery-tit {
 	padding: 20px 0;
@@ -295,53 +299,26 @@ article.page h2, #case-data h1, #case-data h3 a {
 
 /* bootstrap like buttons made at http://charliepark.org/bootstrap_buttons/ */
 
-.btn-blockk { /*yes, tpe with 2 kk to avoid problems */
-  background-color:#000;
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f05a28", endColorstr="#f05a28");
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#f05a28), to(#f05a28));
-  background-image: -moz-linear-gradient(top, #f05a28, #f05a28);
-  background-image: -ms-linear-gradient(top, #f05a28, #f05a28);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f05a28), color-stop(100%, #f05a28));
-  background-image: -webkit-linear-gradient(top, #f05a28, #f05a28);
-  background-image: -o-linear-gradient(top, #f05a28, #f05a28);
-  background-image: linear-gradient(#f05a28, #f05a28);
-  border-color: #f05a28 #f05a28 hsl(350, 65%, 48%);
-  color: #fff !important;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.00);
-  -webkit-font-smoothing: antialiased;
+.btn-blockk,.btn-neighborhood,.btn-district {
+	color: #fff !important;
+	font-size:12px; 
+	font-weight:bold; 
+	text-transform:uppercase;
+	height: 24px;
+	min-width: 100px;
+	text-align: center;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	padding: 5px 15px;
+}
+.btn-blockk { /*yes, type with 2 kk to avoid problems */
+	background-color:#f05a28;
 }
 .btn-neighborhood {
-  background-color:#000;
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#D9386A", endColorstr="#D9386A");
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#D9386A), to(#D9386A));
-  background-image: -moz-linear-gradient(top, #D9386A, #D9386A);
-  background-image: -ms-linear-gradient(top, #D9386A, #D9386A);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #D9386A), color-stop(100%, #D9386A));
-  background-image: -webkit-linear-gradient(top, #D9386A, #D9386A);
-  background-image: -o-linear-gradient(top, #D9386A, #D9386A);
-  background-image: linear-gradient(#D9386A, #D9386A);
-  border-color: #D9386A #D9386A hsl(350, 65%, 48%);
-  color: #fff !important;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.00);
-  -webkit-font-smoothing: antialiased;
+  background-color:#D9386A;
 }
 .btn-district {
-  background-color:#000;
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#fec72f", endColorstr="#fec72f");
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#fec72f), to(#fec72f));
-  background-image: -moz-linear-gradient(top, #fec72f, #fec72f);
-  background-image: -ms-linear-gradient(top, #fec72f, #fec72f);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fec72f), color-stop(100%, #fec72f));
-  background-image: -webkit-linear-gradient(top, #fec72f, #fec72f);
-  background-image: -o-linear-gradient(top, #fec72f, #fec72f);
-  background-image: linear-gradient(#fec72f, #fec72f);
-  border-color: #fec72f #fec72f hsl(350, 65%, 48%);
-  color: #fff !important;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.00);
-  -webkit-font-smoothing: antialiased;
+  background-color:#fec72f;
 }
 
 /* map */

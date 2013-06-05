@@ -466,7 +466,7 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 		<?php } // if story ?>
 		</div><!-- #case-sidebar -->
 		<?php wp_reset_query(); ?>
-		<div class="span6 offset1">
+		<div class="span9 text-content">
 			<h1><?php echo $case_tit ?></h1>
 			<?php if ( get_post_type( $post->ID ) == 'case' ) {
 				echo "<h3>" .get_the_term_list( $post->ID, 'scale', '', ', ', '' ). "</h3>";
