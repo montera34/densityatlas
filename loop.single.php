@@ -37,7 +37,11 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 			<?php if ( get_post_type( $post->ID ) == 'case' ) {
 			// if case study post type ?>
 			<div class="span6">
-				<h2><?php echo $case_tit ?>&nbsp;&nbsp;<small><? echo $case_country ?> &nbsp;&nbsp;<? echo $case_year; ?></small></h2>
+				<h2>
+					<?php echo $case_tit ?>&nbsp;&nbsp;
+					<small><?php echo get_the_term_list( $post->ID, 'district', '', '', ', ' ) ?> <?php echo get_the_term_list( $post->ID, 'city', '', ', ', '' ) ?><br>
+					<?php echo $case_country ?> &nbsp;&nbsp;<?php // echo  $case_year; ?></small>
+				</h2>
 			</div>
 			<div class="span6">
 				<ul class="nav nav-pills">
