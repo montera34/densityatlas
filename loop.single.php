@@ -39,8 +39,10 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 			<div class="span6">
 				<h2>
 					<?php echo $case_tit ?>&nbsp;&nbsp;
-					<small><?php echo get_the_term_list( $post->ID, 'district', '', '', ', ' ) ?> <?php echo get_the_term_list( $post->ID, 'city', '', ', ', '' ) ?><br>
-					<?php echo $case_country ?> &nbsp;&nbsp;<?php // echo  $case_year; ?></small>
+					<div id="case-info">
+						<small><?php echo get_the_term_list( $post->ID, 'district', '', '', ', ' ) ?> <?php echo get_the_term_list( $post->ID, 'city', '', ', ', '' ) ?>. <?php echo get_the_term_list( $post->ID, 'country', '', ', ', '' ) ?>
+						<?php //echo $case_country; // echo  $case_year; ?></small>
+					</div>
 				</h2>
 			</div>
 			<div class="span6">
