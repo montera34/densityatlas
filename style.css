@@ -128,7 +128,7 @@ article.page h2, #case-data h1, #case-data h3 a {
 	border-top: 2px solid #b3b3b3;
 	padding: 25px 0;
 }
-.text-content p{
+.text-content p{ /* style for paragraphs in Case studies, Pages and stories (posts)*/
 	font-size:14px;
 	line-height:18px;
 }
@@ -236,6 +236,7 @@ article.page h2, #case-data h1, #case-data h3 a {
 }
 #case-sidebar th {
 	text-transform: uppercase;
+	font-size: 12px;
 }
 /* case metrics */
 #case-far {
