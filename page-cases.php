@@ -38,7 +38,8 @@ $scale_names = array("Reset","Block","Neighborhood","District");
 $scale_count = 0;
 // active tab when page loads
 // 0 for all | 1 for Block | 2 for Neighborhood | 3 for District
-$active_tab = 2;
+if ( $order != '' ) { $active_tab == 0; }
+else { $active_tab = 2; }
 
 foreach ( $scale_slugs as $scale_slug ) {
 
