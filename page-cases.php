@@ -36,6 +36,9 @@ $scale_tabs = array(); // tabs content container
 $scale_slugs = array("all","block","neighborhood","district");
 $scale_names = array("Reset","Block","Neighborhood","District");
 $scale_count = 0;
+// active tab when page loads
+// 0 for all | 1 for Block | 2 for Neighborhood | 3 for District
+$active_tab = 2;
 
 foreach ( $scale_slugs as $scale_slug ) {
 
@@ -43,7 +46,7 @@ foreach ( $scale_slugs as $scale_slug ) {
 	if ( $scale_slug == 'block' ) { $scale_class = $scale_slug. "k"; }
 	else { $scale_class = $scale_slug; }
 	// scale tab button
-	if ( $scale_count == 0 ) {
+	if ( $scale_count == $active_tab ) {
 	// this is the active button
 		array_push( $scale_buttons,"<li class='active'><a href='#" .$scale_slug. "' class='" .$scale_slug. "btn-" .$scale_class. "' data-toggle='tab'>" .$scale_names[$scale_count]. "</a></li>" ); // adding this scale button to the buttons container
 	} else {
@@ -141,7 +144,7 @@ if ( $vis == "map" ) {
 		<?php
 		$scale_count = 0;
 		foreach ( $scale_tabs as $tab ) {
-			if ( $scale_count == 0 ) { echo "<div id='" .$scale_slugs[$scale_count]. "' class='tab-pane active'>" .$tab. "</div>"; }
+			if ( $scale_count == $active_tab ) { echo "<div id='" .$scale_slugs[$scale_count]. "' class='tab-pane active'>" .$tab. "</div>"; }
 			else { echo "<div id='" .$scale_slugs[$scale_count]. "' class='tab-pane'>" .$tab. "</div>"; }
 			$scale_count++;
 		} ?>
