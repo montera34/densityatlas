@@ -19,13 +19,13 @@ $order = sanitize_text_field( $_GET['order'] );
 $order_buttons = array(); // order buttons container
 if ( $order != 'ha' ) { // if FAR order
 	$order = "_da_far";
-	array_push( $order_buttons,"<li class='active'><a href='" .$base_url . $param_url. "far' class='btn btn-small'>FAR</a></li>" );
+	array_push( $order_buttons,"<li><a href='" .$base_url . $param_url. "far' class='active btn btn-small'>FAR</a></li>" );
 	array_push( $order_buttons,"<li><a href='" .$base_url . $param_url. "ha' class='btn btn-small'>People/ha</a></li>" );
 }
 else { // if POP/ha order
 	$order = "_da_pop-ha";
 	array_push( $order_buttons,"<li><a href='" .$base_url . $param_url. "far' class='btn btn-small'>FAR</a></li>" );
-	array_push( $order_buttons,"<li class='active'><a href='" .$base_url . $param_url. "ha' class='btn btn-small'>People/ha</a></li>" );
+	array_push( $order_buttons,"<li><a href='" .$base_url . $param_url. "ha' class='active btn btn-small'>People/ha</a></li>" );
 }
 
 
