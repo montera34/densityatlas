@@ -256,23 +256,28 @@ function be_sample_metaboxes( $meta_boxes ) {//metaboxes common variables to all
 				'id' => $prefix . 'income',
 				'type' => 'select',
 					'options' => array(
-						array('name' => 'Low', 'value' => 'low'),
-						array('name' => 'Middle', 'value' => 'middle'),
-						array('name' => 'High', 'value' => 'hight'),
-						array('name' => 'Mixed', 'value' => 'mixed')						
+						array('name' => 'Low', 'value' => 'Low'),
+						array('name' => 'Medium', 'value' => 'Medium'),
+						array('name' => 'High', 'value' => 'High'),
+						array('name' => 'Mixed', 'value' => 'Mixed')						
 					) 
 			),
 			array(
 				'name' => 'Demographic group',
-				'desc' => 'Select',
+				'desc' => '',
 				'id' => $prefix . 'demographic-group',
-				'type' => 'select',
+				//'type' => 'select',
+				'type' => 'multicheck',
 					'options' => array(
-						array('name' => 'Senior', 'value' => 'senior'), 
-						array('name' => 'Families', 'value' => 'families'),
-						array('name' => 'Single', 'value' => 'single'),
-						array('name' => 'Couples', 'value' => 'couples'),	
-						array('name' => 'Mixed', 'value' => 'mixed')					
+						//array('name' => 'Senior', 'value' => 'senior'), 
+						//array('name' => 'Families', 'value' => 'families'),
+						//array('name' => 'Single', 'value' => 'single'),
+						//array('name' => 'Couples', 'value' => 'couples'),	
+						//array('name' => 'Mixed', 'value' => 'mixed')					
+						'senior' => 'Senior',
+						'family' => 'Families with children',
+						'single' => 'Single couples',
+						'other' => 'Other',
 					) 
 			) 
 		) 
