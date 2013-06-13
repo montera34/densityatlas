@@ -37,7 +37,13 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 			<?php if ( get_post_type( $post->ID ) == 'case' ) {
 			// if case study post type ?>
 			<div class="span6">
-				<h2><?php echo $case_tit ?>&nbsp;&nbsp;<small><? echo $case_country ?> &nbsp;&nbsp;<? echo $case_year; ?></small></h2>
+				<h2>
+					<?php echo $case_tit ?>&nbsp;&nbsp;
+					<div id="case-info">
+						<small><?php echo get_the_term_list( $post->ID, 'district', '', '', ', ' ) ?> <?php echo get_the_term_list( $post->ID, 'city', '', ', ', '' ) ?>. <?php echo get_the_term_list( $post->ID, 'country', '', ', ', '' ) ?>
+						<?php //echo $case_country; // echo  $case_year; ?></small>
+					</div>
+				</h2>
 			</div>
 			<div class="span6">
 				<ul class="nav nav-pills">
@@ -160,14 +166,14 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 			<div class="span4">
 				<div class="case-metric-line">
 					<div class="case-metric-unit">0</div>
-					<div class="case-metric-unit"><img src="<?php echo $genvars['blogtheme']; ?>/img/far1.png"></div>
-					<div class="case-metric-unit">2</div>
-					<div class="case-metric-unit"><img src="<?php echo $genvars['blogtheme']; ?>/img/far3.png"></div>
-					<div class="case-metric-unit">4</div>
-					<div class="case-metric-unit"><img src="<?php echo $genvars['blogtheme']; ?>/img/far5.png"></div>
-					<div class="case-metric-unit">6</div>
-					<div class="case-metric-unit"><img src="<?php echo $genvars['blogtheme']; ?>/img/far7.png"></div>
-					<div class="case-metric-unit">8</div>
+					<div class="case-metric-unit">1<img src="<?php echo $genvars['blogtheme']; ?>/img/far1.png"></div>
+					<div class="case-metric-unit">2<img src="<?php echo $genvars['blogtheme']; ?>/img/far2.png"></div>
+					<div class="case-metric-unit">3<img src="<?php echo $genvars['blogtheme']; ?>/img/far3.png"></div>
+					<div class="case-metric-unit">4<img src="<?php echo $genvars['blogtheme']; ?>/img/far4.png"></div>
+					<div class="case-metric-unit">5<img src="<?php echo $genvars['blogtheme']; ?>/img/far5.png"></div>
+					<div class="case-metric-unit">6<img src="<?php echo $genvars['blogtheme']; ?>/img/far6.png"></div>
+					<div class="case-metric-unit">7<img src="<?php echo $genvars['blogtheme']; ?>/img/far7.png"></div>
+					<div class="case-metric-unit">8<img src="<?php echo $genvars['blogtheme']; ?>/img/far8.png"></div>
 				</div><!-- .case-metric-line -->
 				<div class="case-metric-line">
 					<div class="case-metric-segment"></div>
@@ -216,7 +222,7 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 						<?php if ( $case_pop > 4000 ) { echo "<i style='position: absolute; right: 0; bottom: 1px;' class='icon-plus'></i>"; }?>
 					</div>
 				</div><!-- .case-metric-line -->
-				<div class="case-metric-line case-metric-bg">
+				<div class="case-metric-line case-metric-bg   case-metric-line-density">
 					<div class="case-metric-far" style="width: <?php echo $pop_per ?>px;float:left;" title="<?php echo $case_pop ?>"></div>
 				</div><!-- .case-metric-line -->
 			</div>
@@ -462,7 +468,7 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 		<?php } // if story ?>
 		</div><!-- #case-sidebar -->
 		<?php wp_reset_query(); ?>
-		<div class="span6 offset1">
+		<div class="span9 text-content">
 			<h1><?php echo $case_tit ?></h1>
 			<?php if ( get_post_type( $post->ID ) == 'case' ) {
 				echo "<h3>" .get_the_term_list( $post->ID, 'scale', '', ', ', '' ). "</h3>";

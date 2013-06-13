@@ -20,11 +20,11 @@ $post_pop = get_post_meta( $post->ID, '_da_pop-ha', true );
 
 $tab_tmp .= "
 	<div " .$classes_out. " >
-		<div class='box-image' style='z-index:1;top:0px;left:0px;height:160px;opacity:0.3;background-image:url(\"" .$src[0]. "\")'>
+		<div class='box-image' style='z-index:1;top:0px;left:0px;height:160px;background-image:url(\"" .$src[0]. "\")'>
 		</div>
 		<div class='box-content'style='z-index:2;'>
 			<a href='" .$post_perma. "' title='Permalink to " .$post_tit. "' rel='bookmark'><h4>" .$post_tit. "</h4></a>
-		<div style='position: absolute;bottom: 90px;'>" .$post_cities. "</div>
+		<div style='position: absolute;bottom: 90px;' class='cities'>" .$post_cities. "</div>
 			<h4 class='box-data'>
 				<!-- for Block and Neighborood Scales -->
 				<div style='float:left;'>FAR</div> <div style='text-align:right;font-weight:bold;'>" .$post_far. "</div> 

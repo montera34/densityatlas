@@ -12,9 +12,9 @@ $orderby = sanitize_text_field( $_GET['type'] );
 if ( $order == '' ) { $order = "tax_country"; $orderby = "meta_value"; }
 $orders = array(
 	array(
-		'value_url' => 'tax_country',
+		'value_url' => 'tit',
 		'type' => 'meta_value',
-		'tit' => 'Country'
+		'tit' => 'Location'
 	),
 	array(
 		'value_url' => 'tax_city',
@@ -22,9 +22,9 @@ $orders = array(
 		'tit' => 'City'
 	),
 	array(
-		'value_url' => 'tit',
+		'value_url' => 'tax_country',
 		'type' => 'meta_value',
-		'tit' => 'Location'
+		'tit' => 'Country'
 	),
 	array(
 		'value_url' => 'tax_scale',
@@ -110,27 +110,27 @@ foreach ( $scale_slugs as $scale_slug ) {
 			<tbody>
 		";
 		while ( $related_query->have_posts() ) : $related_query->the_post();
-			$countries = get_the_terms($post->ID,"country");
-			if ( $countries ) {
-				foreach ( $countries as $term ) { $country = $term->name;}
-			}
+			$location = "<a href='" .get_permalink(). "'>" .get_the_title(). "</a>";
 			$cities = get_the_terms($post->ID,"city");
 			if ( $cities ) {
 				foreach ( $cities as $term ) { $city = $term->name; }
+			}
+			$countries = get_the_terms($post->ID,"country");
+			if ( $countries ) {
+				foreach ( $countries as $term ) { $country = $term->name;}
 			}
 			$scales = get_the_terms($post->ID,"scale");
 			if ( $cities ) {
 				foreach ( $scales as $term ) { $scale = $term->name; }
 			}
-			$location = "<a href='" .get_permalink(). "'>" .get_the_title(). "</a>";
 			$far = get_post_meta( $post->ID, '_da_far', true );
 			$pop = get_post_meta( $post->ID, '_da_pop-ha', true );
 			$du = get_post_meta( $post->ID, '_da_dus-ha', true );
 			$tab_tmp .= "
 				<tr>
-					<td>" .$country. "</td>
-					<td>" .$city. "</td>
 					<td>" .$location. "</td>
+					<td>" .$city. "</td>
+					<td>" .$country. "</td>
 					<td>" .$scale. "</td>
 					<td>" .$far. "</td>
 					<td>" .$du. "</td>
