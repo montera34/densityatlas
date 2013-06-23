@@ -415,7 +415,11 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 				</thead>
 				<tbody>
 					<tr>
-						<td><?php echo get_post_meta( $post->ID, '_da_references', true ); ?></td>
+						<td>
+						<?php $ref = get_post_meta( $post->ID, '_da_references', true );
+						$ref = apply_filters( 'the_content', $ref );
+						echo $ref; ?>
+						</td>
 					</tr>
 				</tbody>
 			</table>
