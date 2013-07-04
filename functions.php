@@ -186,6 +186,12 @@ function be_sample_metaboxes( $meta_boxes ) {//metaboxes common variables to all
 				'id' => $prefix . 'year',
 				'type' => 'text_small'
 			),
+			array(
+				'name' => 'Author of case study',
+				'desc' => 'If filled, it will override the Wordpress Author.',
+				'id' => $prefix . 'author',
+				'type' => 'text_small'
+			),
 		),
 	);
 	$meta_boxes[] = array(

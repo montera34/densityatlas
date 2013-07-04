@@ -405,7 +405,15 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 				</thead>
 				<tbody>
 					<tr>
-						<td><?php the_author(); ?></td>
+						<td><?php $case_author = get_post_meta( $post->ID, '_da_author', true );
+									if  ($case_author != '') {
+										echo $case_author; 
+										}
+									else { 
+										the_author(); 
+										} ?>	
+						</td>
+						
 					</tr>
 				</tbody>
 			</table>
