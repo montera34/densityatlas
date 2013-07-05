@@ -2,12 +2,12 @@
 <?php
 $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
 $term_name = $term->name;
-if ( get_query_var('taxonomy') == 'scale' ) { $tax_name = "Scale"; }
+if ( get_query_var('taxonomy') == 'scale' ) { $tax_name = "Scale: "; }
 ?>
 <div id="gallery-tit" class="row">
 	<div class="container">
 		<div class="row">
-			<div class="span3"><h2><?php echo $tax_name. ": " .$term_name; ?></h2></div>
+			<div class="span3"><h2><?php echo $tax_name. "" .$term_name; ?></h2></div>
 			<div class="span3">
 				<h4>Sort by</h4>
 				<h4><a href="" class="btn btn-small">FAR</a> <a href="" class="btn btn-small">People / Ha</a></h4>
