@@ -341,15 +341,15 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 				</thead>
 				<tbody>
 					<tr>
-						<td><?php echo 'Gross Building Area' ?></td>
+						<td><?php echo 'Gross Building Area (m2)' ?></td>
 						<td class="textr"><?php echo get_post_meta( $post->ID, '_da_gross-building-area', true ); ?></td>
 					</tr>
 					<tr>
-						<td><?php echo 'Site Area' ?></td>
+						<td><?php echo 'Site area (ha)' ?></td>
 						<td class="textr"><?php echo get_post_meta( $post->ID, '_da_site-area', true ); ?></td>
 					</tr>
 					<tr>
-						<td><?php echo 'Range of Heights' ?></td>
+						<td><?php echo 'Range of heights (floors)' ?></td>
 						<td class="textr"><?php echo get_post_meta( $post->ID, '_da_range-of-heights', true ); ?></td>
 					</tr>
 					<tr>
