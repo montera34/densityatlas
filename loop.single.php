@@ -327,10 +327,6 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 						<td><?php echo 'DUs/Ha' ?></td>
 						<td class="textr"><?php echo get_post_meta( $post->ID, '_da_dus-ha', true ); ?></td>
 					</tr>
-					<tr>
-						<td><?php echo 'm2/Ha' ?></td>
-						<td class="textr"><?php echo get_post_meta( $post->ID, '_da_m2-ha', true ); ?></td>
-					</tr>
 				</tbody>
 			</table>
 			<?php if ( has_term("block","scale") || has_term("neighborhood","scale") ) {
