@@ -196,7 +196,7 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 		<?php } // if is a block or a neighborhood ?>
 		<div id="case-pop" >
 			<div class="span1"><h3>POP/Ha</h3></div>
-			<div class="span1"><h3><?php echo $case_pop; ?></h3></div>
+			<div class="span1"><h3><?php echo number_format($case_pop); ?></h3></div>
 			<div class="span4">
 				<div class="case-metric-line">
 					<div class="case-metric-unit">0</div>
@@ -338,11 +338,19 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 				<tbody>
 					<tr>
 						<td><?php echo 'Gross Building Area (m2)' ?></td>
-						<td class="textr"><?php echo get_post_meta( $post->ID, '_da_gross-building-area', true ); ?></td>
+						<td class="textr"><?php $grossbuildingarea = get_post_meta( $post->ID, '_da_gross-building-area', true ); 
+									echo number_format($grossbuildingarea); ?>
+						</td>
 					</tr>
 					<tr>
 						<td><?php echo 'Site area (ha)' ?></td>
-						<td class="textr"><?php echo get_post_meta( $post->ID, '_da_site-area', true ); ?></td>
+						<td class="textr"><?php $sitearea = get_post_meta( $post->ID, '_da_site-area', true ); 
+									if (has_term("block","scale")) {
+									echo number_format($sitearea/10000,2);
+									} else {
+									echo number_format($sitearea/10000,1);
+									}
+						 ?></td>
 					</tr>
 					<tr>
 						<td><?php echo 'Range of heights (floors)' ?></td>
@@ -350,11 +358,13 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 					</tr>
 					<tr>
 						<td><?php echo 'Dwelling Units' ?></td>
-						<td class="textr"><?php echo get_post_meta( $post->ID, '_da_dwelling-units', true ); ?></td>
+						<td class="textr"><?php $dwellingunits = get_post_meta( $post->ID, '_da_dwelling-units', true ); 
+									echo number_format($dwellingunits); ?></td>
 					</tr>
 					<tr>
 						<td><?php echo 'Parking Spaces' ?></td>
-						<td class="textr"><?php echo get_post_meta( $post->ID, '_da_parking-spaces', true ); ?></td>
+						<td class="textr"><?php $parkingspaces = get_post_meta( $post->ID, '_da_parking-spaces', true ); 
+									echo number_format($parkingspaces); ?></td>
 					</tr>
 				</tbody>
 			</table>
@@ -365,7 +375,8 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 				<tbody>
 					<tr>
 						<td><?php echo 'Population' ?></td>
-						<td class="textr"><?php echo get_post_meta( $post->ID, '_da_population', true ); ?></td>
+						<td class="textr"><?php $population = get_post_meta( $post->ID, '_da_population', true ); 
+									echo number_format($population); ?></td>
 					</tr>
 					<tr>
 						<td><?php echo 'Income' ?></td>
