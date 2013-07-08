@@ -16,6 +16,13 @@ preg_match('/\?/',$base_url,$matches); // recheck after add vis var
 if ( $matches[0] == "?" ) { $param_url = "&order="; }
 else { $param_url = "?order="; }
 $order = sanitize_text_field( $_GET['order'] );
+// active tab when page loads
+// 0 for all | 1 for Block | 2 for Neighborhood | 3 for District
+if ( $order == '' ) { $active_tab = 2; }
+else { $active_tab = 2; }
+//echo $order; echo $active_tab;
+
+
 $order_buttons = array(); // order buttons container
 if ( $order != 'ha' ) { // if FAR order
 	$order = "_da_far";
@@ -36,10 +43,6 @@ $scale_tabs = array(); // tabs content container
 $scale_slugs = array("all","block","neighborhood","district");
 $scale_names = array("Reset","Block","Neighborhood","District");
 $scale_count = 0;
-// active tab when page loads
-// 0 for all | 1 for Block | 2 for Neighborhood | 3 for District
-if ( $order != '' ) { $active_tab == 0; }
-else { $active_tab = 2; }
 
 foreach ( $scale_slugs as $scale_slug ) {
 
