@@ -115,7 +115,7 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 			?>
 				<iframe class="span6" height="300" scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?viz=MAP&amp;q=select+col4+from+1uJv8cueGs0ibGwGmCcUjDha6-hRuFgDLu00PhNo&amp;h=false&amp;lat=<?php echo $lat ?>&amp;lng=<?php echo $lon ?>&amp;z=16&amp;t=3&amp;l=col4"></iframe>
 			<div class="span6">
-				<?php the_post_thumbnail(array(450,400)); ?>	
+				<?php the_post_thumbnail('large'); ?>
 			</div>
 			<?php } // end if case study post type
 			else {
