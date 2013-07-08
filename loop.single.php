@@ -327,10 +327,6 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 						<td><?php echo 'DUs/Ha' ?></td>
 						<td class="textr"><?php echo get_post_meta( $post->ID, '_da_dus-ha', true ); ?></td>
 					</tr>
-					<tr>
-						<td><?php echo 'm2/Ha' ?></td>
-						<td class="textr"><?php echo get_post_meta( $post->ID, '_da_m2-ha', true ); ?></td>
-					</tr>
 				</tbody>
 			</table>
 			<?php if ( has_term("block","scale") || has_term("neighborhood","scale") ) {
@@ -341,15 +337,15 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 				</thead>
 				<tbody>
 					<tr>
-						<td><?php echo 'Gross Building Area' ?></td>
+						<td><?php echo 'Gross Building Area (m2)' ?></td>
 						<td class="textr"><?php echo get_post_meta( $post->ID, '_da_gross-building-area', true ); ?></td>
 					</tr>
 					<tr>
-						<td><?php echo 'Site Area' ?></td>
+						<td><?php echo 'Site area (ha)' ?></td>
 						<td class="textr"><?php echo get_post_meta( $post->ID, '_da_site-area', true ); ?></td>
 					</tr>
 					<tr>
-						<td><?php echo 'Range of Heights' ?></td>
+						<td><?php echo 'Range of heights (floors)' ?></td>
 						<td class="textr"><?php echo get_post_meta( $post->ID, '_da_range-of-heights', true ); ?></td>
 					</tr>
 					<tr>
@@ -405,7 +401,15 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 				</thead>
 				<tbody>
 					<tr>
-						<td><?php the_author(); ?></td>
+						<td><?php $case_author = get_post_meta( $post->ID, '_da_author', true );
+									if  ($case_author != '') {
+										echo $case_author; 
+										}
+									else { 
+										the_author(); 
+										} ?>	
+						</td>
+						
 					</tr>
 				</tbody>
 			</table>
