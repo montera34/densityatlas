@@ -157,9 +157,9 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 			</div>
 		</div>
 		<style>.case-metric-unit, .case-metric-segment { width: <?php echo $case_segment ?>px;}</style>
-		<?php if ( has_term("block","scale") || has_term("neighborhood","scale") ) {
-		// if is a block or a neighborhood ?>
 		<div class="row">
+		<?php if ( (has_term("block","scale") || has_term("neighborhood","scale")) && $case_far != '0') { 
+		// if is a block or a neighborhood and FAR value is not 0 ?>
 		<div id="case-far">
 			<div class="span1"><h3>FAR</h3></div>
 			<div class="span1"><h3><?php echo $case_far; ?></h3></div>
