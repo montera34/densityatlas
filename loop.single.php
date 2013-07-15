@@ -116,8 +116,8 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 				if ($zoom == '') {$zoom = '15';}
 			?>
 				<iframe class="span6" height="380" scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col4+from+1uJv8cueGs0ibGwGmCcUjDha6-hRuFgDLu00PhNo&viz=MAP&h=false&lat=<?php echo $lat ?>&amp;lng=<?php echo $lon ?>&t=2&z=<?php echo $zoom ?>&l=col4&y=2&tmplt=1"></iframe>
-			<div class="span6">=
-				<?php the_post_thumbnail('large'); ?>
+			<div class="span6" style="overflow: hidden;">
+				<?php the_post_thumbnail('large', array('class' => 'featured-image')); ?>
 			</div>
 			<?php } // end if case study post type
 			else {

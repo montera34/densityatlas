@@ -145,6 +145,10 @@ article.page h2, #case-data h1, #case-data h3 a {
 #gallery-items {
 	margin-top: 40px;
 }
+.featured-image {
+	height: 380px !important;
+	max-width: none;
+}
 
 .box-basic {
 	height:180px;
