@@ -16,7 +16,7 @@ $post_cities = get_the_term_list( $post->ID, 'city', '', ', ', '' );
 $post_scales = get_the_term_list( $post->ID, 'scale', '', ', ', '' );
 $post_far = get_post_meta( $post->ID, '_da_far', true );
 if ( $post_far == "0" ) { $post_far = "n/a"; }
-$post_pop = get_post_meta( $post->ID, '_da_pop-ha', true );
+$post_pop = number_format(get_post_meta( $post->ID, '_da_pop-ha', true ));
 
 $tab_tmp .= "
 	<div " .$classes_out. " >
