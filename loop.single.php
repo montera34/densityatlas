@@ -117,7 +117,7 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 			?>
 				<iframe class="span6" height="380" scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col4+from+1uJv8cueGs0ibGwGmCcUjDha6-hRuFgDLu00PhNo&viz=MAP&h=false&lat=<?php echo $lat ?>&amp;lng=<?php echo $lon ?>&t=2&z=<?php echo $zoom ?>&l=col4&y=2&tmplt=1"></iframe>
 			<div class="span6" style="overflow: hidden;">
-				<?php the_post_thumbnail('large', array('class' => 'featured-image')); ?>
+				<?php the_post_thumbnail('medium', array('class' => 'featured-image')); ?>
 			</div>
 			<?php } // end if case study post type
 			else {
@@ -166,33 +166,24 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 			<div class="span1"><h3>FAR</h3></div>
 			<div class="span1"><h3><?php echo $case_far; ?></h3></div>
 			<div class="span4">
-				<div class="case-metric-line">
-					<div class="case-metric-unit">0</div>
-					<div class="case-metric-unit">1<img src="<?php echo $genvars['blogtheme']; ?>/img/far1.png"></div>
-					<div class="case-metric-unit">2<img src="<?php echo $genvars['blogtheme']; ?>/img/far2.png"></div>
-					<div class="case-metric-unit">3<img src="<?php echo $genvars['blogtheme']; ?>/img/far3.png"></div>
-					<div class="case-metric-unit">4<img src="<?php echo $genvars['blogtheme']; ?>/img/far4.png"></div>
-					<div class="case-metric-unit">5<img src="<?php echo $genvars['blogtheme']; ?>/img/far5.png"></div>
-					<div class="case-metric-unit">6<img src="<?php echo $genvars['blogtheme']; ?>/img/far6.png"></div>
-					<div class="case-metric-unit">7<img src="<?php echo $genvars['blogtheme']; ?>/img/far7.png"></div>
-					<div class="case-metric-unit">8<img src="<?php echo $genvars['blogtheme']; ?>/img/far8.png"></div>
-				</div><!-- .case-metric-line -->
-				<div class="case-metric-line">
-					<div class="case-metric-segment"></div>
-					<div class="case-metric-segment"></div>
-					<div class="case-metric-segment"></div>
-					<div class="case-metric-segment"></div>
-					<div class="case-metric-segment"></div>
-					<div class="case-metric-segment"></div>
-					<div class="case-metric-segment"></div>
-					<div class="case-metric-segment"></div>
-					<div class="case-metric-segment">
+				<div style="position:relative;top:0px">
+					<div class="case-metric-line" style="position:absolute;top:0px">
+						<div class="case-metric-unit"></div>
+						<div class="case-metric-unit"><img src="<?php echo $genvars['blogtheme']; ?>/img/far1.png"></div>
+						<div class="case-metric-unit"><img src="<?php echo $genvars['blogtheme']; ?>/img/far2.png"></div>
+						<div class="case-metric-unit"><img src="<?php echo $genvars['blogtheme']; ?>/img/far3.png"></div>
+						<div class="case-metric-unit"><img src="<?php echo $genvars['blogtheme']; ?>/img/far4.png"></div>
+						<div class="case-metric-unit"><img src="<?php echo $genvars['blogtheme']; ?>/img/far5.png"></div>
+						<div class="case-metric-unit"><img src="<?php echo $genvars['blogtheme']; ?>/img/far6.png"></div>
+						<div class="case-metric-unit"><img src="<?php echo $genvars['blogtheme']; ?>/img/far7.png"></div>
+						<div class="case-metric-unit"><img src="<?php echo $genvars['blogtheme']; ?>/img/far8.png"></div>
 						<?php if ( $case_far > 8 ) { echo "<i style='position: absolute; right: 0; bottom: 1px;' class='icon-plus'></i>"; }?>
-					</div>
-				</div><!-- .case-metric-line -->
-				<div class="case-metric-line case-metric-bg">
-					<div class="case-metric-far" style="width: <?php echo $far_per ?>px;" title="<?php echo $case_far ?>"></div>
-				</div><!-- .case-metric-line -->
+					</div><!-- .case-metric-line -->
+					<div class="case-metric-line" style="position:absolute;top:0px;margin-top: -35px;">
+						<div style="width: <?php echo ($far_per+20) ?>px;text-align:right;"><h3><?php echo $case_far; ?></h3></div>
+						<div class="case-metric-far" style="width: <?php echo $far_per ?>px;" title="<?php echo $case_far ?>"></div>
+					</div><!-- .case-metric-line -->
+				</div>
 			</div>
 		</div><!-- #case-far -->
 		<?php } // if is a block or a neighborhood ?>
