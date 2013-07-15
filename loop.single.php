@@ -113,8 +113,8 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 				$lat = preg_replace($pattern, $replacement, $location);
 				//echo "lat: " .$lat. " | lon: " .$lon;
 			?>
-				<iframe class="span6" height="300" scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col4+from+1uJv8cueGs0ibGwGmCcUjDha6-hRuFgDLu00PhNo&viz=MAP&h=false&lat=<?php echo $lat ?>&amp;lng=<?php echo $lon ?>&t=2&z=15&l=col4&y=2&tmplt=1"></iframe>
-			<div class="span6">
+				<iframe class="span6" height="380" scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col4+from+1uJv8cueGs0ibGwGmCcUjDha6-hRuFgDLu00PhNo&viz=MAP&h=false&lat=<?php echo $lat ?>&amp;lng=<?php echo $lon ?>&t=2&z=15&l=col4&y=2&tmplt=1"></iframe>
+			<div class="span6">=
 				<?php the_post_thumbnail('large'); ?>
 			</div>
 			<?php } // end if case study post type
@@ -510,7 +510,7 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 		<?php } // if story ?>
 		</div><!-- #case-sidebar -->
 		<?php wp_reset_query(); ?>
-		<div class="span9 text-content">
+		<div id="case-study-content" class="span9 text-content">
 			<h1><?php echo $case_tit ?></h1>
 			<?php if ( get_post_type( $post->ID ) == 'case' ) {
 				echo "<h3>" .get_the_term_list( $post->ID, 'scale', '', ', ', '' ). "</h3>";
