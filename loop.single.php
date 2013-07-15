@@ -113,7 +113,7 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 				$lat = preg_replace($pattern, $replacement, $location);
 				//echo "lat: " .$lat. " | lon: " .$lon;
 			?>
-				<iframe class="span6" height="300" scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?viz=MAP&amp;q=select+col4+from+1uJv8cueGs0ibGwGmCcUjDha6-hRuFgDLu00PhNo&amp;h=false&amp;lat=<?php echo $lat ?>&amp;lng=<?php echo $lon ?>&amp;z=16&amp;t=3&amp;l=col4"></iframe>
+				<iframe class="span6" height="300" scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col4+from+1uJv8cueGs0ibGwGmCcUjDha6-hRuFgDLu00PhNo&viz=MAP&h=false&lat=<?php echo $lat ?>&amp;lng=<?php echo $lon ?>&t=2&z=15&l=col4&y=2&tmplt=1"></iframe>
 			<div class="span6">
 				<?php the_post_thumbnail('large'); ?>
 			</div>
