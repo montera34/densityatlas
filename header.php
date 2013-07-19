@@ -58,26 +58,27 @@ if ( is_singular() ) wp_enqueue_script( 'comment-reply' );
 		<div class="navbar-inner">
 			<div class="container">
 				<div class="row">
-					<div id="logo" class="span4">
+					<div id="logo" class="span6">
 						<h1 class="textfuera"><?php echo $genvars['blogname']; ?></h1>
 						<h2 class="textfuera"><?php echo $genvars['blogdesc']; ?></h2>
 					</div><!-- #logo -->
-					<div id="search" class="span8">
+					<div id="search" class="span8 pull-right">
 						<?php get_search_form(); ?>
 					</div>
-				
-					<div class="span8">
-						<div class="navbar-form pull-right">
-							<?php // main navigation aenu for home page
-							$menu_slug = "header-menu";
-							$args = array(
-								'theme_location' => $menu_slug,
-								'container' => 'false',
-								'menu_id' => 'pre-menu',
-								'menu_class' => 'navbar inline-menu',
-							);
-							wp_nav_menu( $args );
-						?>
+					<div class="row">
+						<div class="span10">
+							<div class="navbar-form pull-right">
+								<?php // main navigation aenu for home page
+								$menu_slug = "header-menu";
+								$args = array(
+									'theme_location' => $menu_slug,
+									'container' => 'false',
+									'menu_id' => 'pre-menu',
+									'menu_class' => 'navbar inline-menu',
+								);
+								wp_nav_menu( $args );
+							?>
+							</div>
 						</div>
 					</div>
 				</div>

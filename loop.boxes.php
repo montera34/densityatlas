@@ -3,7 +3,7 @@ $post_perma = get_permalink();
 $post_tit = get_the_title();
 $excerpt = get_the_excerpt(); 
 $src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), medium, false, '' );
-$post_classes = get_post_class(array('span3','box-basic'));
+$post_classes = get_post_class(array('span4','box-basic'));
 $classes_out = "";
 $classes_count = 0;
 foreach ( $post_classes as $class  ) {
