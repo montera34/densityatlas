@@ -83,7 +83,7 @@ foreach ( $scale_slugs as $scale_slug ) {
 	$scale_count++;
 } // end foreach scale buttons
 	// scale tab contents
-	if ( $scale_slug == 'all' ) {
+	if ( $scale == 'all' ) {
 		$args = array(
 			'posts_per_page' => -1,
 			'post_type' => 'case',
