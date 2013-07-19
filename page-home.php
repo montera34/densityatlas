@@ -21,11 +21,11 @@ if ( $related_query->have_posts() ) :
 	while ( $related_query->have_posts() ) : $related_query->the_post();
 		if ( has_post_thumbnail() ) {
 			$featured_cols = get_post_meta( $post->ID, '_da_story_cols', true );
-			if ( $featured_cols == '' ) { $featured_cols = "span3"; }
+			if ( $featured_cols == '' ) { $featured_cols = "span4"; }
 			if ( $featured_cols == 'span1' || $featured_cols == 'span2' ) { $img_size = "thumbnail"; }
-			elseif ( $featured_cols == 'span3' || $featured_cols == 'span6' ) { $img_size = "medium"; }
-			elseif ( $featured_cols == 'span9' ) { $img_size = "large"; }
-			elseif ( $featured_cols == 'span12' ) { $img_size = "full"; }
+			elseif ( $featured_cols == 'span4' || $featured_cols == 'span8' ) { $img_size = "medium"; }
+			elseif ( $featured_cols == 'span12' ) { $img_size = "large"; }
+			elseif ( $featured_cols == 'span16' ) { $img_size = "full"; }
 			$featured_img = get_the_post_thumbnail($post->ID,$img_size);
 			$featured_tit = get_the_title();
 			$featured_link = get_permalink();

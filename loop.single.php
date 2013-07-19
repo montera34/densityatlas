@@ -130,7 +130,7 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 	//			$large_size = "large";
 				include "loop.attachment.php";
 				if ( isset($img_medium) ) { ?>
-			<div class="span18" style="text-align: center; position: relative;">
+			<div class="span16" style="text-align: center; position: relative;">
 			<div id="case-carousel">
 					<?php $count = 0;
 					foreach ( $img_medium as $img ) {

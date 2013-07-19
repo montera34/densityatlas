@@ -430,8 +430,11 @@ function be_sample_metaboxes( $meta_boxes ) {//metaboxes common variables to all
 					array('name' => '1', 'value' => 'span1'), 
 					array('name' => '2', 'value' => 'span2'),
 					array('name' => '3', 'value' => 'span3'),
+					array('name' => '4', 'value' => 'span4'),
 					array('name' => '6', 'value' => 'span6'),	
-					array('name' => '12', 'value' => 'span12')
+					array('name' => '8', 'value' => 'span8'),
+					array('name' => '12', 'value' => 'span12'),
+					array('name' => '16', 'value' => 'span16')
 				) 
 			),
 		),
