@@ -24,15 +24,17 @@ else { $active_tab = 2; }
 
 
 $order_buttons = array(); // order buttons container
+if ( $sense_next == 'DESC' ) { $icon = "<icon class='icon-white icon-arrow-up'></icon>"; }
+else { $icon = "<icon class='icon-white icon-arrow-down'></icon>"; }
 if ( $order != 'ha' ) { // if FAR order
 	$order = "_da_far";
-	array_push( $order_buttons,"<li><a href='" .$base_url . $param_url. "far' class='active btn btn-small'>FAR</a></li>" );
-	array_push( $order_buttons,"<li><a href='" .$base_url . $param_url. "ha' class='btn btn-small'>People/ha</a></li>" );
+	array_push( $order_buttons,"<li><a href='" .$base_url . $param_url. "far' class='list-active btn-list'>FAR</a></li>" );
+	array_push( $order_buttons,"<li><a href='" .$base_url . $param_url. "ha' class='btn-list'>People/ha</a></li>" );
 }
 else { // if POP/ha order
 	$order = "_da_pop-ha";
-	array_push( $order_buttons,"<li><a href='" .$base_url . $param_url. "far' class='btn btn-small'>FAR</a></li>" );
-	array_push( $order_buttons,"<li><a href='" .$base_url . $param_url. "ha' class='active btn btn-small'>People/ha</a></li>" );
+	array_push( $order_buttons,"<li><a href='" .$base_url . $param_url. "far' class='btn-list'>FAR</a></li>" );
+	array_push( $order_buttons,"<li><a href='" .$base_url . $param_url. "ha' class='list-active btn-list'>People/ha</a></li>" );
 }
 
 

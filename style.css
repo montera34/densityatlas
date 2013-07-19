@@ -307,6 +307,7 @@ article.page h2, #case-data h1, #case-data h3 a {
 
 /* bootstrap like buttons made at http://charliepark.org/bootstrap_buttons/ */
 
+.btn-all,
 .btn-list,
 .btn-blockk,.btn-neighborhood,.btn-district {
 	color: #fff !important;
@@ -320,13 +321,13 @@ article.page h2, #case-data h1, #case-data h3 a {
 	border-radius: 5px;
 	padding: 5px 15px;
 }
-.btn-list {
-	color: #333 !important;
-	background-color: #ddd;
+.btn-list,
+.btn-all {
+	background-color: #ccc;
 }
 .list-active {
 	color: #fff !important;
-  background-color:#D9386A;
+  background-color:#666;
 }
 .btn-blockk { /*yes, type with 2 kk to avoid problems */
 	background-color:#f05a28;
