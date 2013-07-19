@@ -153,9 +153,9 @@ foreach ( $scale_slugs as $scale_slug ) {
 	else :
 	// if no related posts, code in here
 	endif;
-	array_push( $scale_tabs, $tab_tmp ); // adding this scale button to the buttons container
+	//array_push( $scale_tabs, $tab_tmp ); // adding this scale button to the buttons container
 	wp_reset_query();
-	$scale_count++;
+	//$scale_count++;
 
 //} // end scales loop
 

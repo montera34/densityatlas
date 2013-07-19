@@ -13,30 +13,37 @@ if ( $matches[0] == "?" && $vis == "map" ) { // if no pretty permalinks and map 
 	$base_url = get_permalink()."?vis=".$vis;
 }
 preg_match('/\?/',$base_url,$matches); // recheck after add vis var
-if ( $matches[0] == "?" ) { $param_url = "&order="; }
-else { $param_url = "?order="; }
+if ( $matches[0] == "?" ) { $param_url = "&scale="; }
+else { $param_url = "?scale="; }
+
+$scale = sanitize_text_field( $_GET['scale'] );
 $order = sanitize_text_field( $_GET['order'] );
-// active tab when page loads
-// 0 for all | 1 for Block | 2 for Neighborhood | 3 for District
-if ( $order == '' ) { $active_tab = 2; }
-else { $active_tab = 2; }
-//echo $order; echo $active_tab;
-
-
+$orderby = sanitize_text_field( $_GET['type'] );
+$sense = sanitize_text_field( $_GET['sense'] );
+if ( $scale == '' ) { $scale = "neighborhood"; }
+if ( $order == '' ) { $order = "far"; $orderby = "meta_value_num"; }
+if ( $sense == '' ) { $sense = "DESC"; }
+$orders = array(
+	array(
+		'value_url' => 'far',
+		'type' => 'meta_value_num',
+		'tit' => 'FAR'
+	),
+	array(
+		'value_url' => 'pop-ha',
+		'type' => 'meta_value_num',
+		'tit' => 'POP/Area'
+	),
+);
 $order_buttons = array(); // order buttons container
-if ( $sense_next == 'DESC' ) { $icon = "<icon class='icon-white icon-arrow-up'></icon>"; }
-else { $icon = "<icon class='icon-white icon-arrow-down'></icon>"; }
-if ( $order != 'ha' ) { // if FAR order
-	$order = "_da_far";
-	array_push( $order_buttons,"<li><a href='" .$base_url . $param_url. "far' class='list-active btn-list'>FAR</a></li>" );
-	array_push( $order_buttons,"<li><a href='" .$base_url . $param_url. "ha' class='btn-list'>People/ha</a></li>" );
+foreach ( $orders as $criteria ) {
+	if ( $order == $criteria['value_url'] ) { $btn_class = " list-active"; } else { $btn_class = ""; }
+	$sense_next = "DESC";
+	if ( $sense == 'DESC' && $btn_class != '' ) { $sense_next = "ASC"; }
+	if ( $sense_next == 'DESC' ) { $icon = "<icon class='icon-white icon-arrow-up'></icon>"; }
+	else { $icon = "<icon class='icon-white icon-arrow-down'></icon>"; }
+	array_push( $order_buttons,"<li><a class='btn-list" .$btn_class. "' href='" .$base_url . $param_url . $scale. "&order=" .$criteria['value_url']. "&type=" .$criteria['type']. "&sense=" .$sense_next. "'>" .$criteria['tit'] . $icon. "</a></li>" );
 }
-else { // if POP/ha order
-	$order = "_da_pop-ha";
-	array_push( $order_buttons,"<li><a href='" .$base_url . $param_url. "far' class='btn-list'>FAR</a></li>" );
-	array_push( $order_buttons,"<li><a href='" .$base_url . $param_url. "ha' class='list-active btn-list'>People/ha</a></li>" );
-}
-
 
 // LOOPS
 // one loop per scale to make live filters
@@ -52,20 +59,23 @@ foreach ( $scale_slugs as $scale_slug ) {
 	if ( $scale_slug == 'block' ) { $scale_class = $scale_slug. "k"; }
 	else { $scale_class = $scale_slug; }
 	// scale tab button
-	if ( $scale_count == $active_tab ) {
+	if ( $scale == $scale_slug ) {
 	// this is the active button
-		array_push( $scale_buttons,"<li class='active'><a href='#" .$scale_slug. "' class='" .$scale_slug. " btn-" .$scale_class. "' data-toggle='tab'>" .$scale_names[$scale_count]. "</a></li>" ); // adding this scale button to the buttons container
+		array_push( $scale_buttons,"<li class='active'><a href='" .$base_url . $param_url . $scale. "' class='" .$scale_slug. " btn-" .$scale_class. "'>" .$scale_names[$scale_count]. "</a></li>" ); // adding this scale button to the buttons container
 	} else {
-		array_push( $scale_buttons,"<li><a href='#" .$scale_slug. "' class='" .$scale_slug. " btn-" .$scale_class. "' data-toggle='tab'>" .$scale_names[$scale_count]. "</a></li>" ); // adding this scale button to the buttons container
+		array_push( $scale_buttons,"<li><a href='" .$base_url . $param_url . $scale_slug. "' class='" .$scale_slug. " btn-" .$scale_class. "'>" .$scale_names[$scale_count]. "</a></li>" ); // adding this scale button to the buttons container
 	}
+	$scale_count++;
+} // end foreach scale buttons
+
 	// scale tab contents
-	if ( $scale_slug == 'all' ) {
+	if ( $scale == 'all' ) {
 		$args = array(
 			'posts_per_page' => -1,
 			'post_type' => 'case',
-			'meta_key' => $order,
-			'orderby' => 'meta_value_num',
-			'order' => 'DESC',
+			'meta_key' => '_da_'.$order,
+			'orderby' => $orderby,
+			'order' => $sense,
 			'tax_query' => array(
       				array(
       				'taxonomy'  => 'scale',
@@ -82,12 +92,12 @@ foreach ( $scale_slugs as $scale_slug ) {
 				array(
 				'taxonomy' => 'scale',
 				'field' => 'slug',
-				'terms' => $scale_slug
+				'terms' => $scale
 				)
 			),
-			'meta_key' => $order,
-			'orderby' => 'meta_value_num',
-			'order' => 'DESC',
+			'meta_key' => '_da_'.$order,
+			'orderby' => $orderby,
+			'order' => $sense,
 		);
 	}
 	
@@ -106,9 +116,9 @@ foreach ( $scale_slugs as $scale_slug ) {
 	if ( $count != 0 ) { $tab_tmp .= "</div><!-- .row -->"; }
 	array_push( $scale_tabs, $tab_tmp ); // adding this scale button to the buttons container
 	wp_reset_query();
-	$scale_count++;
+	//$scale_count++;
 
-} // end scales loop
+//} // end scales loop
 
 // output
 if ( $vis == "map" ) {
@@ -146,14 +156,14 @@ if ( $vis == "map" ) {
 	rewind_posts(); ?>
 
 <div id="gallery-items" class="row">
-	<div class="container tab-content">
-		<?php
-		$scale_count = 0;
-		foreach ( $scale_tabs as $tab ) {
-			if ( $scale_count == $active_tab ) { echo "<div id='" .$scale_slugs[$scale_count]. "' class='tab-pane active'>" .$tab. "</div>"; }
-			else { echo "<div id='" .$scale_slugs[$scale_count]. "' class='tab-pane'>" .$tab. "</div>"; }
-			$scale_count++;
-		} ?>
+	<div class="container">
+		<?php echo $tab_tmp;
+		//$scale_count = 0;
+		//foreach ( $scale_tabs as $tab ) {
+		//	if ( $scale_count == $active_tab ) { echo "<div id='" .$scale_slugs[$scale_count]. "' class='tab-pane active'>" .$tab. "</div>"; }
+		//	else { echo "<div id='" .$scale_slugs[$scale_count]. "' class='tab-pane'>" .$tab. "</div>"; }
+		//	$scale_count++;
+		//} ?>
 	</div><!-- .container -->
 </div><!-- #gallery-items -->
 
