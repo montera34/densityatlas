@@ -166,7 +166,7 @@ foreach ( $scale_slugs as $scale_slug ) {
 	<div class="container">
 		<div class="row">
 			<div class="span3"><h2><?php the_title();?></h2></div>
-			<div class="span6 offset3">
+			<div class="span6 offset4">
 				<h4>Filter by</h4>
 				<ul id="filters" class="inline">
 					<?php foreach ( $scale_buttons as $button ) { echo $button; } ?>

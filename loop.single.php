@@ -36,7 +36,7 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 		<div class="row">
 			<?php if ( get_post_type( $post->ID ) == 'case' ) {
 			// if case study post type ?>
-			<div class="span6">
+			<div class="span8">
 				<h2>
 					<?php echo $case_tit ?>&nbsp;&nbsp;
 					<div id="case-info">
@@ -45,8 +45,8 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 					</div>
 				</h2>
 			</div>
-			<div class="span6">
-				<ul class="nav nav-pills">
+			<div class="span8">
+				<ul class="nav nav-pills pull-right">
 				<?php $taxs = array(
 					array('slug' => 'scale','name' => 'Scale'),
 				//	array('slug' => 'country','name' => 'Country'),
@@ -115,8 +115,8 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 				$zoom = get_post_meta( $post->ID, '_da_zoom', true );
 				if ($zoom == '') {$zoom = '15';}
 			?>
-				<iframe class="span6" height="380" scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col4+from+1uJv8cueGs0ibGwGmCcUjDha6-hRuFgDLu00PhNo&viz=MAP&h=false&lat=<?php echo $lat ?>&amp;lng=<?php echo $lon ?>&t=2&z=<?php echo $zoom ?>&l=col4&y=2&tmplt=1"></iframe>
-			<div class="span6" style="overflow: hidden;">
+				<iframe class="span8" height="380" scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col4+from+1uJv8cueGs0ibGwGmCcUjDha6-hRuFgDLu00PhNo&viz=MAP&h=false&lat=<?php echo $lat ?>&amp;lng=<?php echo $lon ?>&t=2&z=<?php echo $zoom ?>&l=col4&y=2&tmplt=1"></iframe>
+			<div class="span8" style="overflow: hidden;">
 				<?php the_post_thumbnail('medium', array('class' => 'featured-image')); ?>
 			</div>
 			<?php } // end if case study post type
@@ -130,7 +130,7 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 	//			$large_size = "large";
 				include "loop.attachment.php";
 				if ( isset($img_medium) ) { ?>
-			<div class="span12" style="text-align: center; position: relative;">
+			<div class="span18" style="text-align: center; position: relative;">
 			<div id="case-carousel">
 					<?php $count = 0;
 					foreach ( $img_medium as $img ) {
@@ -154,7 +154,7 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 		<?php if ( get_post_type( $post->ID ) == 'case' ) {
 		// if case study post type ?>
 		<div class="row">
-			<div class="span12">
+			<div class="span18">
 				<h4>Key Density Metrics</h4> 
 			</div>
 		</div>
@@ -165,7 +165,7 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 		<div id="case-far">
 			<div class="span1"><h3>FAR</h3></div>
 			<div class="span1"><h3><?php echo $case_far; ?></h3></div>
-			<div class="span4">
+			<div class="span6">
 				<div style="position:relative;top:0px">
 					<div class="case-metric-line" style="position:absolute;top:0px">
 						<div class="case-metric-unit"></div>
@@ -190,16 +190,16 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 		<div id="case-pop" >
 			<div class="span1"><h3>POP/Ha</h3></div>
 			<div class="span1"><h3><?php echo number_format($case_pop); ?></h3></div>
-			<div class="span4">
+			<div class="span6">
 				<div class="case-metric-line">
 					<div class="case-metric-unit">0</div>
-					<div class="case-metric-unit"> -</div>
+					<div class="case-metric-unit"></div>
 					<div class="case-metric-unit">1,000</div>
-					<div class="case-metric-unit">-</div>
+					<div class="case-metric-unit"></div>
 					<div class="case-metric-unit">2,000</div>
-					<div class="case-metric-unit">-</div>
+					<div class="case-metric-unit"></div>
 					<div class="case-metric-unit">3,000</div>
-					<div class="case-metric-unit">-</div>
+					<div class="case-metric-unit"></div>
 					<div class="case-metric-unit">4,000</div>
 				</div><!-- .case-metric-line -->
 				<div class="case-metric-line">
@@ -225,14 +225,14 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 	else { // if story ( post type )
 		if ( $sentence_tit != '' ) { // if sentence tit ?>
 		<div class="row">
-			<div class="span12">
+			<div class="span18">
 				<div class="nav-header"><?php echo $sentence_tit ?></div> 
 			</div>
 		</div>
 		<?php } // if sentence tit
 		if ( $sentence != '' ) { // if sentence ?>
 		<div class="row">
-			<div class="span12">
+			<div class="span18">
 				<h3><?php echo $sentence ?></h3>
 			</div>
 		</div>
@@ -243,7 +243,7 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 <div id="case-data" class="row">
 	<div class="container">
 	<div class="row">
-		<div id="case-sidebar" class="span3">
+		<div id="case-sidebar" class="span4">
 		<?php if ( get_post_type( $post->ID ) == 'case' ) {
 		// if case study post type
 			if ( has_term("city","scale") ) {
@@ -503,7 +503,7 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 		<?php } // if story ?>
 		</div><!-- #case-sidebar -->
 		<?php wp_reset_query(); ?>
-		<div id="case-study-content" class="span9 text-content">
+		<div id="case-study-content" class="offset1 span10 text-content">
 			<h1><?php echo $case_tit ?></h1>
 			<?php if ( get_post_type( $post->ID ) == 'case' ) {
 				echo "<h3>" .get_the_term_list( $post->ID, 'scale', '', ', ', '' ). "</h3>";

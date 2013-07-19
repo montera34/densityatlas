@@ -120,8 +120,8 @@ if ( $vis == "map" ) {
 <div id="gallery-tit" class="row">
 	<div class="container">
 		<div class="row">
-			<div class="span3"><h2><?php the_title();?></h2></div>
-			<div class="span3">
+			<div class="span4"><h2><?php the_title();?></h2></div>
+			<div class="span4">
 				<h4>Sort by</h4>
 				<ul id="orders" class="inline">
 					<?php foreach ( $order_buttons as $button ) { echo $button; } ?>
