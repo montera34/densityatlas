@@ -518,7 +518,7 @@ function update_empty_taxs_custom_field( $post_id ) {
 			$terms = get_the_terms( $post_id, $taxo );
 			$post_meta_value = $terms[0]->name;
 			$prev_meta_key = get_post_meta( $post_id, $post_meta_key, true);
-			if ( $prev_meta_key == '' ) { update_post_meta($post_id, $post_meta_key, $post_meta_value, $prev_meta_key ); }
+			if ( $prev_meta_key == '' || $prev_meta_key != $post_meta_value ) { update_post_meta($post_id, $post_meta_key, $post_meta_value, $prev_meta_key ); }
 			else { add_post_meta($post_id, $post_meta_key, $post_meta_value,true); }
 		}
 	}
