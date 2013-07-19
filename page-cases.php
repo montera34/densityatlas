@@ -41,7 +41,7 @@ else { // if POP/ha order
 $scale_buttons = array(); // filter buttons container
 $scale_tabs = array(); // tabs content container
 $scale_slugs = array("all","block","neighborhood","district");
-$scale_names = array("Reset","Block","Neighborhood","District");
+$scale_names = array("All","Block","Neighborhood","District");
 $scale_count = 0;
 
 foreach ( $scale_slugs as $scale_slug ) {

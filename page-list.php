@@ -51,11 +51,12 @@ $orders = array(
 );
 $order_buttons = array(); // order buttons container
 foreach ( $orders as $criteria ) {
-	if ( $order == $criteria['value_url'] ) {
-		array_push( $order_buttons,"<th><a class='active' href='" .$base_url . $param_url . $criteria['value_url']. "&type=" .$criteria['type']. "&sense=ASC'>" .$criteria['tit']. "</a></th>" );
-	} else {
-		array_push( $order_buttons,"<th><a href='" .$base_url . $param_url . $criteria['value_url']. "&type=" .$criteria['type']. "&sense=DESC'>" .$criteria['tit']. "</a></th>" );
-	}
+	if ( $order == $criteria['value_url'] ) { $btn_class = " list-active"; } else { $btn_class = ""; }
+	$sense_next = "DESC";
+	if ( $sense == 'DESC' && $btn_class != '' ) { $sense_next = "ASC"; }
+	if ( $sense_next == 'DESC' ) { $icon = "<icon class='icon-arrow-up'></icon>"; }
+	else { $icon = "<icon class='icon-white icon-arrow-down'></icon>"; }
+	array_push( $order_buttons,"<th><a class='btn-list" .$btn_class. "' href='" .$base_url . $param_url . $criteria['value_url']. "&type=" .$criteria['type']. "&sense=" .$sense_next. "'>" .$criteria['tit'] . $icon. "</a></th>" );
 }
 
 // LOOPS
