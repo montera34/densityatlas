@@ -9,7 +9,9 @@ if ( $matches[0] == "?" ) { $param_url = "&order="; }
 else { $param_url = "?order="; }
 $order = sanitize_text_field( $_GET['order'] );
 $orderby = sanitize_text_field( $_GET['type'] );
-if ( $order == '' ) { $order = "tax_country"; $orderby = "meta_value"; }
+$sense = sanitize_text_field( $_GET['sense'] );
+if ( $order == '' ) { $order = "far"; $orderby = "meta_value_num"; }
+if ( $sense == '' ) { $sense = "DESC"; }
 $orders = array(
 	array(
 		'value_url' => 'tit',
@@ -49,7 +51,11 @@ $orders = array(
 );
 $order_buttons = array(); // order buttons container
 foreach ( $orders as $criteria ) {
-	array_push( $order_buttons,"<th><a href='" .$base_url . $param_url . $criteria['value_url']. "&type=" .$criteria['type']. "'>" .$criteria['tit']. "</a></th>" );
+	if ( $order == $criteria['value_url'] ) {
+		array_push( $order_buttons,"<th><a class='active' href='" .$base_url . $param_url . $criteria['value_url']. "&type=" .$criteria['type']. "&sense=ASC'>" .$criteria['tit']. "</a></th>" );
+	} else {
+		array_push( $order_buttons,"<th><a href='" .$base_url . $param_url . $criteria['value_url']. "&type=" .$criteria['type']. "&sense=DESC'>" .$criteria['tit']. "</a></th>" );
+	}
 }
 
 // LOOPS
@@ -57,7 +63,7 @@ foreach ( $orders as $criteria ) {
 $scale_buttons = array(); // filter buttons container
 $scale_tabs = array(); // tabs content container
 $scale_slugs = array("all","block","neighborhood","district");
-$scale_names = array("Reset","Block","Neighborhood","District");
+$scale_names = array("All","Block","Neighborhood","District");
 $scale_count = 0;
 
 foreach ( $scale_slugs as $scale_slug ) {
@@ -67,9 +73,9 @@ foreach ( $scale_slugs as $scale_slug ) {
 	// scale tab button
 	if ( $scale_count == 0 ) {
 	// this is the active button
-		array_push( $scale_buttons,"<li class='active'><a href='#" .$scale_slug. "' class='" .$scale_slug. " btn btn-small btn-" .$scale_class. "' data-toggle='tab'>" .$scale_names[$scale_count]. "</a></li>" ); // adding this scale button to the buttons container
+		array_push( $scale_buttons,"<li class='active'><a href='#" .$scale_slug. "' class='" .$scale_slug. " btn-" .$scale_class. "' data-toggle='tab'>" .$scale_names[$scale_count]. "</a></li>" ); // adding this scale button to the buttons container
 	} else {
-		array_push( $scale_buttons,"<li><a href='#" .$scale_slug. "' class='" .$scale_slug. " btn btn-small btn-" .$scale_class. "' data-toggle='tab'>" .$scale_names[$scale_count]. "</a></li>" ); // adding this scale button to the buttons container
+		array_push( $scale_buttons,"<li><a href='#" .$scale_slug. "' class='" .$scale_slug. " btn-" .$scale_class. "' data-toggle='tab'>" .$scale_names[$scale_count]. "</a></li>" ); // adding this scale button to the buttons container
 	}
 	// scale tab contents
 	if ( $scale_slug == 'all' ) {
@@ -78,7 +84,7 @@ foreach ( $scale_slugs as $scale_slug ) {
 			'post_type' => 'case',
 			'meta_key' => '_da_'.$order,
 			'orderby' => $orderby,
-			'order' => 'DESC',
+			'order' => $sense,
 		);
 	} else {
 		$args = array(
@@ -93,7 +99,7 @@ foreach ( $scale_slugs as $scale_slug ) {
 			),
 			'meta_key' => '_da_'.$order,
 			'orderby' => $orderby,
-			'order' => 'DESC',
+			'order' => $sense,
 		);
 	}
 	
