@@ -36,7 +36,7 @@ require_once( get_stylesheet_directory(). '/general-vars.php' );
 <link href="<?php echo $genvars['blogtheme']; ?>/css/bootstrap.min.css" rel="stylesheet" />
 <link href="<?php bloginfo('stylesheet_url'); ?>" rel="stylesheet" />
 <!-- Google Fonts -->
-<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 <!-- rcarousel -->
 <link href="<?php echo $genvars['blogtheme']; ?>/rcarousel/widget/css/rcarousel.css" rel="stylesheet" />
 

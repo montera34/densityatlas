@@ -131,7 +131,7 @@ foreach ( $scale_slugs as $scale_slug ) {
 				foreach ( $countries as $term ) { $country = $term->name;}
 			}
 			$scales = get_the_terms($post->ID,"scale");
-			if ( $cities ) {
+			if ( $scales ) {
 				foreach ( $scales as $term ) { $scale = $term->name; }
 			}
 			$far = get_post_meta( $post->ID, '_da_far', true );

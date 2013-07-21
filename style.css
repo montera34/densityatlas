@@ -28,6 +28,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
 	display: none;
 }
 .textr {
+	font-weight: 700;
 	text-align: right !important;
 }
 

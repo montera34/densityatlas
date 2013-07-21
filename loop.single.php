@@ -68,19 +68,19 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 						$term_link = get_term_link( $term );
 						if ( has_term($term->term_id, $tax['slug']) && $select_count == 1 ) {
 							$select_count++;
-							$term_select_out = "<a class='btn btn-small dropdown-toggle' data-toggle='dropdown' href='#'>" .$term->name. "</a>";
+							$term_select_out = "<a class='" .$tax['slug']. " btn-" .$tax['slug']. " dropdown-toggle' data-toggle='dropdown' href='#'>" .$term->name. "</a>";
 						} else {
 							$term_list_out .= "<li><a href='" .$term_link. "'>" .$term->name. "</a></li>";
 						}
 					}
 				?>
 					<li class="dropdown">
-						<?php echo $tax_name; ?><br />
+						<h4><?php echo $tax_name; ?></h4>
 						<?php if ( $term_select_out != '' ) {
 							echo $term_select_out;
 							unset($term_select_out);
 						} else {
-							echo "<a class='btn btn-small dropdown-toggle' data-toggle='dropdown' href='#'>Not aplicable</a>";
+							echo "<a class='btn-list btn dropdown-toggle' data-toggle='dropdown' href='#'>Not aplicable</a>";
 						} ?>
 						<ul class="dropdown-menu">
 							<?php echo $term_list_out; ?>
@@ -136,7 +136,7 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 					foreach ( $img_medium as $img ) {
 						$count++;
 						//if ( $count == 1 ) { echo '<div class="active item">'; }
-						echo "<div>".$img."</div>";
+						echo "<div><a href='" .$img_attachment_link. "'>".$img."</a></div>";
 						//if ( $count % 3 == 0 ) { echo '</div><!-- .item--><div class="item">'; }
 					} // end foreach
 					//if ( $count % 3 != 0 ) { echo '</div><!-- .item-->'; }
