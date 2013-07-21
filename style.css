@@ -245,6 +245,17 @@ article.page h2, #case-data h1, #case-data h3 a {
 	text-transform: uppercase;
 	font-size: 12px;
 }
+
+/* wp captions */
+.wp-caption {
+	border-top: 1px dotted;
+	padding-top: 1em;
+	margin-bottom: 1em;
+}
+.wp-caption-text {
+}
+
+
 /* case metrics */
 #case-far {
 
@@ -307,20 +318,24 @@ article.page h2, #case-data h1, #case-data h3 a {
 
 /* bootstrap like buttons made at http://charliepark.org/bootstrap_buttons/ */
 
+.btn-scale,
 .btn-all,
 .btn-list,
+.btn-city,
 .btn-blockk,.btn-neighborhood,.btn-district {
 	color: #fff !important;
 	font-size:12px; 
 	font-weight:bold; 
 	text-transform:uppercase;
-	height: 24px;
+	/*height: 24px;*/
 	min-width: 100px;
 	text-align: center;
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
-	padding: 5px 15px;
+	padding: 5px 15px !important;
 }
+.btn-scale,
+.btn-city,
 .btn-list,
 .btn-all {
 	background-color: #ccc;
