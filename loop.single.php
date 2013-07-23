@@ -15,13 +15,51 @@ if ( get_post_type( $post->ID ) == 'case' ) {
 	$case_pop = get_post_meta( $post->ID, '_da_pop-ha', true );
 	$max_width = 300;
 	$far_max = 9;
-	$case_segment = ($max_width / $far_max) -1;
+	$far_segment = ($max_width / $far_max) -1;
 	if ( $case_far > 8 ) { $far_per == $max_width; }
 	else { $far_per = $case_far * $max_width / $far_max; }
 	$pop_max = 4500;
 	if ( $case_pop > 4000 ) { $pop_per == $max_width; }
-	else { $pop_per = $case_pop * $max_width / $pop_max; }
-}
+	else {
+		// lineal scale
+		//$pop_per = $case_pop * $max_width / $pop_max;
+		// log scale
+		$base = pow($pop_max, 1/$max_width); //echo $base;
+		$pop_per = log($case_pop,$base); //echo "<br />".$pop_per2;
+
+	}
+	$pop_segments = array(
+		array('num'=>'1000','label'=>'1(x1000) '),
+		array('num'=>'2000','label'=>'2'),
+		array('num'=>'3000','label'=>'3'),
+		array('num'=>'4000','label'=>'4'),
+		array('num'=>'4500','label'=>''),
+	);
+	$pop_units_out = "
+		<div class='case-metric-line'>
+			<div class='case-metric-unit' style='width: 0; border: none;'>0</div>
+	";
+	$pop_segments_out = "
+		<div class='case-metric-line'>
+			<div class='case-metric-segment' style='width: 0; border: none;'></div>
+	";
+	$pop_px = 0;
+	foreach ( $pop_segments as $segment ) {
+		$pop_px_prev = $pop_px;
+		$pop_px = log($segment['num'],$base);
+		$pop_width = $pop_px - $pop_px_prev - 1;
+		$pop_units_out .= "<div class='case-metric-unit' style='width: " .$pop_width. "px; text-align: right;'>" .$segment['label']. "</div>";
+		if ( $segment['num'] == 4500 ) {
+			$pop_segments_out .= "<div class='case-metric-segment' style='width: " .$pop_width. "px;'>";
+			if ( $case_pop > 4000 ) { $pop_segments_out .= "<i style='position: absolute; right: 0; bottom: 1px;' class='icon-plus'></i>"; }
+			$pop_segments_out .= "</div>";
+		} else {
+			$pop_segments_out .= "<div class='case-metric-segment' style='width: " .$pop_width. "px;'></div>";
+		}
+	}
+	$pop_units_out .= "</div><!-- .case-metric-line -->";
+	$pop_segments_out .= "</div><!-- .case-metric-line -->";
+} // end if case post type
 
 if ( get_post_type( $post->ID ) == 'post' ) {
 // story vars
@@ -158,7 +196,7 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 				<h4>Key Density Metrics</h4> 
 			</div>
 		</div>
-		<style>.case-metric-unit, .case-metric-segment { width: <?php echo $case_segment ?>px;}</style>
+		<style>#case-far .case-metric-unit, #case-far .case-metric-segment { width: <?php echo $far_segment ?>px;}</style>
 		<div class="row">
 		<?php if ( (has_term("block","scale") || has_term("neighborhood","scale")) && $case_far != '0') { 
 		// if is a block or a neighborhood and FAR value is not 0 ?>
@@ -191,31 +229,8 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 			<div class="span1"><h3>POP/Ha</h3></div>
 			<div class="span1"><h3><?php echo number_format($case_pop); ?></h3></div>
 			<div class="span6">
-				<div class="case-metric-line">
-					<div class="case-metric-unit">0</div>
-					<div class="case-metric-unit"></div>
-					<div class="case-metric-unit">1,000</div>
-					<div class="case-metric-unit"></div>
-					<div class="case-metric-unit">2,000</div>
-					<div class="case-metric-unit"></div>
-					<div class="case-metric-unit">3,000</div>
-					<div class="case-metric-unit"></div>
-					<div class="case-metric-unit">4,000</div>
-				</div><!-- .case-metric-line -->
-				<div class="case-metric-line">
-					<div class="case-metric-segment"></div>
-					<div class="case-metric-segment"></div>
-					<div class="case-metric-segment"></div>
-					<div class="case-metric-segment"></div>
-					<div class="case-metric-segment"></div>
-					<div class="case-metric-segment"></div>
-					<div class="case-metric-segment"></div>
-					<div class="case-metric-segment"></div>
-					<div class="case-metric-segment">
-						<?php if ( $case_pop > 4000 ) { echo "<i style='position: absolute; right: 0; bottom: 1px;' class='icon-plus'></i>"; }?>
-					</div>
-				</div><!-- .case-metric-line -->
-				<div class="case-metric-line case-metric-bg   case-metric-line-density">
+				<?php echo $pop_units_out.$pop_segments_out; ?>
+				<div class="case-metric-line case-metric-bg case-metric-line-density">
 					<div class="case-metric-far" style="width: <?php echo $pop_per ?>px;float:left;" title="<?php echo $case_pop ?>"></div>
 				</div><!-- .case-metric-line -->
 			</div>
