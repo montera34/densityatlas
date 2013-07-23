@@ -15,8 +15,9 @@ $classes_out .= "'";
 $post_cities = get_the_term_list( $post->ID, 'city', '', ', ', '' );
 $post_scales = get_the_term_list( $post->ID, 'scale', '', ', ', '' );
 $post_far = get_post_meta( $post->ID, '_da_far', true );
-if ( $post_far == "0" ) { $post_far = "n/a"; }
 $post_pop = number_format(get_post_meta( $post->ID, '_da_pop-ha', true ));
+if ( $post_far == "0" || $post_far == '0.00' || $post_far == '' || $post_far == 'n/a' ) { $post_far = "N/A"; }
+if ( $post_pop == "0" || $post_pop == '0.00' || $post_pop == '' || $post_pop == 'n/a' ) { $post_pop = "N/A"; }
 
 $tab_tmp .= "
 	<div " .$classes_out. " >
