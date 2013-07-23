@@ -19,14 +19,13 @@ if ( get_post_type( $post->ID ) == 'case' ) {
 	if ( $case_far > 8 ) { $far_per == $max_width; }
 	else { $far_per = $case_far * $max_width / $far_max; }
 	$pop_max = 4500;
+	$base = pow($pop_max, 1/$max_width);
 	if ( $case_pop > 4000 ) { $pop_per == $max_width; }
 	else {
 		// lineal scale
 		//$pop_per = $case_pop * $max_width / $pop_max;
 		// log scale
-		$base = pow($pop_max, 1/$max_width); //echo $base;
-		$pop_per = log($case_pop,$base); //echo "<br />".$pop_per2;
-
+		$pop_per = log($case_pop,$base);
 	}
 	$pop_segments = array(
 		array('num'=>'1000','label'=>'1(x1000) '),
