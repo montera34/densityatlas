@@ -348,7 +348,7 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 						<td><?php echo 'Gross Building Area (m2)' ?></td>
 						<td class="textr">
 								<?php $grossbuildingarea = get_post_meta( $post->ID, '_da_gross-building-area', true ); 
-									if ( $grossbuildingarea == '') {
+									if ( $grossbuildingarea == '' || $grossbuildingarea == '0' || $grossbuildingarea == '0.00' ) {
 										$grossbuildingarea = 'N/A';}
 									else {
 										$grossbuildingarea = number_format($grossbuildingarea);
@@ -374,7 +374,7 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 						<td><?php echo 'Dwelling Units' ?></td>
 						<td class="textr">
 								<?php $dwellingunits = get_post_meta( $post->ID, '_da_dwelling-units', true ); 
-									if ( $dwellingunits == '') {
+									if ( $dwellingunits == '' || $dwellingunits == '0' || $dwellingunits == '0.00' ) {
 										$dwellingunits = 'N/A';}
 									else {
 										$dwellingunits = number_format($dwellingunits);
@@ -386,7 +386,7 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 						<td><?php echo 'Parking Spaces' ?></td>
 						<td class="textr">
 								<?php $parkingspaces = get_post_meta( $post->ID, '_da_parking-space', true ); 
-									if ( $parkingspaces == '') {
+									if ( $parkingspaces == '' || $parkingspaces == '0' || $parkingspaces == '0.00' ) {
 										$parkingspaces = 'N/A';}
 									else {
 										$parkingspaces = number_format($parkingspaces);

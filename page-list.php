@@ -137,6 +137,9 @@ foreach ( $scale_slugs as $scale_slug ) {
 			$far = get_post_meta( $post->ID, '_da_far', true );
 			$pop = get_post_meta( $post->ID, '_da_pop-ha', true );
 			$du = get_post_meta( $post->ID, '_da_dus-ha', true );
+			if ( $far == '' || $far == '0' || $far == '0.00' || $far == 'n/a' ) { $far = 'N/A'; }
+			if ( $pop == '' || $pop == '0' || $pop == '0.00' || $pop == 'n/a' ) { $pop = 'N/A'; }
+			if ( $du == '' || $du == '0' || $du == '0.00' || $du == 'n/a' ) { $du = 'N/A'; }
 			$tab_tmp .= "
 				<tr>
 					<td>" .$location. "</td>
@@ -165,8 +168,8 @@ foreach ( $scale_slugs as $scale_slug ) {
 <div id="gallery-tit" class="row">
 	<div class="container">
 		<div class="row">
-			<div class="span3"><h2><?php the_title();?></h2></div>
-			<div class="span6 offset4">
+			<div class="span4"><h2><?php the_title();?></h2></div>
+			<div class="span8 offset4">
 				<h4>Filter by</h4>
 				<ul id="filters" class="inline">
 					<?php foreach ( $scale_buttons as $button ) { echo $button; } ?>
