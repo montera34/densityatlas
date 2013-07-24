@@ -137,7 +137,7 @@ if ( $vis == "map" ) {
 					<?php foreach ( $order_buttons as $button ) { echo $button; } ?>
 				</ul>
 			</div>
-			<div class="span6">
+			<div class="span8">
 				<h4>FILTER BY SCALE</h4>
 				<ul id="filters" class="inline">
 					<?php foreach ( $scale_buttons as $button ) { echo $button; } ?>
