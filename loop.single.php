@@ -18,7 +18,7 @@ if ( get_post_type( $post->ID ) == 'case' ) {
 	$far_segment = ($max_width / $far_max) -1;
 	if ( $case_far > 8 ) { $far_per == $max_width; }
 	else { $far_per = $case_far * $max_width / $far_max; }
-	$pop_max = 4500;
+	$pop_max = 4000;
 	$base = pow($pop_max, 1/$max_width);
 	if ( $case_pop > 4000 ) { $pop_per == $max_width; }
 	else {
@@ -28,14 +28,19 @@ if ( get_post_type( $post->ID ) == 'case' ) {
 		$pop_per = log($case_pop,$base);
 	}
 	$pop_segments = array(
-		array('num'=>'1000','label'=>'1(x1000) '),
-		array('num'=>'2000','label'=>'2'),
-		array('num'=>'3000','label'=>'3'),
-		array('num'=>'4000','label'=>'4'),
-		array('num'=>'4500','label'=>''),
+		array('num'=>'10','label'=>'10'),
+		array('num'=>'50','label'=>'50'),
+		array('num'=>'100','label'=>'100'),
+		//array('num'=>'500','label'=>'500'),
+		array('num'=>'1000','label'=>'1,000'),
+		//array('num'=>'1500','label'=>''),
+		//array('num'=>'2000','label'=>'-'),
+		//array('num'=>'3000','label'=>'-'),
+		array('num'=>'4000','label'=>'4,000'),
+		//array('num'=>'5000','label'=>'5,000'),
 	);
 	$pop_units_out = "
-		<div class='case-metric-line'>
+		<div class='case-metric-line'  style='top: 10px; position: relative;'>
 			<div class='case-metric-unit' style='width: 0; border: none;'>0</div>
 	";
 	$pop_segments_out = "
@@ -228,10 +233,15 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 			<div class="span1"><h3>POP/Ha</h3></div>
 			<div class="span1"><h3><?php echo number_format($case_pop); ?></h3></div>
 			<div class="span6">
-				<?php echo $pop_units_out.$pop_segments_out; ?>
-				<div class="case-metric-line case-metric-bg case-metric-line-density">
-					<div class="case-metric-far" style="width: <?php echo $pop_per ?>px;float:left;" title="<?php echo $case_pop ?>"></div>
-				</div><!-- .case-metric-line -->
+				<div style="position:relative;top:0px">		
+					<div class="case-metric-line case-metric-bg case-metric-line-density" style="position:absolute;top:0px;margin-top:-15px;">
+						<div style="width: <?php echo ($pop_per+10) ?>px;text-align:right;position:absolute;top: -45px;">
+							<h3><?php echo number_format($case_pop); ?></h3><!-- FAR label on graphic -->
+						</div>
+						<div class="case-metric-far" style="width: <?php echo $pop_per-4; ?>px;float:left;" title="<?php echo $case_pop ?>"></div>
+					</div><!-- .case-metric-line -->
+					<?php echo $pop_segments_out.$pop_units_out; ?>
+				</div>
 			</div>
 		</div><!-- #case-far -->
 		</div>

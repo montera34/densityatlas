@@ -267,29 +267,29 @@ article.page h2, #case-data h1, #case-data h3 a {
 }
 
 .case-metric-line-density {
-	background-image: url('img/randomDot.png') !important;
+	background-image: url('img/semitoneDot.png') !important;
 	background-repeat:no-repeat;
-	border:1px solid #eee;
+	/*border:1px solid #eee;*/
 } 
 
 .case-metric-segment {
 	float: left;
 	height: 10px;
-	border-left: 1px solid #ddd;
+	border-left: 1px solid #333;
 	position: relative;
+	top:10px;
 }
 .case-metric-unit {
 	float: left;
 	border-left: 1px solid transparent;
 }
 .case-metric-bg {
-	background-color: #ddd;
-	height: 15px;
+	height: 25px;
 	width: 300px;
 }
 .case-metric-far,
 .case-metric-pop {
-	height: 30px;
+	height: 40px;
 	background-color: transparent;
 	border-right: 8px solid #D9386A;
 	margin-top: -10px;
