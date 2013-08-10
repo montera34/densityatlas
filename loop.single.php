@@ -437,12 +437,14 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 				</thead>
 				<tbody>
 					<tr>
-						<td><?php echo 'Area' ?></td>
-						<td class="textr"><?php echo "data"; ?></td>
+						<td><?php echo 'Area (Ha)' ?></td>
+						<td class="textr"><?php $area = get_post_meta( $post->ID, '_da_site-area', true ); 
+										echo number_format($area/10000,2); ?></td>
 					</tr>
 					<tr>
 						<td><?php echo 'Population' ?></td>
-						<td class="textr"><?php echo get_post_meta( $post->ID, '_da_population', true ); ?></td>
+						<td class="textr"><?php $population = get_post_meta( $post->ID, '_da_population', true ); 
+									echo number_format($population); ?></td>
 				</tbody>
 			</table>
 			<?php } // end if district ?>
