@@ -157,8 +157,15 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 				$zoom = get_post_meta( $post->ID, '_da_zoom', true );
 				if ($zoom == '') {$zoom = '15';}
 			?>
-				<iframe class="span8" height="380" scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col4+from+1uJv8cueGs0ibGwGmCcUjDha6-hRuFgDLu00PhNo&viz=MAP&h=false&lat=<?php echo $lat ?>&amp;lng=<?php echo $lon ?>&t=2&z=<?php echo $zoom ?>&l=col4&y=2&tmplt=1"></iframe>
+				<?php $extra_image = get_post_meta( $post->ID, '_da_extra_image', true );
+				 if ($extra_image != '' ) {  
+				 	echo "<img class='span8' height='380' src='" .$extra_image. "' >";
+				} else {?>
+					<iframe class="span8" height="380" scrolling="no" frameborder="no" 
+					src="https://www.google.com/fusiontables/embedviz?q=select+col4+from+1uJv8cueGs0ibGwGmCcUjDha6-hRuFgDLu00PhNo&viz=MAP&h=false&lat=<?php echo $lat ?>&amp;lng=<?php echo $lon ?>&t=2&z=<?php echo $zoom ?>&l=col4&y=2&tmplt=1"></iframe>
+				<?php } ?>
 			<div class="span8" style="overflow: hidden;">
+				
 				<?php the_post_thumbnail('medium', array('class' => 'featured-image')); ?>
 			</div>
 			<?php } // end if case study post type

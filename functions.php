@@ -192,6 +192,12 @@ function be_sample_metaboxes( $meta_boxes ) {//metaboxes common variables to all
 				'id' => $prefix . 'author',
 				'type' => 'text_small'
 			),
+			array(
+				'name' => 'URL of image that substitutes map',
+				'desc' => 'If filled, it will override the map and will show this image.',
+				'id' => $prefix . 'extra_image',
+				'type' => 'text',
+			),
 		),
 	);
 	$meta_boxes[] = array(
