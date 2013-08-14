@@ -439,7 +439,7 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 					<tr>
 						<td><?php echo 'Area (Ha)' ?></td>
 						<td class="textr"><?php $area = get_post_meta( $post->ID, '_da_site-area', true ); 
-										echo number_format($area/10000,2); ?></td>
+										echo $area/10000; ?></td>
 					</tr>
 					<tr>
 						<td><?php echo 'Population' ?></td>
