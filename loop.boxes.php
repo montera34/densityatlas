@@ -21,7 +21,7 @@ if ( $post_pop == "0" || $post_pop == '0.00' || $post_pop == '' || $post_pop == 
 
 $tab_tmp .= "
 	<div " .$classes_out. " >
-		<div class='box-image' style='z-index:1;top:0px;left:0px;height:160px;background-image:url(\"" .$src[0]. "\")'>
+		<div class='box-image' style='background-image:url(\"" .$src[0]. "\")'>
 		</div>
 		<div class='box-content'style='z-index:2;'>
 			<a href='" .$post_perma. "' title='Permalink to " .$post_tit. "' rel='bookmark'><h4>" .$post_tit. "</h4></a>
