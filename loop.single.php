@@ -14,13 +14,13 @@ if ( get_post_type( $post->ID ) == 'case' ) {
 	$case_far = get_post_meta( $post->ID, '_da_far', true );
 	$case_pop = get_post_meta( $post->ID, '_da_pop-ha', true );
 	$max_width = 300;
-	$far_max = 9;
-	$far_segment = ($max_width / $far_max) -1;
-	if ( $case_far > 8 ) { $far_per == $max_width; }
+	$far_max = 9; //should it be 8?
+	$far_segment = ($max_width / $far_max) -1; //and remove the "-1"
+	if ( $case_far > $far_max ) { $far_per = $max_width; }
 	else { $far_per = $case_far * $max_width / $far_max; }
 	$pop_max = 4000;
 	$base = pow($pop_max, 1/$max_width);
-	if ( $case_pop > 4000 ) { $pop_per == $max_width; }
+	if ( $case_pop > $pop_max ) { $pop_per = $max_width; }
 	else {
 		// lineal scale
 		//$pop_per = $case_pop * $max_width / $pop_max;
@@ -226,11 +226,11 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 						<div class="case-metric-unit"><img src="<?php echo $genvars['blogtheme']; ?>/img/far6.png"></div>
 						<div class="case-metric-unit"><img src="<?php echo $genvars['blogtheme']; ?>/img/far7.png"></div>
 						<div class="case-metric-unit"><img src="<?php echo $genvars['blogtheme']; ?>/img/far8.png"></div>
-						<?php if ( $case_far > 8 ) { echo "<i style='position: absolute; right: 0; bottom: 1px;' class='icon-plus'></i>"; }?>
+						<?php if ( $case_far > 8 ) { echo "<i style='position: absolute; right: -25px; bottom: 7px;' class='icon-plus'></i>"; }?>
 					</div><!-- .case-metric-line -->
 					<div class="case-metric-line" style="position:absolute;top:0px;margin-top: -35px;">
-						<div style="width: <?php echo ($far_per+20) ?>px;text-align:right;"><h3><?php echo $case_far; ?></h3></div>
-						<div class="case-metric-far" style="width: <?php echo $far_per ?>px;" title="<?php echo $case_far ?>"></div>
+							<div style="width: <?php echo ($far_per+20) ?>px;text-align:right;"><h3><?php echo $case_far; ?></h3></div>
+							<div class="case-metric-far" style="width: <?php echo $far_per ?>px;" title="<?php echo $case_far ?>"></div>
 					</div><!-- .case-metric-line -->
 				</div>
 			</div>
@@ -246,6 +246,7 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 							<h3><?php echo number_format($case_pop); ?></h3><!-- FAR label on graphic -->
 						</div>
 						<div class="case-metric-far" style="width: <?php echo $pop_per-4; ?>px;float:left;" title="<?php echo $case_pop ?>"></div>
+						<?php if ( $case_pop > $pop_max ) { echo "<i style='position: absolute; right: -21px; bottom: 7px;' class='icon-plus'></i>";} ?>
 					</div><!-- .case-metric-line -->
 					<?php echo $pop_segments_out.$pop_units_out; ?>
 				</div>
