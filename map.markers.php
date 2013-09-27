@@ -33,7 +33,7 @@ while ( $row1 = mysql_fetch_array($recordset1) ) {
 		while ( $row3 = mysql_fetch_array($recordset3) ) {
 			$tit = $row3['post_title'];
 			$perma = "?case=" .$row3['post_name'];
-			$desc = "<a href='" .$perma. "'>See this case study</a>";
+			$desc = "<a href='" .$perma. "'>See the case studies in this City</a>";
 			print("$point" . "\t" . "$tit" ."\t". "$desc" ."\t". "$path" ."\t". "$dim" ."\t". "$off" . "\n");
 		}
 
