@@ -119,6 +119,9 @@ article.page h2, #case-data h1, #case-data h3 a {
 /* sidebar */
 #margen {
 }
+#case-sidebar {
+	overflow: hidden;
+}
 
 /* content */
 #content {
@@ -302,6 +305,7 @@ article.page h2, #case-data h1, #case-data h3 a {
 .case-metric-far:hover,
 .case-metric-pop:hover {
 	background-color: #aaa;
+	opacity:0.4;
 }
 
 #case-metrics h3 {
