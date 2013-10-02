@@ -239,6 +239,12 @@ function be_sample_metaboxes( $meta_boxes ) {//metaboxes common variables to all
 				'type' => 'text_small'
 			),
 			array(
+				'name' => 'Site coverage',
+				'desc' => '%',
+				'id' => $prefix . 'site-coverage',
+				'type' => 'text_small'
+			),
+			array(
 				'name' => 'Range of Heights',
 				'desc' => 'select',
 				'id' => $prefix . 'range-of-heights',

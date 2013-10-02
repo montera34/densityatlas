@@ -384,6 +384,12 @@ if ( get_post_type( $post->ID ) == 'post' ) {
 						 ?></td>
 					</tr>
 					<tr>
+						<td><?php echo 'Site coverage (%)' ?></td>
+						<td class="textr"><?php $sitearea = get_post_meta( $post->ID, '_da_site-coverage', true ); 
+									echo $sitearea;
+						 ?></td>
+					</tr>
+					<tr>
 						<td><?php echo 'Range of heights (floors)' ?></td>
 						<td class="textr"><?php echo get_post_meta( $post->ID, '_da_range-of-heights', true ); ?></td>
 					</tr>
