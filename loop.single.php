@@ -13,56 +13,92 @@ if ( get_post_type( $post->ID ) == 'case' ) {
 	$case_year = get_post_meta( $post->ID, '_da_year', true );
 	$case_far = get_post_meta( $post->ID, '_da_far', true );
 	$case_pop = get_post_meta( $post->ID, '_da_pop-ha', true );
-	$max_width = 300;
-	$far_max = 9; //should it be 8?
-	$far_segment = ($max_width / $far_max) -1; //and remove the "-1"
+
+	// common graph vars
+	$max_width = 300; // width of the graph
+
+	// far graph
+	$far_max = 9; // max value of far. should it be 8?
+	$far_segment = ($max_width / $far_max) -1; // segment width in px. and remove the "-1"
+	// $far_per var contains width of currrent far value, in px
 	if ( $case_far > $far_max ) { $far_per = $max_width; }
 	else { $far_per = $case_far * $max_width / $far_max; }
-	$pop_max = 4000;
-	$base = pow($pop_max, 1/$max_width);
-	if ( $case_pop > $pop_max ) { $pop_per = $max_width; }
-	else {
-		// lineal scale
-		//$pop_per = $case_pop * $max_width / $pop_max;
-		// log scale
-		$pop_per = log($case_pop,$base);
+
+	// pop/ha graph
+	if ( has_term('block','scale') ) {
+		$pop_min = $pop_min_label = 100; // min value of pop/ha
+		$pop_max = 5000; // max value of pop/ha
+		$pop_max_label = "5,000";
+		$pop_segments = array(
+			array('num'=>500,'label'=>'500'),
+			array('num'=>1000,'label'=>'1,000'),
+			array('num'=>2500,'label'=>'2,500'),
+		);
+	} elseif ( has_term('neighborhood','scale') ) {
+		$pop_min = $pop_min_label = 50; // min value of pop/ha
+		$pop_max = 4000; // max value of pop/ha
+		$pop_max_label = "4,000";
+		$pop_segments = array(
+			array('num'=>100,'label'=>'100'),
+			array('num'=>1000,'label'=>'1,000'),
+			array('num'=>2000,'label'=>'2,000'),
+		);
+	} elseif ( has_term('district','scale') ) {
+		$pop_min = $pop_min_label = 10; // min value of pop/ha
+		$pop_max = 1000; // max value of pop/ha
+		$pop_max_label = "1,000";
+		$pop_segments = array(
+			array('num'=>50,'label'=>'50'),
+			array('num'=>100,'label'=>'100'),
+			array('num'=>500,'label'=>'500'),
+		);
 	}
-	$pop_segments = array(
-		array('num'=>'10','label'=>'10'),
-		array('num'=>'50','label'=>'50'),
-		array('num'=>'100','label'=>'100'),
-		//array('num'=>'500','label'=>'500'),
-		array('num'=>'1000','label'=>'1,000'),
-		//array('num'=>'1500','label'=>''),
-		//array('num'=>'2000','label'=>'-'),
-		//array('num'=>'3000','label'=>'-'),
-		array('num'=>'4000','label'=>'4,000'),
-		//array('num'=>'5000','label'=>'5,000'),
-	);
+	$base = pow($pop_max, 1/$max_width); // log base calcule
+	// $pop_per var transform this case pop/ha value to width, in px
+	if ( $case_pop > $pop_max ) { $pop_per = $max_width; }
+	else {	
+		//$pop_per = $case_pop * $max_width / $pop_max; // lineal scale
+		$pop_per = log($case_pop,$base); // log scale
+	}
+
+	// pop/ha graph: building units and markers output
+	// opening divs
 	$pop_units_out = "
-		<div class='case-metric-line'  style='top: 10px; position: relative;'>
-			<div class='case-metric-unit' style='width: 0; border: none;'>0</div>
+		<div class='case-metric-line' style='top: 10px; position: relative;'>
+			<div class='case-metric-unit' style='width: 0; border: none;'>" .$pop_min_label. "</div>
 	";
 	$pop_segments_out = "
 		<div class='case-metric-line'>
 			<div class='case-metric-segment' style='width: 0; border: none;'></div>
 	";
-	$pop_px = 0;
+	// first segment
+	$pop_px = log($pop_min,$base); // $pop_min width, in px
+	$factor_scale = $max_width / ( $max_width - $pop_px ); // scale factor, to fit $max_width after remove $pop_min width
+	// middle segments
 	foreach ( $pop_segments as $segment ) {
 		$pop_px_prev = $pop_px;
 		$pop_px = log($segment['num'],$base);
-		$pop_width = $pop_px - $pop_px_prev - 1;
-		$pop_units_out .= "<div class='case-metric-unit' style='width: " .$pop_width. "px; text-align: right;'>" .$segment['label']. "</div>";
-		if ( $segment['num'] == 4500 ) {
-			$pop_segments_out .= "<div class='case-metric-segment' style='width: " .$pop_width. "px;'>";
-			if ( $case_pop > 4000 ) { $pop_segments_out .= "<i style='position: absolute; right: 0; bottom: 1px;' class='icon-plus'></i>"; }
-			$pop_segments_out .= "</div>";
-		} else {
+		$pop_width = ( ( $pop_px - $pop_px_prev ) * $factor_scale ) - 1;
+		$pop_units_out .= "<div class='case-metric-unit pop-" .$segment['num']. "' style='width: " .$pop_width. "px; text-align: right;'>" .$segment['label']. "</div>";
+		//if ( $segment['num'] == 4500 ) {
+		//	$pop_segments_out .= "<div class='case-metric-segment' style='width: " .$pop_width. "px;'>";
+		//	if ( $case_pop > 4000 ) { $pop_segments_out .= "<i style='position: absolute; right: 0; bottom: 1px;' class='icon-plus'></i>"; }
+		//	$pop_segments_out .= "</div>";
+		//} else {
 			$pop_segments_out .= "<div class='case-metric-segment' style='width: " .$pop_width. "px;'></div>";
-		}
+		//}
 	}
+	// last segment
+	$pop_px_prev = $pop_px;
+	$pop_px = log($pop_max,$base);
+	$pop_width = ( ( $pop_px - $pop_px_prev ) * $factor_scale ) - 2;
+	$pop_units_out .= "<div class='case-metric-unit pop-" .$pop_max. "' style='width: " .$pop_width. "px; text-align: right;'>" .$pop_max_label. "</div>";
+	$pop_segments_out .= "<div class='case-metric-segment' style='border-right: 1px solid #333; width: " .$pop_width. "px;'></div>";
+	// closing divs
 	$pop_units_out .= "</div><!-- .case-metric-line -->";
 	$pop_segments_out .= "</div><!-- .case-metric-line -->";
+	// END pop/ha graph
+
 } // end if case post type
 
 if ( get_post_type( $post->ID ) == 'post' ) {
